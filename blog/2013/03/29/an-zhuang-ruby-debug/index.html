@@ -1,0 +1,274 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>安装ruby-debug - My Octopress Blog</title>
+  <meta name="author" content="Your Name">
+
+  
+  <meta name="description" content="最近想在emacs里面调试ruby，搜到一篇博文说是安装ruby-debug和ruby-debug-extra，于是首先尝试安装ruby-debug 1
+2
+3
+rvm use 1.9.3
+gem search ruby-debug -r
+gem install ruby-debug &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://shanexu.github.io/blog/2013/03/29/an-zhuang-ruby-debug">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="My Octopress Blog" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">My Octopress Blog</a></h1>
+  
+    <h2>A blogging framework for hackers.</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:shanexu.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">安装ruby-debug</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-03-29T11:56:00+08:00" pubdate data-updated="true">Mar 29<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><div class="begin-indent2em"></div>
+
+
+<p>最近想在emacs里面调试ruby，搜到一篇博文说是安装ruby-debug和ruby-debug-extra，于是首先尝试安装ruby-debug</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>rvm use 1.9.3
+</span><span class='line'>gem search ruby-debug -r
+</span><span class='line'>gem install ruby-debug</span></code></pre></td></tr></table></div></figure>
+
+
+<p>然后找到<a href="http://rubyforge.org/docman/view.php/8883/10451/ruby-debug.html">ruby-debug</a>的官方文档，然后自己胡乱写了个脚本开始对着文档调试，然后就是rdebug抛错。之后发现竟然还有一个ruby-debug19的包。然后又安装ruby-debug19。尝试运行rdebug，还是出错。没辙拿着错误信息直接上google，终于在<a href="http://stackoverflow.com/questions/8378277/cannot-use-ruby-debug19-with-1-9-3-p0">stackoverflow</a>找到答案。貌似答案的出处在这里<a href="http://blog.wyeworks.com/2011/11/1/ruby-1-9-3-and-ruby-debug/">http://blog.wyeworks.com/2011/11/1/ruby-1-9-3-and-ruby-debug/</a>
+首先需要从<a href="http://rubyforge.org/frs/?group_id=8883">http://rubyforge.org/frs/?group_id=8883</a>下载</p>
+
+<ol>
+<li>linecache19-0.5.13.gem</li>
+<li>ruby_core_source-0.1.5.gem</li>
+<li>ruby-debug19-0.11.6.gem</li>
+<li>ruby-debug-base19-0.11.26.gem</li>
+</ol>
+
+
+<p>然后用下面的命令安装：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>which ruby
+</span><span class='line'>export RVM_SRC=/Users/shane/.rvm/src/ruby-1.9.3-p392
+</span><span class='line'>gem install archive-tar-minitar
+</span><span class='line'>gem install ruby_core_source-0.1.5.gem -- --with-ruby-include=$RVM_SRC
+</span><span class='line'>gem install linecache19-0.5.13.gem -- --with-ruby-include=$RVM_SRC
+</span><span class='line'>gem install ruby-debug-base19-0.11.26.gem -- --with-ruby-include=$RVM_SRC
+</span><span class='line'>gem install ruby-debug19-0.11.6.gem -- --with-ruby-include=$RVM_SRC</span></code></pre></td></tr></table></div></figure>
+
+
+<p>结果后来在安装rdebug for emacs的时候看到了一个gem， <a href="https://github.com/cldwalker/debugger">debugger</a>，感觉这个包比较好。</p>
+
+<blockquote><p>A fork of ruby-debug(19) that works on 1.9.2 and 1.9.3 and installs easily for rvm/rbenv rubies.</p></blockquote>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>gem install debugger</span></code></pre></td></tr></table></div></figure>
+
+
+<p>然后在emacs里面用el-get安装rdebug就好了。</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Your Name</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-03-29T11:56:00+08:00" pubdate data-updated="true">Mar 29<span>th</span>, 2013</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/ruby/'>ruby</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://shanexu.github.io/blog/2013/03/29/an-zhuang-ruby-debug/" data-via="" data-counturl="http://shanexu.github.io/blog/2013/03/29/an-zhuang-ruby-debug/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2013/03/26/mian-zhao-da-hai-%2Cchun-nuan-hua-kai/" title="Previous Post: 面朝大海，春暖花开">&laquo; 面朝大海，春暖花开</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2013/04/07/tiling-window-manager/" title="Next Post: Tiling Window Manager (1)">Tiling Window Manager (1) &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/04/24/zuo-yi-tian-de-ni/">做一天的你</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/04/13/ci-yu-wo-wang-guan-%2Cgei-yu-wo-shi-lian/">赐予我王冠，给予我试炼</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/04/12/tranquil-mode/">tranquil-mode</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/04/09/its-because-of-you/">It's because of you, motherfucker, that we are not all using Lisp.</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/04/08/vimperator/">vimperator</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - Your Name -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

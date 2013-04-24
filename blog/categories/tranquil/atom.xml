@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: tranquil | My Octopress Blog]]></title>
+  <link href="http://shanexu.github.io/blog/categories/tranquil/atom.xml" rel="self"/>
+  <link href="http://shanexu.github.io/"/>
+  <updated>2013-04-24T23:00:10+08:00</updated>
+  <id>http://shanexu.github.io/</id>
+  <author>
+    <name><![CDATA[Your Name]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[tranquil-mode]]></title>
+    <link href="http://shanexu.github.io/blog/2013/04/12/tranquil-mode/"/>
+    <updated>2013-04-12T16:22:00+08:00</updated>
+    <id>http://shanexu.github.io/blog/2013/04/12/tranquil-mode</id>
+    <content type="html"><![CDATA[<div class='begin-indent2em' filter='p:not(:has(a.fancybox :first-child))'></div>
+
+
+<p>前面几篇写tiling window manager的文章里提到了，xnomad这个在os x下极端好用的窗口管理器，这个窗口管理器是用tranquil这个语言写的。目前<a href="https://github.com/fjolnir/tranquil">tranquil</a>这门语言还只是在github上的一个项目。</p>
+
+<blockquote><p>Tranquil is a programming language built on top of LLVM &amp; the Objective-C Runtime.
+It aims to provide a more expressive &amp; easy to use way to write Mac and iOS Apps.</p></blockquote>
+
+<p>Tranquil是一门基于LLVM和Objective-C runtime的编程语言，其目的在与提供一种更具表现力的和方便的方法来编写Mac应用和IOS Apps。</p>
+
+<p>作者在他的repository里只提供了vim的语法高亮插件，于是只能自己去写一个emacs的mode，于是通过看elisp手册，emacswiki以及阅读js.el和ruby-mode.el，加上不断的google，还有[\C-h f]终于写出了我自己的勉强还能用的<a href="https://github.com/shanexu/tranquil-mode">tranquil-mode</a>。</p>
+
+<p><code>
+(add-to-list 'load-path "~/path/to/tranquil-mode/")
+(require 'tranquil-mode)
+</code></p>
+
+<p><img src="http://fileserver.cloudfoundry.com/images/tranquil-mode.png" title="tranquil-mode" alt="tranquil-mode"></p>
+]]></content>
+  </entry>
+  
+</feed>

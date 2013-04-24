@@ -1,0 +1,249 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Tiling Window Manager (1) - My Octopress Blog</title>
+  <meta name="author" content="Your Name">
+
+  
+  <meta name="description" content="I would die for XMonad working with native OSX windows. Interested in any answers beyond the crappy things I&#8217;ve seen already. 写这篇文章是因为实在对os &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://shanexu.github.io/blog/2013/04/07/tiling-window-manager">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="My Octopress Blog" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">My Octopress Blog</a></h1>
+  
+    <h2>A blogging framework for hackers.</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:shanexu.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Tiling Window Manager (1)</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-04-07T01:19:00+08:00" pubdate data-updated="true">Apr 7<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><div class='begin-indent2em' filter='p:not(:has(a.fancybox :first-child))'></div>
+
+
+<blockquote><p>I would die for XMonad working with native OSX windows. Interested in any answers beyond the crappy things I&#8217;ve seen already.</p></blockquote>
+
+<p>写这篇文章是因为实在对os x的窗口管理实在已经吐槽无力了。</p>
+
+<p>首先要解释一下什么是tiling window manager。Tiline Window Manager，也就是平铺式窗口管理器。平铺式窗口管理器区别于普通的窗口管理器，主要体现在平铺两个字。平铺是窗口管理器其主要目的是将屏幕空间分割成互不重合的几个区块。这样的特性能够让人同时关注多个窗口，同时还能尽可能地利用屏幕空间。同时省去了用鼠标调节窗口大小的麻烦，提高工作效率。其实大部分人还是不需要平铺式窗口管理器的。</p>
+
+<p>第一次接触平铺式窗口管理器是在。。。好吧忘了什么时候的事情了。应该是在linuxsir上看到的一篇文章吧。那时候其实很无聊，每天几乎在摆弄linux的桌面环境，从gnome换到kde，再从kde换到xfce，然后用openbox，接着捣鼓fluxbox，然后用了一会儿e17（e17真的很漂亮，但是不好用），然后在fvwm上坚持过一段时间。然后就在好像没什么可以玩的时候，终于读到了那篇介绍平铺是窗口管理器的文章。</p>
+
+<p>好吧，让我回忆一下，最早接触的平铺是窗口管理器是哪一个吧。
+<a href="http://awesome.naquadah.org/">awesome</a>，应该就是他了。其实从名字来看就知道他有多diao了。awesome其实很省心，默认配置自带一个panel，然后还有各种小插件（小插件什么的我几乎一次都没用过），然后官网上还有几个漂亮的主题，让装13的门槛迅速降低数个等级，同时配置文件又是用lua写的，在使用窗口管理器的同时又能学习一门新语言真是双赢啊。</p>
+
+<p><img src="http://fileserver.cloudfoundry.com/images/tiling-1.png" title="#1" alt="ubuntu 13.04 with awesome"></p>
+
+<p>出于某些原因，我没有长期使用下去，可能当时没有习惯auto tiling window manager吧，打开一个窗口，自动平铺到屏幕上，感觉自己没法控制。接着是<a href="http://aerosuidae.net/musca.html">Musca</a>，和awesome不一样Musca是一个手动平铺式窗口管理器。Musca让用户手动将screen切分成不同的frames，然后把应用程序手动放到一个个frame里面。Musca没有提供任何panel、tab之类的控件，如果非要这些东西不可的话，可以拉一个xfce的panel，或者tint2之类的panel。我那时候的配置应该是Archlinux+ xfce4-panel + musca + dmenu，用了好久好久，那时候做操作系统实验的时候也是这个组合吧。</p>
+
+<p>linux的rm -rf *之类的命令其实是非常危险的，尤其是在rm之前加sudo，然后想都没想直接输入密码。好吧那时候我/etc目录下执行了这个命令，反应过来的时候已经为时已晚。然后马上爬到校内论坛上问大家怎么补救，结果得到的答案便是“重装吧”。之后重装的时候也没有保存home里的配置文件。之后也懒得重写配置文件。</p>
+
+<p>这之后玩的fvwm，其实比较喜欢fvwm那只小猫。用了<a href="http://box-look.org">box-look</a>上的<a href="http://box-look.org/content/show.php/Lethe?content=91022">Lethe</a>这个配置。是个非常清新的配置。</p>
+
+<p>其实我至今都很喜欢kde3.5。kde总是给我很笨重的感觉，尤其是kde4，但是archlinux上有一个非常好的Kdemod，这是经过kde fans的优化的kde3.5桌面环境。这真的是一个值得拥有的桌面环境。可是好景不长，kde4的不断冲击，最后3.5的kdemod终于不再更新了。后来archlinux也衍生出了一个默认（其实只支持）KDE4桌面环境的发行版<a href="http://www.chakra-project.org">Chakra</a>。其实这是KDE狂人搞出来的发行版，他把所有的gtk依赖去除的干干净净。对于像Emacs、Firefox这样的无法替代的软件则使用Bundle系统mount到系统上。如果非常喜欢KDE可以尝试一下这个发行版。</p>
+
+<p>跑题了。好吧我忘了到底在什么情况下我遇到了我的本命，<a href="http://xmonad.org">XMonad</a>，努力回忆下的话还是有点印象的。那时候有货吐槽各种窗口管理器，其中也包括了XMonad，为了装XMonad这个窗口管理器需要安装好几百M的ghc编译器，然后反吐槽的人就说，编译完了就可以把ghc删掉了。然后抱着试试看的心态安装了XMonad，XMonad还有个特点就是可以和现成的桌面环境结合，比如他能够替代xfce、gnome、kde的窗口管理器。同时还提供了在这三种桌面环境上默认配置，非常容易上手。同时XMonad的配置文件使用了Haskell语言进行编写，haskell是一门函数式编程语言，阅读起来也不是那么难。看久了也渐渐喜欢上这么语言，有时间应该去学学。XMonad用了好久好久。在KDE下用，在gnome下用，最后固定在了xfce4上了。</p>
+
+<p><a href="http://subtile.subforge.org">subtile</a>是一个小插曲，那段时间在学习ruby，subtile是用ruby写的手动平铺式窗口管理器。基本上已经没有什么印象了。</p>
+
+<p>时代在进步，终于有一天gnome 3带着他的gnome-shell来了。一开始gnome-shell，只是个花瓶，然后我发现我竟然可以用javascript写插件了，于是开始拥抱gnome-shell。想起那时候为了让right super键能够触发overlay view，挖到Mutter(gnome 3在gnome-shell的状态下的窗口管理器)的源代码里面。那段时间真是幸福。写到这里的时候突然想起漏了点东西，提到XMonad和gnmoe的时候还有一个不得不提的项目，就是<a href="http://www.bluetile.org/">Bluetile</a>，bluetile是一个将gnome和XMonad结合在一起的项目。自从gnome 3出来以后，这个项目也停滞不前了。其实gnome 3在fallback模式下可以用XMonad替代默认窗口管理器。但是实在是，gnome 3的fallback模式真的很难受，gnome 3的可配置度也真的一直在向KDE4看齐。难道在没有安装gnome-tweak-tools的时候，只能用gconftool-2进行配置吗？好在gnome-shell用户做了一个平铺窗口管理插件，<a href="http://gfxmonk.net/shellshape/">shellshape</a>，shellshape is inspired by bluetile。gnome-shell去除了在panel上的task manager，使用overlay view或者alt+tab切换应用程序。其实gnome-shell还有一个更惊人的改动，gnome-shell去除了窗口的最大化和最小化按钮，窗口上就只剩下一个孤零零的关闭按钮。其实他在学一些移动设备吧，每次都只有一个最大化的窗口，还好双击窗口的行为没有变。shellshape的出现，让我坚持使用gnome-shell了一段很长时间。</p>
+
+<p>提到KDE4，其实KDE组是个很用心做软件的组。所有的kde软件都是union在一起的，比如dolphin中打开konsole，好吧，好久不用了，有些忘记了。而且kwin中加入平铺模式。只是kde有些让人无法满意的地方，比如，firefox无法替代，emacs无法替代，而这类gtk的软件真的在kde下很难看。无法忍受。我是一个对这种事情非常吹毛求疵的人。</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Your Name</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-04-07T01:19:00+08:00" pubdate data-updated="true">Apr 7<span>th</span>, 2013</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/linux/'>linux</a>, <a class='category' href='/blog/categories/tiling-window-manager/'>tiling window manager</a>, <a class='category' href='/blog/categories/xmonad/'>xmonad</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://shanexu.github.io/blog/2013/04/07/tiling-window-manager/" data-via="" data-counturl="http://shanexu.github.io/blog/2013/04/07/tiling-window-manager/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2013/03/29/an-zhuang-ruby-debug/" title="Previous Post: 安装ruby-debug">&laquo; 安装ruby-debug</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2013/04/07/tiling-window-manager-2/" title="Next Post: Tiling Window Manager (2)">Tiling Window Manager (2) &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/04/24/zuo-yi-tian-de-ni/">做一天的你</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/04/13/ci-yu-wo-wang-guan-%2Cgei-yu-wo-shi-lian/">赐予我王冠，给予我试炼</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/04/12/tranquil-mode/">tranquil-mode</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/04/09/its-because-of-you/">It's because of you, motherfucker, that we are not all using Lisp.</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/04/08/vimperator/">vimperator</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - Your Name -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

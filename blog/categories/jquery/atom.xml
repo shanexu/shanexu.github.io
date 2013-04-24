@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: jQuery | My Octopress Blog]]></title>
+  <link href="http://shanexu.github.io/blog/categories/jquery/atom.xml" rel="self"/>
+  <link href="http://shanexu.github.io/"/>
+  <updated>2013-04-24T23:00:10+08:00</updated>
+  <id>http://shanexu.github.io/</id>
+  <author>
+    <name><![CDATA[Your Name]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Selecting HTML Comments with jQuery]]></title>
+    <link href="http://shanexu.github.io/blog/2013/03/13/selecting-html-comments-with-jquery/"/>
+    <updated>2013-03-13T12:40:00+08:00</updated>
+    <id>http://shanexu.github.io/blog/2013/03/13/selecting-html-comments-with-jquery</id>
+    <content type="html"><![CDATA[<div class='begin-indent2em' filter='p:not(:has(a.fancybox :first-child))'></div>
+
+
+<p>前几日想在博客blogs列表上上做一个read more &amp; less的效果，几经周折，总算做了一个比较满意的版本。其实原理很简单只是细节问题接踵而至。octopress中有<em>&lt;!&minus;&minus; more &minus;&minus;&gt;</em>这个注释把文章分成两截，其实在执行<em>Read more</em>的时候只要从文章中找到<em>&lt;!&minus;&minus; more &minus;&minus;&gt;</em>注释并截取下半截，并添加到原来的“.entry-content div”中即可。一开始也没有多想，在我看来jQuery应该是没有选取注释的选择器的，的确最后证明我的想法的确是正确的。于是又用了在文档中添加display为none的元素的方法。于是我就是在<em>&lt;!&minus;&minus; more &minus;&minus;&gt;</em>的后面增加了一个<em>&lt;div class='read-more-mark'&gt;&lt;/div&gt;</em>这样的标记性元素。于是要选取后半截只要这样就行了。</p>
+
+<p><code>javascript
+$('.read-more-mark').nextAll();
+</code></p>
+
+<!-- more -->
+
+
+<div class='read-more-mark'></div>
+
+
+<p>但在文档中插入没什么用的标记元素总觉得不太好，经过google关键词检索搜到了一篇题为<a href="http://www.bennadel.com/blog/1563-jQuery-Comments-Plug-in-To-Access-HTML-Comments-For-DOM-Templating.htm">jQuery Comments() Plug-in To Access HTML Comments For DOM Templating</a>文章提供的代码如下：</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>jQuery Comments() Plug-in</span><a href='http://www.bennadel.com/index.cfm?event=blog.downloadcode&amp;id=1563&amp;index=1'>Download </a></figcaption> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+<span class='line-number'>54</span>
+<span class='line-number'>55</span>
+<span class='line-number'>56</span>
+<span class='line-number'>57</span>
+<span class='line-number'>58</span>
+<span class='line-number'>59</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="c1">// This jQuery plugin will gather the comments within</span>
+</span><span class='line'><span class="c1">// the current jQuery collection, returning all the</span>
+</span><span class='line'><span class="c1">// comments in a new jQuery collection.</span>
+</span><span class='line'><span class="c1">//</span>
+</span><span class='line'><span class="c1">// NOTE: Comments are wrapped in DIV tags.&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="nx">jQuery</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">comments</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span> <span class="nx">blnDeep</span> <span class="p">){</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">pre</span><span class="o">&gt;&lt;</span><span class="nx">code</span><span class="o">&gt;</span><span class="kd">var</span> <span class="nx">blnDeep</span> <span class="o">=</span> <span class="p">(</span><span class="nx">blnDeep</span> <span class="o">||</span> <span class="kc">false</span><span class="p">);</span>
+</span><span class='line'><span class="kd">var</span> <span class="nx">jComments</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span> <span class="p">[]</span> <span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">// Loop over each node to search its children for</span>
+</span><span class='line'><span class="c1">// comment nodes and element nodes (if deep search).</span>
+</span><span class='line'><span class="k">this</span><span class="p">.</span><span class="nx">each</span><span class="p">(</span>
+</span><span class='line'>    <span class="kd">function</span><span class="p">(</span> <span class="nx">intI</span><span class="p">,</span> <span class="nx">objNode</span> <span class="p">){</span>
+</span><span class='line'>        <span class="kd">var</span> <span class="nx">objChildNode</span> <span class="o">=</span> <span class="nx">objNode</span><span class="p">.</span><span class="nx">firstChild</span><span class="p">;</span>
+</span><span class='line'>        <span class="kd">var</span> <span class="nx">strParentID</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span> <span class="k">this</span> <span class="p">).</span><span class="nx">attr</span><span class="p">(</span> <span class="s2">&quot;id&quot;</span> <span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="c1">// Keep looping over the top-level children</span>
+</span><span class='line'>        <span class="c1">// while we have a node to examine.</span>
+</span><span class='line'>        <span class="k">while</span> <span class="p">(</span><span class="nx">objChildNode</span><span class="p">){</span>
+</span><span class='line'>
+</span><span class='line'>            <span class="c1">// Check to see if this node is a comment.</span>
+</span><span class='line'>            <span class="k">if</span> <span class="p">(</span><span class="nx">objChildNode</span><span class="p">.</span><span class="nx">nodeType</span> <span class="o">===</span> <span class="mi">8</span><span class="p">){</span>
+</span><span class='line'>
+</span><span class='line'>                <span class="c1">// We found a comment node. Add it to</span>
+</span><span class='line'>                <span class="c1">// the nodes collection wrapped in a</span>
+</span><span class='line'>                <span class="c1">// DIV (as we may have HTML).</span>
+</span><span class='line'>                <span class="nx">jComments</span> <span class="o">=</span> <span class="nx">jComments</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span>
+</span><span class='line'>                    <span class="s2">&quot;&amp;lt;div rel=&#39;&quot;</span> <span class="o">+</span> <span class="nx">strParentID</span> <span class="o">+</span> <span class="s2">&quot;&#39;&amp;gt;&quot;</span> <span class="o">+</span>
+</span><span class='line'>                    <span class="nx">objChildNode</span><span class="p">.</span><span class="nx">nodeValue</span> <span class="o">+</span>
+</span><span class='line'>                    <span class="s2">&quot;&amp;lt;/div&amp;gt;&quot;</span>
+</span><span class='line'>                    <span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>            <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span>
+</span><span class='line'>                <span class="nx">blnDeep</span> <span class="o">&amp;</span><span class="nx">amp</span><span class="p">;</span><span class="o">&amp;</span><span class="nx">amp</span><span class="p">;</span>
+</span><span class='line'>                <span class="p">(</span><span class="nx">objChildNode</span><span class="p">.</span><span class="nx">nodeType</span> <span class="o">===</span> <span class="mi">1</span><span class="p">)</span>
+</span><span class='line'>                <span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>
+</span><span class='line'>                <span class="c1">// Traverse this node deeply.</span>
+</span><span class='line'>                <span class="nx">jComments</span> <span class="o">=</span> <span class="nx">jComments</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span>
+</span><span class='line'>                    <span class="nx">$</span><span class="p">(</span> <span class="nx">objChildNode</span> <span class="p">).</span><span class="nx">comments</span><span class="p">(</span> <span class="kc">true</span> <span class="p">)</span>
+</span><span class='line'>                    <span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>            <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>            <span class="c1">// Move to the next sibling.</span>
+</span><span class='line'>            <span class="nx">objChildNode</span> <span class="o">=</span> <span class="nx">objChildNode</span><span class="p">.</span><span class="nx">nextSibling</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>    <span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">// Return the jQuery comments collection.</span>
+</span><span class='line'><span class="k">return</span><span class="p">(</span> <span class="nx">jComments</span> <span class="p">);</span>
+</span><span class='line'><span class="o">&lt;</span><span class="err">/code&gt;&lt;/pre&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>上面的代码可以揣摩出，使用xml dom element的.nextSlibling方法是可以获得任何类型的xml dom element的。下表是从w3schools.com中摘录的<em>NodeTypes - Named Constants</em>表格。</p>
+
+<table>
+    <tr>
+        <th>NodeType</th>
+        <th>Named Constant</th>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>ELEMENT_NODE</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>ATTRIBUTE_NODE</td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>TEXT_NODE</td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>CDATA_SECTION_NODE</td>
+    </tr>
+    <tr>
+        <td>5</td>
+        <td>ENTITY_REFERENCE_NODE</td>
+    </tr>
+    <tr>
+        <td>6</td>
+        <td>ENTITY_NODE</td>
+    </tr>
+    <tr>
+        <td>7</td>
+        <td>PROCESSING_INSTRUCTION_NODE</td>
+    </tr>
+    <tr>
+        <td>8</td>
+        <td>COMMENT_NODE</td>
+    </tr>
+    <tr>
+        <td>9</td>
+        <td>DOCUMENT_NODE</td>
+    </tr>
+    <tr>
+        <td>10</td>
+        <td>DOCUMENT_TYPE_NODE</td>
+    </tr>
+    <tr>
+        <td>11</td>
+        <td>DOCUMENT_FRAGMENT_NODE</td>
+    </tr>
+    <tr>
+        <td>12</td>
+        <td>NOTATION_NODE</td>
+    </tr>
+</table>
+
+
+<p>在重新检索jQuery API文档之后得到了一个<a href="http://api.jquery.com/contents/"><em>.contents()</em></a>方法。</p>
+
+<blockquote><p>Given a jQuery object that represents a set of DOM elements, the .contents() method allows us to search throughthe immediate children of these elements in the DOM tree and construct a new jQuery object from the matching elements. The .contents() and .children() methods are similar, except that the former includes text nodes as well as HTML elements in the resulting jQuery object.</p>
+
+<p>The .contents() method can also be used to get the content document of an iframe, if the iframe is on the same domain as the main page.</p></blockquote>
+
+<p>利用<em>.contents()</em>方法可以下面的方式获得文档中的注释。</p>
+
+<p>``` javascript
+$(".entry-content").contents().filter(function(){</p>
+
+<pre><code>return this.nodeType === 8;
+</code></pre>
+
+<p>})
+```</p>
+]]></content>
+  </entry>
+  
+</feed>
