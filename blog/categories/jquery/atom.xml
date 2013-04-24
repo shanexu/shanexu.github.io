@@ -4,7 +4,7 @@
   <title><![CDATA[Category: jQuery | My Octopress Blog]]></title>
   <link href="http://shanexu.github.io/blog/categories/jquery/atom.xml" rel="self"/>
   <link href="http://shanexu.github.io/"/>
-  <updated>2013-04-24T23:31:55+08:00</updated>
+  <updated>2013-04-24T23:42:24+08:00</updated>
   <id>http://shanexu.github.io/</id>
   <author>
     <name><![CDATA[Your Name]]></name>
@@ -28,9 +28,6 @@ $('.read-more-mark').nextAll();
 </code></p>
 
 <!-- more -->
-
-
-<div class='read-more-mark'></div>
 
 
 <p>但在文档中插入没什么用的标记元素总觉得不太好，经过google关键词检索搜到了一篇题为<a href="http://www.bennadel.com/blog/1563-jQuery-Comments-Plug-in-To-Access-HTML-Comments-For-DOM-Templating.htm">jQuery Comments() Plug-in To Access HTML Comments For DOM Templating</a>文章提供的代码如下：</p>

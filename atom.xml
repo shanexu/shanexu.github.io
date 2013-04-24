@@ -4,7 +4,7 @@
   <title><![CDATA[My Octopress Blog]]></title>
   <link href="http://shanexu.github.io/atom.xml" rel="self"/>
   <link href="http://shanexu.github.io/"/>
-  <updated>2013-04-24T23:31:55+08:00</updated>
+  <updated>2013-04-24T23:42:24+08:00</updated>
   <id>http://shanexu.github.io/</id>
   <author>
     <name><![CDATA[Your Name]]></name>
@@ -1063,9 +1063,6 @@ It aims to provide a more expressive &amp; easy to use way to write Mac and iOS 
 <!-- more -->
 
 
-<div class='read-more-mark'></div>
-
-
 <p>但在文档中插入没什么用的标记元素总觉得不太好，经过google关键词检索搜到了一篇题为<a href="http://www.bennadel.com/blog/1563-jQuery-Comments-Plug-in-To-Access-HTML-Comments-For-DOM-Templating.htm">jQuery Comments() Plug-in To Access HTML Comments For DOM Templating</a>文章提供的代码如下：</p>
 
 <figure class='code'><figcaption><span>jQuery Comments() Plug-in</span><a href='http://www.bennadel.com/index.cfm?event=blog.downloadcode&id=1563&index=1'>Download </a></figcaption> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
@@ -1289,9 +1286,6 @@ It aims to provide a more expressive &amp; easy to use way to write Mac and iOS 
 <!-- more -->
 
 
-<div class='read-more-mark'></div>
-
-
 <p><img src="http://fileserver.cloudfoundry.com/images/emacs24.3-1.png" title="Wellcome to Emacs" alt="Wellcome to Emacs">
 <img src="http://fileserver.cloudfoundry.com/images/emacs24.3-2.png" title="M-x list-packages" alt="M-x list-packages">
 <img src="http://fileserver.cloudfoundry.com/images/emacs24.3-3.png" title="M-x customize-themes" alt="M-x customize-themes"></p>
@@ -1333,9 +1327,6 @@ It aims to provide a more expressive &amp; easy to use way to write Mac and iOS 
 <p><img src="http://fileserver.cloudfoundry.com/images/mobile_safari-1.png" title="#1" alt="Mobile Safari automatically scales text"></p>
 
 <!-- more -->
-
-
-<div class='read-more-mark'></div>
 
 
 <p>Mobile Safari（也包括Android下的Chrome，FireFox，以及IE Mobile）在默认状态下会自动调整字体的大小以满足可读性的需求。如果把<em>-webkit-text-size-adjust（-moz-text-size-adjust 或者 -ms-text-size-adjust）</em>设置成<em>100%</em>或者<em>none</em>，Mobile Safari就不会自动缩放文本。于是我在<em>custom/_layout.scss</em>里加段补丁。</p>
