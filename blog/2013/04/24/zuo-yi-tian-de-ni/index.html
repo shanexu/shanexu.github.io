@@ -5,8 +5,8 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>做一天的你 - My Octopress Blog</title>
-  <meta name="author" content="Your Name">
+  <title>做一天的你 - Shane Xu's Home</title>
+  <meta name="author" content="Shane Xu">
 
   
   <meta name="description" content="不想不想再被你看轻可是我始终还不够聪明在你面前不敢表现不高兴不想不想爱被看清然而决定总是不够坚定狠不下心不懂对你任性为何付出的心都得不到回应一切努力都是零多么可惜我还分得清这是同情不是感情我只要做一天的你让我用一天你的表情了解你的心情永远受欢迎带一点烦恼的高兴只要你做一天的我让你过一天我的心情耗尽所有热情所有决心还被你否定是多么不公平不想不想爱被看清然而决定总是不够坚定狠不下心不懂对你任性为何付出的心都得不到回应一切努力都是零多么可惜我还分得清这是同情不是感情我只要做一天的你让我用一天你的表情了解你的心情永远受欢迎带一点烦恼的高兴只要你做一天的我让你过一天我的心情耗尽所有热情所有决心还被你否定是多么不公平我只要做一天的你让我用一天你的姓让我疲倦的心能和你合并就算是最虚荣的梦境只要你做一天的我让你过一天我的心情耗尽所有热情所有决心还被你否定是多么不公平 在微信的朋友圈看到了友人分享的歌曲，想起这首虐心的歌了。想起曾经用复读机反复听着Jolin的歌的时候，想起那段偶有烦恼但是只要睡一觉一切问题都能解决的年少时光。今天下午又去做了无聊的事情，明明自己完全不想去，却还要煞费苦心从家里跑过去，同时还要被百度地图忽悠一把，最后还要在没有大排饭的沙县里面吃鸭腿饭。现在的我是处在，人生的最低谷，还是已经没有办法救赎了呢。今天的我，竟然踏进了久违的书店，书页发出的胶水味道原来是如此的温馨。双手接触到书本的时候我竟然会有那么微微的感动，我感到身体里有什么东西发酵了或者腐烂。 我啊完全在浪费时间吧。
@@ -22,7 +22,7 @@
   <link rel="canonical" href="http://shanexu.github.io/blog/2013/04/24/zuo-yi-tian-de-ni">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <link href="/atom.xml" rel="alternate" title="My Octopress Blog" type="application/atom+xml">
+  <link href="/atom.xml" rel="alternate" title="Shane Xu's Home" type="application/atom+xml">
   <script src="/javascripts/modernizr-2.0.js"></script>
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
@@ -37,9 +37,9 @@
 
 <body   >
   <header role="banner"><hgroup>
-  <h1><a href="/">My Octopress Blog</a></h1>
+  <h1><a href="/">Shane Xu's Home</a></h1>
   
-    <h2>A blogging framework for hackers.</h2>
+    <h2>Powered by Octopress Blog Framework</h2>
   
 </hgroup>
 
@@ -111,7 +111,7 @@
       
   
 
-<span class="byline author vcard">Posted by <span class="fn">Your Name</span></span>
+<span class="byline author vcard">Posted by <span class="fn">Shane Xu</span></span>
 
       
 
@@ -186,6 +186,35 @@
   </ul>
 </section>
 
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/shanexu">@shanexu</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'shanexu',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
 
 
 
@@ -197,7 +226,7 @@
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2013 - Your Name -
+  Copyright &copy; 2013 - Shane Xu -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 

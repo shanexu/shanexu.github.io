@@ -5,8 +5,8 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>赫马弗洛狄忒斯之海与忘忧果 - My Octopress Blog</title>
-  <meta name="author" content="Your Name">
+  <title>赫马弗洛狄忒斯之海与忘忧果 - Shane Xu's Home</title>
+  <meta name="author" content="Shane Xu">
 
   
   <meta name="description" content="一 八月末的一天，我和琳琅因为一场突如其来的有如以排山倒海之势卷过海面上空的龙卷风般的大雷雨被迫滞留在k城的国际机场。 “结果我们就只能在这里等待吗？”与此同时一个闷雷炸响在窗外的世界，在此之前灯曾经暗了一暗──就像预警信号一样。 “嗯，我想是的。”我稍微放低了手中的报纸看了她一眼， &hellip;">
@@ -21,7 +21,7 @@
   <link rel="canonical" href="http://shanexu.github.io/blog/2006/09/14/he-ma-fu-luo-di-te-si-zhi-hai-yu-wang-you-guo">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <link href="/atom.xml" rel="alternate" title="My Octopress Blog" type="application/atom+xml">
+  <link href="/atom.xml" rel="alternate" title="Shane Xu's Home" type="application/atom+xml">
   <script src="/javascripts/modernizr-2.0.js"></script>
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
@@ -36,9 +36,9 @@
 
 <body   >
   <header role="banner"><hgroup>
-  <h1><a href="/">My Octopress Blog</a></h1>
+  <h1><a href="/">Shane Xu's Home</a></h1>
   
-    <h2>A blogging framework for hackers.</h2>
+    <h2>Powered by Octopress Blog Framework</h2>
   
 </hgroup>
 
@@ -330,7 +330,7 @@
       
   
 
-<span class="byline author vcard">Posted by <span class="fn">Your Name</span></span>
+<span class="byline author vcard">Posted by <span class="fn">Shane Xu</span></span>
 
       
 
@@ -407,6 +407,35 @@
   </ul>
 </section>
 
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/shanexu">@shanexu</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'shanexu',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
 
 
 
@@ -418,7 +447,7 @@
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2013 - Your Name -
+  Copyright &copy; 2013 - Shane Xu -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 
