@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "tiling window manager (4)"
+title: "Tiling Window Manager (4)"
 date: 2013-04-08 20:42
 comments: true
 categories: [xmonad, xnomad, "tiling window manager"]

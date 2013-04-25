@@ -22,7 +22,7 @@ categories: [emacs]
 >
 >For more information, read the [News](http://www.gnu.org/software/emacs/NEWS.24.3) file.
 
-<!-- more --><div class='read-more-mark'></div>
+<!-- more -->
 
 {% img http://fileserver.cloudfoundry.com/images/emacs24.3-1.png 'Wellcome to Emacs' 'Wellcome to Emacs' %}
 {% img http://fileserver.cloudfoundry.com/images/emacs24.3-2.png 'M-x list-packages' 'M-x list-packages' %}

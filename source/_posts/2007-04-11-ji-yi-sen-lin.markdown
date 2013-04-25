@@ -21,7 +21,7 @@ categories: 小说
 
 车终于停了。
 
-<!-- more --><div class='read-more-mark'></div>
+<!-- more --><!-- <div class='read-more-mark'></div> -->
 
 “先在这里住一阵子吧。屋里什么都有，冰箱里有够一星期吃的东西。最重要的是有你爱吃的葡萄。”
 

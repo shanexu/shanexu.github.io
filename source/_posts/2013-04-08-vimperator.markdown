@@ -23,8 +23,7 @@ categories: [firefox, vimperator]
 
 这里就给一张Vimperator的Cheat Sheet。
 
-<div class="video-container">
-<iframe width="510" height="498" frameborder="0" allowfullscreen="" src="http://sheet.shiar.nl/vimperator"></iframe>
-</div>
+<div class="flash-video"><div><iframe width="510" height="498" frameborder="0" allowfullscreen="" src="http://sheet.shiar.nl/vimperator"></iframe></div></div>
+
 
 

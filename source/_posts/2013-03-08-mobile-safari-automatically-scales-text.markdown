@@ -14,7 +14,7 @@ categories: css
 
 {% img http://fileserver.cloudfoundry.com/images/mobile_safari-1.png '#1' 'Mobile Safari automatically scales text' %}
 
-<!-- more --><div class='read-more-mark'></div>
+<!-- more -->
 Mobile Safari（也包括Android下的Chrome，FireFox，以及IE Mobile）在默认状态下会自动调整字体的大小以满足可读性的需求。如果把*\-webkit\-text\-size\-adjust（-moz-text-size-adjust 或者 -ms-text-size-adjust）*设置成*100%*或者*none*，Mobile Safari就不会自动缩放文本。于是我在*custom/_layout.scss*里加段补丁。
 
 ``` scss

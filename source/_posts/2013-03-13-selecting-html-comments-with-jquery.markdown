@@ -13,7 +13,7 @@ categories: [javascript, jQuery]
 $('.read-more-mark').nextAll();
 ```
 
-<!-- more --><div class='read-more-mark'></div>
+<!-- more -->
 但在文档中插入没什么用的标记元素总觉得不太好，经过google关键词检索搜到了一篇题为[jQuery Comments() Plug-in To Access HTML Comments For DOM Templating](http://www.bennadel.com/blog/1563-jQuery-Comments-Plug-in-To-Access-HTML-Comments-For-DOM-Templating.htm)文章提供的代码如下：
 
 {% codeblock jQuery Comments() Plug-in lang:javascript http://www.bennadel.com/index.cfm?event=blog.downloadcode&id=1563&index=1 Download %}
