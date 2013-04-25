@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: ruby | Shane Xu's Home]]></title>
-  <link href="http://shanexu.github.io/blog/categories/ruby/atom.xml" rel="self"/>
-  <link href="http://shanexu.github.io/"/>
-  <updated>2013-04-25T22:25:03+08:00</updated>
-  <id>http://shanexu.github.io/</id>
+  <link href="http://shanexu.org/blog/categories/ruby/atom.xml" rel="self"/>
+  <link href="http://shanexu.org/"/>
+  <updated>2013-04-25T22:27:34+08:00</updated>
+  <id>http://shanexu.org/</id>
   <author>
     <name><![CDATA[Shane Xu]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Tiling Window Manager (2)]]></title>
-    <link href="http://shanexu.github.io/blog/2013/04/07/tiling-window-manager-2/"/>
+    <link href="http://shanexu.org/blog/2013/04/07/tiling-window-manager-2/"/>
     <updated>2013-04-07T22:46:00+08:00</updated>
-    <id>http://shanexu.github.io/blog/2013/04/07/tiling-window-manager-2</id>
+    <id>http://shanexu.org/blog/2013/04/07/tiling-window-manager-2</id>
     <content type="html"><![CDATA[<div class="begin-indent2em"></div>
 
 
@@ -337,9 +337,9 @@ CGWindowListCopyWindowInfo(KCGWindowListOptionOnScreenOnly | KCGWindowListExclud
   
   <entry>
     <title type="html"><![CDATA[安装ruby-debug]]></title>
-    <link href="http://shanexu.github.io/blog/2013/03/29/an-zhuang-ruby-debug/"/>
+    <link href="http://shanexu.org/blog/2013/03/29/an-zhuang-ruby-debug/"/>
     <updated>2013-03-29T11:56:00+08:00</updated>
-    <id>http://shanexu.github.io/blog/2013/03/29/an-zhuang-ruby-debug</id>
+    <id>http://shanexu.org/blog/2013/03/29/an-zhuang-ruby-debug</id>
     <content type="html"><![CDATA[<div class="begin-indent2em"></div>
 
 

@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: jQuery | Shane Xu's Home]]></title>
-  <link href="http://shanexu.github.io/blog/categories/jquery/atom.xml" rel="self"/>
-  <link href="http://shanexu.github.io/"/>
-  <updated>2013-04-25T22:25:03+08:00</updated>
-  <id>http://shanexu.github.io/</id>
+  <link href="http://shanexu.org/blog/categories/jquery/atom.xml" rel="self"/>
+  <link href="http://shanexu.org/"/>
+  <updated>2013-04-25T22:27:34+08:00</updated>
+  <id>http://shanexu.org/</id>
   <author>
     <name><![CDATA[Shane Xu]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Selecting HTML Comments with jQuery]]></title>
-    <link href="http://shanexu.github.io/blog/2013/03/13/selecting-html-comments-with-jquery/"/>
+    <link href="http://shanexu.org/blog/2013/03/13/selecting-html-comments-with-jquery/"/>
     <updated>2013-03-13T12:40:00+08:00</updated>
-    <id>http://shanexu.github.io/blog/2013/03/13/selecting-html-comments-with-jquery</id>
+    <id>http://shanexu.org/blog/2013/03/13/selecting-html-comments-with-jquery</id>
     <content type="html"><![CDATA[<div class='begin-indent2em' filter='p:not(:has(a.fancybox :first-child))'></div>
 
 

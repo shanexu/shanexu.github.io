@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Shane Xu's Home]]></title>
-  <link href="http://shanexu.github.io/atom.xml" rel="self"/>
-  <link href="http://shanexu.github.io/"/>
-  <updated>2013-04-25T22:25:03+08:00</updated>
-  <id>http://shanexu.github.io/</id>
+  <link href="http://shanexu.org/atom.xml" rel="self"/>
+  <link href="http://shanexu.org/"/>
+  <updated>2013-04-25T22:27:34+08:00</updated>
+  <id>http://shanexu.org/</id>
   <author>
     <name><![CDATA[Shane Xu]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[做一天的你]]></title>
-    <link href="http://shanexu.github.io/blog/2013/04/24/zuo-yi-tian-de-ni/"/>
+    <link href="http://shanexu.org/blog/2013/04/24/zuo-yi-tian-de-ni/"/>
     <updated>2013-04-24T20:22:00+08:00</updated>
-    <id>http://shanexu.github.io/blog/2013/04/24/zuo-yi-tian-de-ni</id>
+    <id>http://shanexu.org/blog/2013/04/24/zuo-yi-tian-de-ni</id>
     <content type="html"><![CDATA[<blockquote><p>不想不想再被你看轻<br/>可是我始终还不够聪明<br/>在你面前不敢表现不高兴<br/>不想不想爱被看清<br/>然而决定总是不够坚定<br/>狠不下心不懂对你任性<br/>为何付出的心都得不到回应<br/>一切努力都是零<br/>多么可惜我还分得清<br/>这是同情不是感情</p><p>我只要做一天的你<br/>让我用一天你的表情<br/>了解你的心情<br/>永远受欢迎<br/>带一点烦恼的高兴<br/>只要你做一天的我<br/>让你过一天我的心情<br/>耗尽所有热情所有决心<br/>还被你否定<br/>是多么不公平</p><p>不想不想爱被看清<br/>然而决定总是不够坚定<br/>狠不下心不懂对你任性<br/>为何付出的心都得不到回应<br/>一切努力都是零<br/>多么可惜我还分得清<br/>这是同情不是感情<br/>我只要做一天的你<br/>让我用一天你的表情<br/>了解你的心情<br/>永远受欢迎<br/>带一点烦恼的高兴<br/>只要你做一天的我<br/>让你过一天我的心情<br/>耗尽所有热情所有决心<br/>还被你否定<br/>是多么不公平</p><p>我只要做一天的你<br/>让我用一天你的姓<br/>让我疲倦的心<br/>能和你合并<br/>就算是最虚荣的梦境<br/>只要你做一天的我<br/>让你过一天我的心情<br/>耗尽所有热情所有决心<br/>还被你否定<br/>是多么不公平</p></blockquote>
 
 
@@ -34,9 +34,9 @@
   
   <entry>
     <title type="html"><![CDATA[赐予我王冠，给予我试炼]]></title>
-    <link href="http://shanexu.github.io/blog/2013/04/13/ci-yu-wo-wang-guan-%2Cgei-yu-wo-shi-lian/"/>
+    <link href="http://shanexu.org/blog/2013/04/13/ci-yu-wo-wang-guan-%2Cgei-yu-wo-shi-lian/"/>
     <updated>2013-04-13T19:43:00+08:00</updated>
-    <id>http://shanexu.github.io/blog/2013/04/13/ci-yu-wo-wang-guan-,gei-yu-wo-shi-lian</id>
+    <id>http://shanexu.org/blog/2013/04/13/ci-yu-wo-wang-guan-,gei-yu-wo-shi-lian</id>
     <content type="html"><![CDATA[<div class='begin-indent2em' filter='p:not(:has(a.fancybox :first-child))'></div>
 
 
@@ -88,9 +88,9 @@
   
   <entry>
     <title type="html"><![CDATA[tranquil-mode]]></title>
-    <link href="http://shanexu.github.io/blog/2013/04/12/tranquil-mode/"/>
+    <link href="http://shanexu.org/blog/2013/04/12/tranquil-mode/"/>
     <updated>2013-04-12T16:22:00+08:00</updated>
-    <id>http://shanexu.github.io/blog/2013/04/12/tranquil-mode</id>
+    <id>http://shanexu.org/blog/2013/04/12/tranquil-mode</id>
     <content type="html"><![CDATA[<div class='begin-indent2em' filter='p:not(:has(a.fancybox :first-child))'></div>
 
 
@@ -115,9 +115,9 @@ It aims to provide a more expressive &amp; easy to use way to write Mac and iOS 
   
   <entry>
     <title type="html"><![CDATA[It's because of you, motherfucker, that we are not all using Lisp.]]></title>
-    <link href="http://shanexu.github.io/blog/2013/04/09/its-because-of-you/"/>
+    <link href="http://shanexu.org/blog/2013/04/09/its-because-of-you/"/>
     <updated>2013-04-09T00:37:00+08:00</updated>
-    <id>http://shanexu.github.io/blog/2013/04/09/its-because-of-you</id>
+    <id>http://shanexu.org/blog/2013/04/09/its-because-of-you</id>
     <content type="html"><![CDATA[<iframe width="560" height="315" src="http://www.youtube.com/embed/bzkRVzciAZg" frameborder="0" allowfullscreen></iframe>
 
 
@@ -201,9 +201,9 @@ It aims to provide a more expressive &amp; easy to use way to write Mac and iOS 
   
   <entry>
     <title type="html"><![CDATA[vimperator]]></title>
-    <link href="http://shanexu.github.io/blog/2013/04/08/vimperator/"/>
+    <link href="http://shanexu.org/blog/2013/04/08/vimperator/"/>
     <updated>2013-04-08T22:07:00+08:00</updated>
-    <id>http://shanexu.github.io/blog/2013/04/08/vimperator</id>
+    <id>http://shanexu.org/blog/2013/04/08/vimperator</id>
     <content type="html"><![CDATA[<div class='begin-indent2em' filter='p:not(:has(a.fancybox :first-child))'></div>
 
 
@@ -230,9 +230,9 @@ It aims to provide a more expressive &amp; easy to use way to write Mac and iOS 
   
   <entry>
     <title type="html"><![CDATA[Tiling Window Manager (4)]]></title>
-    <link href="http://shanexu.github.io/blog/2013/04/08/tiling-window-manager-4/"/>
+    <link href="http://shanexu.org/blog/2013/04/08/tiling-window-manager-4/"/>
     <updated>2013-04-08T20:42:00+08:00</updated>
-    <id>http://shanexu.github.io/blog/2013/04/08/tiling-window-manager-4</id>
+    <id>http://shanexu.org/blog/2013/04/08/tiling-window-manager-4</id>
     <content type="html"><![CDATA[<div class='begin-indent2em' filter='p:not(:has(a.fancybox :first-child))'></div>
 
 
@@ -256,9 +256,9 @@ It aims to provide a more expressive &amp; easy to use way to write Mac and iOS 
   
   <entry>
     <title type="html"><![CDATA[Tiling Window Manager (3)]]></title>
-    <link href="http://shanexu.github.io/blog/2013/04/08/tiling-window-manager-3/"/>
+    <link href="http://shanexu.org/blog/2013/04/08/tiling-window-manager-3/"/>
     <updated>2013-04-08T13:20:00+08:00</updated>
-    <id>http://shanexu.github.io/blog/2013/04/08/tiling-window-manager-3</id>
+    <id>http://shanexu.org/blog/2013/04/08/tiling-window-manager-3</id>
     <content type="html"><![CDATA[<div class='begin-indent2em' filter='p:not(:has(a.fancybox :first-child))'></div>
 
 
@@ -326,9 +326,9 @@ It aims to provide a more expressive &amp; easy to use way to write Mac and iOS 
   
   <entry>
     <title type="html"><![CDATA[Tiling Window Manager (2)]]></title>
-    <link href="http://shanexu.github.io/blog/2013/04/07/tiling-window-manager-2/"/>
+    <link href="http://shanexu.org/blog/2013/04/07/tiling-window-manager-2/"/>
     <updated>2013-04-07T22:46:00+08:00</updated>
-    <id>http://shanexu.github.io/blog/2013/04/07/tiling-window-manager-2</id>
+    <id>http://shanexu.org/blog/2013/04/07/tiling-window-manager-2</id>
     <content type="html"><![CDATA[<div class="begin-indent2em"></div>
 
 
@@ -898,9 +898,9 @@ It aims to provide a more expressive &amp; easy to use way to write Mac and iOS 
   
   <entry>
     <title type="html"><![CDATA[Tiling Window Manager (1)]]></title>
-    <link href="http://shanexu.github.io/blog/2013/04/07/tiling-window-manager/"/>
+    <link href="http://shanexu.org/blog/2013/04/07/tiling-window-manager/"/>
     <updated>2013-04-07T01:19:00+08:00</updated>
-    <id>http://shanexu.github.io/blog/2013/04/07/tiling-window-manager</id>
+    <id>http://shanexu.org/blog/2013/04/07/tiling-window-manager</id>
     <content type="html"><![CDATA[<div class='begin-indent2em' filter='p:not(:has(a.fancybox :first-child))'></div>
 
 
@@ -937,9 +937,9 @@ It aims to provide a more expressive &amp; easy to use way to write Mac and iOS 
   
   <entry>
     <title type="html"><![CDATA[安装ruby-debug]]></title>
-    <link href="http://shanexu.github.io/blog/2013/03/29/an-zhuang-ruby-debug/"/>
+    <link href="http://shanexu.org/blog/2013/03/29/an-zhuang-ruby-debug/"/>
     <updated>2013-03-29T11:56:00+08:00</updated>
-    <id>http://shanexu.github.io/blog/2013/03/29/an-zhuang-ruby-debug</id>
+    <id>http://shanexu.org/blog/2013/03/29/an-zhuang-ruby-debug</id>
     <content type="html"><![CDATA[<div class="begin-indent2em"></div>
 
 
@@ -996,9 +996,9 @@ It aims to provide a more expressive &amp; easy to use way to write Mac and iOS 
   
   <entry>
     <title type="html"><![CDATA[面朝大海，春暖花开]]></title>
-    <link href="http://shanexu.github.io/blog/2013/03/26/mian-zhao-da-hai-%2Cchun-nuan-hua-kai/"/>
+    <link href="http://shanexu.org/blog/2013/03/26/mian-zhao-da-hai-%2Cchun-nuan-hua-kai/"/>
     <updated>2013-03-26T00:39:00+08:00</updated>
-    <id>http://shanexu.github.io/blog/2013/03/26/mian-zhao-da-hai-,chun-nuan-hua-kai</id>
+    <id>http://shanexu.org/blog/2013/03/26/mian-zhao-da-hai-,chun-nuan-hua-kai</id>
     <content type="html"><![CDATA[<div class="begin-indent2em"></div>
 
 
@@ -1021,9 +1021,9 @@ It aims to provide a more expressive &amp; easy to use way to write Mac and iOS 
   
   <entry>
     <title type="html"><![CDATA[我已经不再爱你]]></title>
-    <link href="http://shanexu.github.io/blog/2013/03/17/wo-yi-jing-bu-zai-ai-ni/"/>
+    <link href="http://shanexu.org/blog/2013/03/17/wo-yi-jing-bu-zai-ai-ni/"/>
     <updated>2013-03-17T01:43:00+08:00</updated>
-    <id>http://shanexu.github.io/blog/2013/03/17/wo-yi-jing-bu-zai-ai-ni</id>
+    <id>http://shanexu.org/blog/2013/03/17/wo-yi-jing-bu-zai-ai-ni</id>
     <content type="html"><![CDATA[<div class='begin-indent2em'></div>
 
 
@@ -1043,9 +1043,9 @@ It aims to provide a more expressive &amp; easy to use way to write Mac and iOS 
   
   <entry>
     <title type="html"><![CDATA[Selecting HTML Comments with jQuery]]></title>
-    <link href="http://shanexu.github.io/blog/2013/03/13/selecting-html-comments-with-jquery/"/>
+    <link href="http://shanexu.org/blog/2013/03/13/selecting-html-comments-with-jquery/"/>
     <updated>2013-03-13T12:40:00+08:00</updated>
-    <id>http://shanexu.github.io/blog/2013/03/13/selecting-html-comments-with-jquery</id>
+    <id>http://shanexu.org/blog/2013/03/13/selecting-html-comments-with-jquery</id>
     <content type="html"><![CDATA[<div class='begin-indent2em' filter='p:not(:has(a.fancybox :first-child))'></div>
 
 
@@ -1257,9 +1257,9 @@ It aims to provide a more expressive &amp; easy to use way to write Mac and iOS 
   
   <entry>
     <title type="html"><![CDATA[Emacs 24.3发布]]></title>
-    <link href="http://shanexu.github.io/blog/2013/03/11/emacs-24-dot-3fa-bu/"/>
+    <link href="http://shanexu.org/blog/2013/03/11/emacs-24-dot-3fa-bu/"/>
     <updated>2013-03-11T09:27:00+08:00</updated>
-    <id>http://shanexu.github.io/blog/2013/03/11/emacs-24-dot-3fa-bu</id>
+    <id>http://shanexu.org/blog/2013/03/11/emacs-24-dot-3fa-bu</id>
     <content type="html"><![CDATA[<div class='begin-indent2em' filter='p:not(:has(a.fancybox :first-child))'></div>
 
 
@@ -1292,9 +1292,9 @@ It aims to provide a more expressive &amp; easy to use way to write Mac and iOS 
   
   <entry>
     <title type="html"><![CDATA[新的开始？]]></title>
-    <link href="http://shanexu.github.io/blog/2013/03/10/xin-de-kai-shi-%3F/"/>
+    <link href="http://shanexu.org/blog/2013/03/10/xin-de-kai-shi-%3F/"/>
     <updated>2013-03-10T22:18:00+08:00</updated>
-    <id>http://shanexu.github.io/blog/2013/03/10/xin-de-kai-shi-?</id>
+    <id>http://shanexu.org/blog/2013/03/10/xin-de-kai-shi-?</id>
     <content type="html"><![CDATA[<div class='begin-indent2em'></div>
 
 
@@ -1312,13 +1312,13 @@ It aims to provide a more expressive &amp; easy to use way to write Mac and iOS 
   
   <entry>
     <title type="html"><![CDATA[Mobile Safari Automatically Scales Text]]></title>
-    <link href="http://shanexu.github.io/blog/2013/03/08/mobile-safari-automatically-scales-text/"/>
+    <link href="http://shanexu.org/blog/2013/03/08/mobile-safari-automatically-scales-text/"/>
     <updated>2013-03-08T22:13:00+08:00</updated>
-    <id>http://shanexu.github.io/blog/2013/03/08/mobile-safari-automatically-scales-text</id>
+    <id>http://shanexu.org/blog/2013/03/08/mobile-safari-automatically-scales-text</id>
     <content type="html"><![CDATA[<div class='begin-indent2em' filter='p:not(:has(a.fancybox :first-child))'></div>
 
 
-<p>今天用iPhone浏览昨天写的<a href="http://shanexu.github.io/blog/2013/03/07/guan-yu-shou-xing-suo-jin/"><em>关于首行缩进</em></a>的日志的时候发现代码引用部分字体出现莫名其妙的放大现象，导致效果很不好。以为是最近老是换iPhone的字体所致，于是就打开了xcode的iPhone模拟器，一来可以看看模拟器上是不是出现这样的现象，二来也可以顺便调戏一下模拟器上的Mobile Safari。</p>
+<p>今天用iPhone浏览昨天写的<a href="http://shanexu.org/blog/2013/03/07/guan-yu-shou-xing-suo-jin/"><em>关于首行缩进</em></a>的日志的时候发现代码引用部分字体出现莫名其妙的放大现象，导致效果很不好。以为是最近老是换iPhone的字体所致，于是就打开了xcode的iPhone模拟器，一来可以看看模拟器上是不是出现这样的现象，二来也可以顺便调戏一下模拟器上的Mobile Safari。</p>
 
 <p>结果模拟器上的Mobile Safari也出现了这样的现象。于是打开Safari调戏Mobile Safari。发现从code标签开始到最深处的span之前的那一层的font-size的计算值都是好的，直到最后一层的时候就莫名其妙的变大了。即便我在最后一层的span上设置了font-size的大小也无济于事，总之，折腾了半天，也没有个结果。无奈之下只能求助于google。</p>
 
@@ -1366,9 +1366,9 @@ It aims to provide a more expressive &amp; easy to use way to write Mac and iOS 
   
   <entry>
     <title type="html"><![CDATA[我知道 by By2]]></title>
-    <link href="http://shanexu.github.io/blog/2013/03/08/wo-zhi-dao-by-by2/"/>
+    <link href="http://shanexu.org/blog/2013/03/08/wo-zhi-dao-by-by2/"/>
     <updated>2013-03-08T00:34:00+08:00</updated>
-    <id>http://shanexu.github.io/blog/2013/03/08/wo-zhi-dao-by-by2</id>
+    <id>http://shanexu.org/blog/2013/03/08/wo-zhi-dao-by-by2</id>
     <content type="html"><![CDATA[<div class='begin-indent2em'></div>
 
 
@@ -1390,9 +1390,9 @@ It aims to provide a more expressive &amp; easy to use way to write Mac and iOS 
   
   <entry>
     <title type="html"><![CDATA[关于首行缩进]]></title>
-    <link href="http://shanexu.github.io/blog/2013/03/07/guan-yu-shou-xing-suo-jin/"/>
+    <link href="http://shanexu.org/blog/2013/03/07/guan-yu-shou-xing-suo-jin/"/>
     <updated>2013-03-07T10:24:00+08:00</updated>
-    <id>http://shanexu.github.io/blog/2013/03/07/guan-yu-shou-xing-suo-jin</id>
+    <id>http://shanexu.org/blog/2013/03/07/guan-yu-shou-xing-suo-jin</id>
     <content type="html"><![CDATA[<div class="begin-indent2em"></div>
 
 
@@ -1536,9 +1536,9 @@ It aims to provide a more expressive &amp; easy to use way to write Mac and iOS 
   
   <entry>
     <title type="html"><![CDATA[emacs-mac-port]]></title>
-    <link href="http://shanexu.github.io/blog/2013/03/06/emacs-mac-port/"/>
+    <link href="http://shanexu.org/blog/2013/03/06/emacs-mac-port/"/>
     <updated>2013-03-06T10:47:00+08:00</updated>
-    <id>http://shanexu.github.io/blog/2013/03/06/emacs-mac-port</id>
+    <id>http://shanexu.org/blog/2013/03/06/emacs-mac-port</id>
     <content type="html"><![CDATA[<div class='begin-indent2em'></div>
 
 
@@ -1566,9 +1566,9 @@ It aims to provide a more expressive &amp; easy to use way to write Mac and iOS 
   
   <entry>
     <title type="html"><![CDATA[大好きなのに by Kylee]]></title>
-    <link href="http://shanexu.github.io/blog/2013/03/04/da-hao-kinafalseni-by-kylee/"/>
+    <link href="http://shanexu.org/blog/2013/03/04/da-hao-kinafalseni-by-kylee/"/>
     <updated>2013-03-04T20:44:00+08:00</updated>
-    <id>http://shanexu.github.io/blog/2013/03/04/da-hao-kinafalseni-by-kylee</id>
+    <id>http://shanexu.org/blog/2013/03/04/da-hao-kinafalseni-by-kylee</id>
     <content type="html"><![CDATA[<div class='begin-indent2em'></div>
 
 

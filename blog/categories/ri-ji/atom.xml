@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: 日记 | Shane Xu's Home]]></title>
-  <link href="http://shanexu.github.io/blog/categories/ri-ji/atom.xml" rel="self"/>
-  <link href="http://shanexu.github.io/"/>
-  <updated>2013-04-25T22:25:03+08:00</updated>
-  <id>http://shanexu.github.io/</id>
+  <link href="http://shanexu.org/blog/categories/ri-ji/atom.xml" rel="self"/>
+  <link href="http://shanexu.org/"/>
+  <updated>2013-04-25T22:27:34+08:00</updated>
+  <id>http://shanexu.org/</id>
   <author>
     <name><![CDATA[Shane Xu]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[赐予我王冠，给予我试炼]]></title>
-    <link href="http://shanexu.github.io/blog/2013/04/13/ci-yu-wo-wang-guan-%2Cgei-yu-wo-shi-lian/"/>
+    <link href="http://shanexu.org/blog/2013/04/13/ci-yu-wo-wang-guan-%2Cgei-yu-wo-shi-lian/"/>
     <updated>2013-04-13T19:43:00+08:00</updated>
-    <id>http://shanexu.github.io/blog/2013/04/13/ci-yu-wo-wang-guan-,gei-yu-wo-shi-lian</id>
+    <id>http://shanexu.org/blog/2013/04/13/ci-yu-wo-wang-guan-,gei-yu-wo-shi-lian</id>
     <content type="html"><![CDATA[<div class='begin-indent2em' filter='p:not(:has(a.fancybox :first-child))'></div>
 
 
@@ -68,9 +68,9 @@
   
   <entry>
     <title type="html"><![CDATA[面朝大海，春暖花开]]></title>
-    <link href="http://shanexu.github.io/blog/2013/03/26/mian-zhao-da-hai-%2Cchun-nuan-hua-kai/"/>
+    <link href="http://shanexu.org/blog/2013/03/26/mian-zhao-da-hai-%2Cchun-nuan-hua-kai/"/>
     <updated>2013-03-26T00:39:00+08:00</updated>
-    <id>http://shanexu.github.io/blog/2013/03/26/mian-zhao-da-hai-,chun-nuan-hua-kai</id>
+    <id>http://shanexu.org/blog/2013/03/26/mian-zhao-da-hai-,chun-nuan-hua-kai</id>
     <content type="html"><![CDATA[<div class="begin-indent2em"></div>
 
 
@@ -92,9 +92,9 @@
   
   <entry>
     <title type="html"><![CDATA[我已经不再爱你]]></title>
-    <link href="http://shanexu.github.io/blog/2013/03/17/wo-yi-jing-bu-zai-ai-ni/"/>
+    <link href="http://shanexu.org/blog/2013/03/17/wo-yi-jing-bu-zai-ai-ni/"/>
     <updated>2013-03-17T01:43:00+08:00</updated>
-    <id>http://shanexu.github.io/blog/2013/03/17/wo-yi-jing-bu-zai-ai-ni</id>
+    <id>http://shanexu.org/blog/2013/03/17/wo-yi-jing-bu-zai-ai-ni</id>
     <content type="html"><![CDATA[<div class='begin-indent2em'></div>
 
 
@@ -114,9 +114,9 @@
   
   <entry>
     <title type="html"><![CDATA[我现在正在尝试用octopress开始我的blog之旅]]></title>
-    <link href="http://shanexu.github.io/blog/2013/02/28/wo-xian-zai-zheng-zai-chang-shi-yong-octopresskai-shi-wo-de-blogzhi-lu/"/>
+    <link href="http://shanexu.org/blog/2013/02/28/wo-xian-zai-zheng-zai-chang-shi-yong-octopresskai-shi-wo-de-blogzhi-lu/"/>
     <updated>2013-02-28T23:17:00+08:00</updated>
-    <id>http://shanexu.github.io/blog/2013/02/28/wo-xian-zai-zheng-zai-chang-shi-yong-octopresskai-shi-wo-de-blogzhi-lu</id>
+    <id>http://shanexu.org/blog/2013/02/28/wo-xian-zai-zheng-zai-chang-shi-yong-octopresskai-shi-wo-de-blogzhi-lu</id>
     <content type="html"><![CDATA[<div class='begin-indent2em'></div>
 
 
@@ -138,9 +138,9 @@
   
   <entry>
     <title type="html"><![CDATA[多么不在状态的我]]></title>
-    <link href="http://shanexu.github.io/blog/2010/10/26/duo-yao-bu-zai-zhuang-tai-de-wo/"/>
+    <link href="http://shanexu.org/blog/2010/10/26/duo-yao-bu-zai-zhuang-tai-de-wo/"/>
     <updated>2010-10-26T00:14:00+08:00</updated>
-    <id>http://shanexu.github.io/blog/2010/10/26/duo-yao-bu-zai-zhuang-tai-de-wo</id>
+    <id>http://shanexu.org/blog/2010/10/26/duo-yao-bu-zai-zhuang-tai-de-wo</id>
     <content type="html"><![CDATA[<div class='begin-indent2em'></div>
 
 

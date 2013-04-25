@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: emacs | Shane Xu's Home]]></title>
-  <link href="http://shanexu.github.io/blog/categories/emacs/atom.xml" rel="self"/>
-  <link href="http://shanexu.github.io/"/>
-  <updated>2013-04-25T22:25:03+08:00</updated>
-  <id>http://shanexu.github.io/</id>
+  <link href="http://shanexu.org/blog/categories/emacs/atom.xml" rel="self"/>
+  <link href="http://shanexu.org/"/>
+  <updated>2013-04-25T22:27:34+08:00</updated>
+  <id>http://shanexu.org/</id>
   <author>
     <name><![CDATA[Shane Xu]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[tranquil-mode]]></title>
-    <link href="http://shanexu.github.io/blog/2013/04/12/tranquil-mode/"/>
+    <link href="http://shanexu.org/blog/2013/04/12/tranquil-mode/"/>
     <updated>2013-04-12T16:22:00+08:00</updated>
-    <id>http://shanexu.github.io/blog/2013/04/12/tranquil-mode</id>
+    <id>http://shanexu.org/blog/2013/04/12/tranquil-mode</id>
     <content type="html"><![CDATA[<div class='begin-indent2em' filter='p:not(:has(a.fancybox :first-child))'></div>
 
 
@@ -41,9 +41,9 @@ It aims to provide a more expressive &amp; easy to use way to write Mac and iOS 
   
   <entry>
     <title type="html"><![CDATA[Emacs 24.3发布]]></title>
-    <link href="http://shanexu.github.io/blog/2013/03/11/emacs-24-dot-3fa-bu/"/>
+    <link href="http://shanexu.org/blog/2013/03/11/emacs-24-dot-3fa-bu/"/>
     <updated>2013-03-11T09:27:00+08:00</updated>
-    <id>http://shanexu.github.io/blog/2013/03/11/emacs-24-dot-3fa-bu</id>
+    <id>http://shanexu.org/blog/2013/03/11/emacs-24-dot-3fa-bu</id>
     <content type="html"><![CDATA[<div class='begin-indent2em' filter='p:not(:has(a.fancybox :first-child))'></div>
 
 
@@ -76,9 +76,9 @@ It aims to provide a more expressive &amp; easy to use way to write Mac and iOS 
   
   <entry>
     <title type="html"><![CDATA[emacs-mac-port]]></title>
-    <link href="http://shanexu.github.io/blog/2013/03/06/emacs-mac-port/"/>
+    <link href="http://shanexu.org/blog/2013/03/06/emacs-mac-port/"/>
     <updated>2013-03-06T10:47:00+08:00</updated>
-    <id>http://shanexu.github.io/blog/2013/03/06/emacs-mac-port</id>
+    <id>http://shanexu.org/blog/2013/03/06/emacs-mac-port</id>
     <content type="html"><![CDATA[<div class='begin-indent2em'></div>
 
 

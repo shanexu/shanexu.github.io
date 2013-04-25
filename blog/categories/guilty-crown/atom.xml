@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: guilty crown | Shane Xu's Home]]></title>
-  <link href="http://shanexu.github.io/blog/categories/guilty-crown/atom.xml" rel="self"/>
-  <link href="http://shanexu.github.io/"/>
-  <updated>2013-04-25T22:25:03+08:00</updated>
-  <id>http://shanexu.github.io/</id>
+  <link href="http://shanexu.org/blog/categories/guilty-crown/atom.xml" rel="self"/>
+  <link href="http://shanexu.org/"/>
+  <updated>2013-04-25T22:27:34+08:00</updated>
+  <id>http://shanexu.org/</id>
   <author>
     <name><![CDATA[Shane Xu]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[赐予我王冠，给予我试炼]]></title>
-    <link href="http://shanexu.github.io/blog/2013/04/13/ci-yu-wo-wang-guan-%2Cgei-yu-wo-shi-lian/"/>
+    <link href="http://shanexu.org/blog/2013/04/13/ci-yu-wo-wang-guan-%2Cgei-yu-wo-shi-lian/"/>
     <updated>2013-04-13T19:43:00+08:00</updated>
-    <id>http://shanexu.github.io/blog/2013/04/13/ci-yu-wo-wang-guan-,gei-yu-wo-shi-lian</id>
+    <id>http://shanexu.org/blog/2013/04/13/ci-yu-wo-wang-guan-,gei-yu-wo-shi-lian</id>
     <content type="html"><![CDATA[<div class='begin-indent2em' filter='p:not(:has(a.fancybox :first-child))'></div>
 
 

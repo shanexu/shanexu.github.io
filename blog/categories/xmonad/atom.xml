@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: xmonad | Shane Xu's Home]]></title>
-  <link href="http://shanexu.github.io/blog/categories/xmonad/atom.xml" rel="self"/>
-  <link href="http://shanexu.github.io/"/>
-  <updated>2013-04-25T22:25:03+08:00</updated>
-  <id>http://shanexu.github.io/</id>
+  <link href="http://shanexu.org/blog/categories/xmonad/atom.xml" rel="self"/>
+  <link href="http://shanexu.org/"/>
+  <updated>2013-04-25T22:27:34+08:00</updated>
+  <id>http://shanexu.org/</id>
   <author>
     <name><![CDATA[Shane Xu]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Tiling Window Manager (4)]]></title>
-    <link href="http://shanexu.github.io/blog/2013/04/08/tiling-window-manager-4/"/>
+    <link href="http://shanexu.org/blog/2013/04/08/tiling-window-manager-4/"/>
     <updated>2013-04-08T20:42:00+08:00</updated>
-    <id>http://shanexu.github.io/blog/2013/04/08/tiling-window-manager-4</id>
+    <id>http://shanexu.org/blog/2013/04/08/tiling-window-manager-4</id>
     <content type="html"><![CDATA[<div class='begin-indent2em' filter='p:not(:has(a.fancybox :first-child))'></div>
 
 
@@ -41,9 +41,9 @@
   
   <entry>
     <title type="html"><![CDATA[Tiling Window Manager (3)]]></title>
-    <link href="http://shanexu.github.io/blog/2013/04/08/tiling-window-manager-3/"/>
+    <link href="http://shanexu.org/blog/2013/04/08/tiling-window-manager-3/"/>
     <updated>2013-04-08T13:20:00+08:00</updated>
-    <id>http://shanexu.github.io/blog/2013/04/08/tiling-window-manager-3</id>
+    <id>http://shanexu.org/blog/2013/04/08/tiling-window-manager-3</id>
     <content type="html"><![CDATA[<div class='begin-indent2em' filter='p:not(:has(a.fancybox :first-child))'></div>
 
 
@@ -97,9 +97,9 @@ import OSXMonad.Core</p>
   
   <entry>
     <title type="html"><![CDATA[Tiling Window Manager (2)]]></title>
-    <link href="http://shanexu.github.io/blog/2013/04/07/tiling-window-manager-2/"/>
+    <link href="http://shanexu.org/blog/2013/04/07/tiling-window-manager-2/"/>
     <updated>2013-04-07T22:46:00+08:00</updated>
-    <id>http://shanexu.github.io/blog/2013/04/07/tiling-window-manager-2</id>
+    <id>http://shanexu.org/blog/2013/04/07/tiling-window-manager-2</id>
     <content type="html"><![CDATA[<div class="begin-indent2em"></div>
 
 
@@ -419,9 +419,9 @@ CGWindowListCopyWindowInfo(KCGWindowListOptionOnScreenOnly | KCGWindowListExclud
   
   <entry>
     <title type="html"><![CDATA[Tiling Window Manager (1)]]></title>
-    <link href="http://shanexu.github.io/blog/2013/04/07/tiling-window-manager/"/>
+    <link href="http://shanexu.org/blog/2013/04/07/tiling-window-manager/"/>
     <updated>2013-04-07T01:19:00+08:00</updated>
-    <id>http://shanexu.github.io/blog/2013/04/07/tiling-window-manager</id>
+    <id>http://shanexu.org/blog/2013/04/07/tiling-window-manager</id>
     <content type="html"><![CDATA[<div class='begin-indent2em' filter='p:not(:has(a.fancybox :first-child))'></div>
 
 
