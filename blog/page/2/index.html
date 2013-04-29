@@ -9,7 +9,12 @@
   <meta name="author" content="Shane Xu">
 
   
-  <meta name="description" content="今天是海子的忌日。 从明天起，做一个幸福的人喂马，劈柴，周游世界从明天起，关心粮食和蔬菜我有一所房子，面朝大海，春暖花开从明天起，和每一个亲人通信告诉他们我的幸福那幸福的闪电告诉我的我将告诉每一个人给每一条河每一座山取一个温暖的名字陌生人， &hellip;">
+  <meta name="description" content="最近想在emacs里面调试ruby，搜到一篇博文说是安装ruby-debug和ruby-debug-extra，于是首先尝试安装ruby-debug 1
+2
+3
+rvm use 1.9.3
+gem search ruby-debug -r
+gem install ruby-debug &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -65,6 +70,92 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/03/29/an-zhuang-ruby-debug/">安装ruby-debug</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-03-29T11:56:00+08:00" pubdate data-updated="true">Mar 29<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class="begin-indent2em"></div>
+
+
+<p>最近想在emacs里面调试ruby，搜到一篇博文说是安装ruby-debug和ruby-debug-extra，于是首先尝试安装ruby-debug</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>rvm use 1.9.3
+</span><span class='line'>gem search ruby-debug -r
+</span><span class='line'>gem install ruby-debug</span></code></pre></td></tr></table></div></figure>
+
+
+<p>然后找到<a href="http://rubyforge.org/docman/view.php/8883/10451/ruby-debug.html">ruby-debug</a>的官方文档，然后自己胡乱写了个脚本开始对着文档调试，然后就是rdebug抛错。之后发现竟然还有一个ruby-debug19的包。然后又安装ruby-debug19。尝试运行rdebug，还是出错。没辙拿着错误信息直接上google，终于在<a href="http://stackoverflow.com/questions/8378277/cannot-use-ruby-debug19-with-1-9-3-p0">stackoverflow</a>找到答案。貌似答案的出处在这里<a href="http://blog.wyeworks.com/2011/11/1/ruby-1-9-3-and-ruby-debug/">http://blog.wyeworks.com/2011/11/1/ruby-1-9-3-and-ruby-debug/</a>
+首先需要从<a href="http://rubyforge.org/frs/?group_id=8883">http://rubyforge.org/frs/?group_id=8883</a>下载</p>
+
+<ol>
+<li>linecache19-0.5.13.gem</li>
+<li>ruby_core_source-0.1.5.gem</li>
+<li>ruby-debug19-0.11.6.gem</li>
+<li>ruby-debug-base19-0.11.26.gem</li>
+</ol>
+
+
+<p>然后用下面的命令安装：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>which ruby
+</span><span class='line'>export RVM_SRC=/Users/shane/.rvm/src/ruby-1.9.3-p392
+</span><span class='line'>gem install archive-tar-minitar
+</span><span class='line'>gem install ruby_core_source-0.1.5.gem -- --with-ruby-include=$RVM_SRC
+</span><span class='line'>gem install linecache19-0.5.13.gem -- --with-ruby-include=$RVM_SRC
+</span><span class='line'>gem install ruby-debug-base19-0.11.26.gem -- --with-ruby-include=$RVM_SRC
+</span><span class='line'>gem install ruby-debug19-0.11.6.gem -- --with-ruby-include=$RVM_SRC</span></code></pre></td></tr></table></div></figure>
+
+
+<p>结果后来在安装rdebug for emacs的时候看到了一个gem， <a href="https://github.com/cldwalker/debugger">debugger</a>，感觉这个包比较好。</p>
+
+<blockquote><p>A fork of ruby-debug(19) that works on 1.9.2 and 1.9.3 and installs easily for rvm/rbenv rubies.</p></blockquote>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>gem install debugger</span></code></pre></td></tr></table></div></figure>
+
+
+<p>然后在emacs里面用el-get安装rdebug就好了。</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -654,55 +745,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/03/04/da-hao-kinafalseni-by-kylee/">大好きなのに by Kylee</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-03-04T20:44:00+08:00" pubdate data-updated="true">Mar 4<span>th</span>, 2013</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><div class='begin-indent2em'></div>
-
-
-<p>Kylee的《大好きなのに》，同时也是《绝园的暴风雨》的op2。喜欢这首歌很可能是因为这首歌的歌词。《绝园的暴风雨》进入第二章之后就觉得越来越无趣了，也许是因为提前看了漫画的缘故吧。但是的确第二章的故事都太顺理成章了，似乎惟一的看点都集中到了对于爱花的回忆上了。</p>
-
-<blockquote><p>说不出 说不出 离别的话语  <br/>明明这样的喜欢你  <br/>我们还是分开吧  <br/>听到你的声音的瞬间  <br/>脑中一片空白  <br/>胸中火花乱窜  <br/>将你的一切忘记  <br/>算是在向前迈进吗  <br/>不明所以 泪水直流  <br/>尽全力 尽心力 感受着今天  <br/>我就是这样生活着的  <br/>说不出 说不出 离别的话语  <br/>明明这样喜欢你</p></blockquote>
-
-
-
-
-<iframe height=498 width=510 src="http://player.youku.com/embed/XNTExMjQ0NDI4" frameborder=0 allowfullscreen></iframe>
-
-
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/3/">&larr; Older</a>
@@ -720,6 +762,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2013/04/29/macbook-fn-key-and-linux/">macbook fn key and Linux</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2013/04/24/zuo-yi-tian-de-ni/">做一天的你</a>
       </li>
     
@@ -733,10 +779,6 @@
     
       <li class="post">
         <a href="/blog/2013/04/09/its-because-of-you/">It&#8217;s because of you, motherfucker, that we are not all using Lisp.</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/04/08/vimperator/">vimperator</a>
       </li>
     
   </ul>

@@ -4,7 +4,7 @@
   <title><![CDATA[Shane Xu's Home]]></title>
   <link href="http://shanexu.org/atom.xml" rel="self"/>
   <link href="http://shanexu.org/"/>
-  <updated>2013-04-25T22:44:48+08:00</updated>
+  <updated>2013-04-29T16:36:11+08:00</updated>
   <id>http://shanexu.org/</id>
   <author>
     <name><![CDATA[Shane Xu]]></name>
@@ -12,6 +12,69 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[macbook fn key and Linux]]></title>
+    <link href="http://shanexu.org/blog/2013/04/29/macbook-fn-key-and-linux/"/>
+    <updated>2013-04-29T15:01:00+08:00</updated>
+    <id>http://shanexu.org/blog/2013/04/29/macbook-fn-key-and-linux</id>
+    <content type="html"><![CDATA[<div class="begin-indent2em"></div>
+
+
+<p>其实我呢，很不喜欢os x的function key的默认设置，也就是说当我按下F1的时候实际上降低亮度，而且我会经常用到F12，呼出firebug的快捷键，所以在os x下我会改掉function key的默认行为。</p>
+
+<p>然后是新问题，虽然这个问题在刚买了MacBook的那个星期里就碰到了，并且在读了archlinux wiki之后很轻松地解决了，但是直到现在我才想把这个过程写下来。</p>
+
+<p>我的在MacBook上装好LInux之后遇到了些许问题。比如，如何引导Linux启动，然后就是如何设置那个莫名奇妙的function key。</p>
+
+<p>其实要配置到我需要的模式，只需要执行一句命令就可以了</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>echo 2 | sudo tee &gt; /sys/module/hid_apple/parameters/fnmode</span></code></pre></td></tr></table></div></figure>
+
+
+<p>之后就是开机自动执行这个命令，在早些版本的archlinux可以将这些命令放在<em>/etc/rc.local</em>中，然而现在的archlinux使用systemd取代了原先的sysvinit。</p>
+
+<blockquote><p>systemd is a system and service manager for Linux, compatible with SysV and LSB init scripts. systemd provides aggressive parallelization capabilities, uses socket and D-Bus activation for starting services, offers on-demand starting of daemons, keeps track of processes using Linux control groups, supports snapshotting and restoring of the system state, maintains mount and automount points and implements an elaborate transactional dependency-based service control logic. It can work as a drop-in replacement for sysvinit.</p></blockquote>
+
+
+<p>带来便利的同时必然也会带来不便。以前也许只要rc.conf或者rc.local中添加几行代码的事情，现在可能就要写一大段代码然后再加上执行几个命令，有时候，不知道这样的做法是在进步还是一种退步。于是在arch wiki上看了systemd的文档，然后试着去写了一个设置function key的系统服务。</p>
+
+<p>在目录/usr/lib/systemd/system/下创建一个名为fnkey.service的文件，填入以下内容。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>[Unit]
+</span><span class='line'>Description=Set MacBook Fn key
+</span><span class='line'>After=getty.target
+</span><span class='line'>
+</span><span class='line'>[Service]
+</span><span class='line'>Type=oneshot
+</span><span class='line'>ExecStart=/usr/bin/bash -c "echo 2 &gt; /sys/module/hid_apple/parameters/fnmode"
+</span><span class='line'>
+</span><span class='line'>[Install]
+</span><span class='line'>WantedBy=multi-user.target</span></code></pre></td></tr></table></div></figure>
+
+
+<p>然后enable/start fnkey.service。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>sudo systemctl enable fnkey
+</span><span class='line'>#sudo systemctl start fnkey</span></code></pre></td></tr></table></div></figure>
+
+
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[做一天的你]]></title>
@@ -1560,28 +1623,6 @@ It aims to provide a more expressive &amp; easy to use way to write Mac and iOS 
 </span><span class='line'>./configure --with-mac --enable-mac-app --prefix=/opt/local
 </span><span class='line'>make
 </span><span class='line'>sudo make install</span></code></pre></td></tr></table></div></figure>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[大好きなのに by Kylee]]></title>
-    <link href="http://shanexu.org/blog/2013/03/04/da-hao-kinafalseni-by-kylee/"/>
-    <updated>2013-03-04T20:44:00+08:00</updated>
-    <id>http://shanexu.org/blog/2013/03/04/da-hao-kinafalseni-by-kylee</id>
-    <content type="html"><![CDATA[<div class='begin-indent2em'></div>
-
-
-<p>Kylee的《大好きなのに》，同时也是《绝园的暴风雨》的op2。喜欢这首歌很可能是因为这首歌的歌词。《绝园的暴风雨》进入第二章之后就觉得越来越无趣了，也许是因为提前看了漫画的缘故吧。但是的确第二章的故事都太顺理成章了，似乎惟一的看点都集中到了对于爱花的回忆上了。</p>
-
-<blockquote><p>说不出 说不出 离别的话语  <br/>明明这样的喜欢你  <br/>我们还是分开吧  <br/>听到你的声音的瞬间  <br/>脑中一片空白  <br/>胸中火花乱窜  <br/>将你的一切忘记  <br/>算是在向前迈进吗  <br/>不明所以 泪水直流  <br/>尽全力 尽心力 感受着今天  <br/>我就是这样生活着的  <br/>说不出 说不出 离别的话语  <br/>明明这样喜欢你</p></blockquote>
-
-
-
-
-<iframe height=498 width=510 src="http://player.youku.com/embed/XNTExMjQ0NDI4" frameborder=0 allowfullscreen></iframe>
-
-
 
 ]]></content>
   </entry>

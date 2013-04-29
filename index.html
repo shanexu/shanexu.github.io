@@ -9,8 +9,7 @@
   <meta name="author" content="Shane Xu">
 
   
-  <meta name="description" content="不想不想再被你看轻可是我始终还不够聪明在你面前不敢表现不高兴不想不想爱被看清然而决定总是不够坚定狠不下心不懂对你任性为何付出的心都得不到回应一切努力都是零多么可惜我还分得清这是同情不是感情我只要做一天的你让我用一天你的表情了解你的心情永远受欢迎带一点烦恼的高兴只要你做一天的我让你过一天我的心情耗尽所有热情所有决心还被你否定是多么不公平不想不想爱被看清然而决定总是不够坚定狠不下心不懂对你任性为何付出的心都得不到回应一切努力都是零多么可惜我还分得清这是同情不是感情我只要做一天的你让我用一天你的表情了解你的心情永远受欢迎带一点烦恼的高兴只要你做一天的我让你过一天我的心情耗尽所有热情所有决心还被你否定是多么不公平我只要做一天的你让我用一天你的姓让我疲倦的心能和你合并就算是最虚荣的梦境只要你做一天的我让你过一天我的心情耗尽所有热情所有决心还被你否定是多么不公平 在微信的朋友圈看到了友人分享的歌曲，想起这首虐心的歌了。想起曾经用复读机反复听着Jolin的歌的时候，想起那段偶有烦恼但是只要睡一觉一切问题都能解决的年少时光。今天下午又去做了无聊的事情，明明自己完全不想去，却还要煞费苦心从家里跑过去，同时还要被百度地图忽悠一把，最后还要在没有大排饭的沙县里面吃鸭腿饭。现在的我是处在，人生的最低谷，还是已经没有办法救赎了呢。今天的我，竟然踏进了久违的书店，书页发出的胶水味道原来是如此的温馨。双手接触到书本的时候我竟然会有那么微微的感动，我感到身体里有什么东西发酵了或者腐烂。 我啊完全在浪费时间吧。
-">
+  <meta name="description" content="其实我呢，很不喜欢os x的function key的默认设置，也就是说当我按下F1的时候实际上降低亮度，而且我会经常用到F12，呼出firebug的快捷键，所以在os x下我会改掉function key的默认行为。 然后是新问题，虽然这个问题在刚买了MacBook的那个星期里就碰到了， &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -66,6 +65,96 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/04/29/macbook-fn-key-and-linux/">Macbook Fn Key and Linux</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-04-29T15:01:00+08:00" pubdate data-updated="true">Apr 29<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class="begin-indent2em"></div>
+
+
+<p>其实我呢，很不喜欢os x的function key的默认设置，也就是说当我按下F1的时候实际上降低亮度，而且我会经常用到F12，呼出firebug的快捷键，所以在os x下我会改掉function key的默认行为。</p>
+
+<p>然后是新问题，虽然这个问题在刚买了MacBook的那个星期里就碰到了，并且在读了archlinux wiki之后很轻松地解决了，但是直到现在我才想把这个过程写下来。</p>
+
+<p>我的在MacBook上装好LInux之后遇到了些许问题。比如，如何引导Linux启动，然后就是如何设置那个莫名奇妙的function key。</p>
+
+<p>其实要配置到我需要的模式，只需要执行一句命令就可以了</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>echo 2 | sudo tee &gt; /sys/module/hid_apple/parameters/fnmode</span></code></pre></td></tr></table></div></figure>
+
+
+<p>之后就是开机自动执行这个命令，在早些版本的archlinux可以将这些命令放在<em>/etc/rc.local</em>中，然而现在的archlinux使用systemd取代了原先的sysvinit。</p>
+
+<blockquote><p>systemd is a system and service manager for Linux, compatible with SysV and LSB init scripts. systemd provides aggressive parallelization capabilities, uses socket and D-Bus activation for starting services, offers on-demand starting of daemons, keeps track of processes using Linux control groups, supports snapshotting and restoring of the system state, maintains mount and automount points and implements an elaborate transactional dependency-based service control logic. It can work as a drop-in replacement for sysvinit.</p></blockquote>
+
+
+<p>带来便利的同时必然也会带来不便。以前也许只要rc.conf或者rc.local中添加几行代码的事情，现在可能就要写一大段代码然后再加上执行几个命令，有时候，不知道这样的做法是在进步还是一种退步。于是在arch wiki上看了systemd的文档，然后试着去写了一个设置function key的系统服务。</p>
+
+<p>在目录/usr/lib/systemd/system/下创建一个名为fnkey.service的文件，填入以下内容。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>[Unit]
+</span><span class='line'>Description=Set MacBook Fn key
+</span><span class='line'>After=getty.target
+</span><span class='line'>
+</span><span class='line'>[Service]
+</span><span class='line'>Type=oneshot
+</span><span class='line'>ExecStart=/usr/bin/bash -c "echo 2 &gt; /sys/module/hid_apple/parameters/fnmode"
+</span><span class='line'>
+</span><span class='line'>[Install]
+</span><span class='line'>WantedBy=multi-user.target</span></code></pre></td></tr></table></div></figure>
+
+
+<p>然后enable/start fnkey.service。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>sudo systemctl enable fnkey
+</span><span class='line'>#sudo systemctl start fnkey</span></code></pre></td></tr></table></div></figure>
+
+
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -1232,92 +1321,6 @@ It aims to provide a more expressive &amp; easy to use way to write Mac and iOS 
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/03/29/an-zhuang-ruby-debug/">安装ruby-debug</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-03-29T11:56:00+08:00" pubdate data-updated="true">Mar 29<span>th</span>, 2013</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><div class="begin-indent2em"></div>
-
-
-<p>最近想在emacs里面调试ruby，搜到一篇博文说是安装ruby-debug和ruby-debug-extra，于是首先尝试安装ruby-debug</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>rvm use 1.9.3
-</span><span class='line'>gem search ruby-debug -r
-</span><span class='line'>gem install ruby-debug</span></code></pre></td></tr></table></div></figure>
-
-
-<p>然后找到<a href="http://rubyforge.org/docman/view.php/8883/10451/ruby-debug.html">ruby-debug</a>的官方文档，然后自己胡乱写了个脚本开始对着文档调试，然后就是rdebug抛错。之后发现竟然还有一个ruby-debug19的包。然后又安装ruby-debug19。尝试运行rdebug，还是出错。没辙拿着错误信息直接上google，终于在<a href="http://stackoverflow.com/questions/8378277/cannot-use-ruby-debug19-with-1-9-3-p0">stackoverflow</a>找到答案。貌似答案的出处在这里<a href="http://blog.wyeworks.com/2011/11/1/ruby-1-9-3-and-ruby-debug/">http://blog.wyeworks.com/2011/11/1/ruby-1-9-3-and-ruby-debug/</a>
-首先需要从<a href="http://rubyforge.org/frs/?group_id=8883">http://rubyforge.org/frs/?group_id=8883</a>下载</p>
-
-<ol>
-<li>linecache19-0.5.13.gem</li>
-<li>ruby_core_source-0.1.5.gem</li>
-<li>ruby-debug19-0.11.6.gem</li>
-<li>ruby-debug-base19-0.11.26.gem</li>
-</ol>
-
-
-<p>然后用下面的命令安装：</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>which ruby
-</span><span class='line'>export RVM_SRC=/Users/shane/.rvm/src/ruby-1.9.3-p392
-</span><span class='line'>gem install archive-tar-minitar
-</span><span class='line'>gem install ruby_core_source-0.1.5.gem -- --with-ruby-include=$RVM_SRC
-</span><span class='line'>gem install linecache19-0.5.13.gem -- --with-ruby-include=$RVM_SRC
-</span><span class='line'>gem install ruby-debug-base19-0.11.26.gem -- --with-ruby-include=$RVM_SRC
-</span><span class='line'>gem install ruby-debug19-0.11.6.gem -- --with-ruby-include=$RVM_SRC</span></code></pre></td></tr></table></div></figure>
-
-
-<p>结果后来在安装rdebug for emacs的时候看到了一个gem， <a href="https://github.com/cldwalker/debugger">debugger</a>，感觉这个包比较好。</p>
-
-<blockquote><p>A fork of ruby-debug(19) that works on 1.9.2 and 1.9.3 and installs easily for rvm/rbenv rubies.</p></blockquote>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>gem install debugger</span></code></pre></td></tr></table></div></figure>
-
-
-<p>然后在emacs里面用el-get安装rdebug就好了。</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/2/">&larr; Older</a>
@@ -1333,6 +1336,10 @@ It aims to provide a more expressive &amp; easy to use way to write Mac and iOS 
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2013/04/29/macbook-fn-key-and-linux/">macbook fn key and Linux</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2013/04/24/zuo-yi-tian-de-ni/">做一天的你</a>
       </li>
     
@@ -1346,10 +1353,6 @@ It aims to provide a more expressive &amp; easy to use way to write Mac and iOS 
     
       <li class="post">
         <a href="/blog/2013/04/09/its-because-of-you/">It&#8217;s because of you, motherfucker, that we are not all using Lisp.</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/04/08/vimperator/">vimperator</a>
       </li>
     
   </ul>
