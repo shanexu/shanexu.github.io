@@ -3,7 +3,7 @@ layout: post
 title: "做一天的你"
 date: 2013-04-24 20:22
 comments: true
-categories: [日志, 歌]
+categories: [日记, 歌]
 ---
 
 {% blockquote %}

@@ -3,7 +3,7 @@ layout: post
 title: "新的开始？"
 date: 2013-03-10 22:18
 comments: true
-categories: 日志
+categories: 日记
 ---
 
 <div class='begin-indent2em'></div>
