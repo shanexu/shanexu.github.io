@@ -4,7 +4,7 @@
   <title><![CDATA[Shane Xu's Home]]></title>
   <link href="http://shanexu.org/atom.xml" rel="self"/>
   <link href="http://shanexu.org/"/>
-  <updated>2013-05-23T18:04:34+08:00</updated>
+  <updated>2013-05-23T18:06:51+08:00</updated>
   <id>http://shanexu.org/</id>
   <author>
     <name><![CDATA[Shane Xu]]></name>
@@ -171,24 +171,6 @@ Variable names should be short yet meaningful. The choice of a variable name sho
 
 
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[使用trac进行项目管理]]></title>
-    <link href="http://shanexu.org/blog/2013/05/10/shi-yong-tracjin-xing-xiang-mu-guan-li/"/>
-    <updated>2013-05-10T09:03:00+08:00</updated>
-    <id>http://shanexu.org/blog/2013/05/10/shi-yong-tracjin-xing-xiang-mu-guan-li</id>
-    <content type="html"><![CDATA[
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[使用nexus搭建maven私服]]></title>
-    <link href="http://shanexu.org/blog/2013/05/10/shi-yong-nexusda-jian-mavensi-fu/"/>
-    <updated>2013-05-10T09:03:00+08:00</updated>
-    <id>http://shanexu.org/blog/2013/05/10/shi-yong-nexusda-jian-mavensi-fu</id>
-    <content type="html"><![CDATA[
 ]]></content>
   </entry>
   
@@ -1603,6 +1585,176 @@ It aims to provide a more expressive &amp; easy to use way to write Mac and iOS 
 <p>重新用iPhone载入页面，原来参差不齐的代码字体就变得整齐了。</p>
 
 <p><img src="http://fileserver.cloudfoundry.com/images/mobile_safari-2.png" title="#2" alt="set -webkit-text-size-adjus to 100%"></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[我知道 by By2]]></title>
+    <link href="http://shanexu.org/blog/2013/03/08/wo-zhi-dao-by-by2/"/>
+    <updated>2013-03-08T00:34:00+08:00</updated>
+    <id>http://shanexu.org/blog/2013/03/08/wo-zhi-dao-by-by2</id>
+    <content type="html"><![CDATA[<div class='begin-indent2em'></div>
+
+
+<p>好吧，我知道我自己这几天已经百无聊赖到了一定程度了。从墙外把好多年前的写的东西运回来的时候发现了一句很莫名其妙的歌词，</p>
+
+<blockquote><p>我知道你还是爱着我 虽然 分开的理由 我们都已接受&hellip;&hellip;</p></blockquote>
+
+<div class='end-indent2em'></div>
+
+
+<p>而我已经完完全全忘记了曾经反复单曲循环的歌的。果然我是一个记不住歌词的人。</p>
+
+<iframe height=498 width=510 frameborder=0 src="http://player.youku.com/embed/XODM5ODMxOTY=" allowfullscreen></iframe>
+
+
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[关于首行缩进]]></title>
+    <link href="http://shanexu.org/blog/2013/03/07/guan-yu-shou-xing-suo-jin/"/>
+    <updated>2013-03-07T10:24:00+08:00</updated>
+    <id>http://shanexu.org/blog/2013/03/07/guan-yu-shou-xing-suo-jin</id>
+    <content type="html"><![CDATA[<div class="begin-indent2em"></div>
+
+
+<p>最近在把以前写的小说搬到了这个地方。有件事情让我有些苦恼，原来没有首行缩进的中文文本是非常难看的东西。我想最直接方式就是给每个p标签加上一段style。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;p</span> <span class="na">style=</span><span class="s">&quot;text-indent: 2em;&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>    接下来的日子与琳琅失去联络。于是只好用回忆来消磨时光。
+</span><span class='line'>    可回忆却像是嚼久了的口香糖，越嚼越硬，最后竟硌伤了我自己。
+</span><span class='line'>    琳琅终究还是从未喜欢过我。
+</span><span class='line'><span class="nt">&lt;/p&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>然后把这段style放在css中。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='css'><span class='line'><span class="nc">.indent2em</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">text-indent</span><span class="o">:</span> <span class="m">2em</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>然而octopress的post文档是从markdown文件生成的。markdown文本生成html时候并不能给生成的tag加上class等属性，要么使用html混排的方式把class写进tag中，但是这样一来就完全失去了使用markdown编写post的优势了，还不如整个去写一个html文档算了。所以要么把格式直接写在p标签里。比如这样，修改<a href="https://github.com/tommy351/Octopress-Theme-Slash">slash</a>主题的_post.scss文件。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='scss'><span class='line'><span class="nc">.post</span><span class="p">{</span>
+</span><span class='line'>    <span class="nt">h2</span><span class="nc">.title</span><span class="o">,</span> <span class="nc">.entry-content</span><span class="p">{</span>
+</span><span class='line'>        <span class="nt">p</span><span class="p">{</span>
+</span><span class='line'>            <span class="na">text-indent</span><span class="o">:</span> <span class="mi">2</span><span class="kt">em</span><span class="p">;</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>但是这样势必造成所有的p标签都首行缩进，而且也只有对p标签起到作用。其实归根到底，我想要的效果就是只在需要缩进的地方缩进。既然markdown没有提供加入class的办法，那就只能靠javascript。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">$</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>    <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;a[href=&quot;the-path-of-blog&quot;]:eq(0)&#39;</span><span class="p">)</span>
+</span><span class='line'>        <span class="p">.</span><span class="nx">parent</span><span class="p">().</span><span class="nx">next</span><span class="p">().</span><span class="nx">find</span><span class="p">(</span><span class="s1">&#39;&gt;p&#39;</span><span class="p">)</span>
+</span><span class='line'>        <span class="p">.</span><span class="nx">addClass</span><span class="p">(</span><span class="s1">&#39;indent2em&#39;</span><span class="p">).</span><span class="nx">length</span>
+</span><span class='line'>        <span class="o">||</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;.entry-content &gt; p&#39;</span><span class="p">).</span><span class="nx">addClass</span><span class="p">(</span><span class="s1">&#39;indent2em&#39;</span><span class="p">);</span>
+</span><span class='line'><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>把这段放在<em>&lt;!&minus;&minus; more &minus;&minus;&gt;</em>之前，这样折叠之前的内容和折叠之后的内容都会有首行缩进的样式。这样还是有问题，不仅每次都要把这么一段代码放到文档中，同时段落的缩进还是很难控制，当然可以通过修改javascript代码来做到。还有一个麻烦的地方是每次都要把当前的博文的地址放到<em>“the-path-of-blog”</em>中去。好吧既然每张需要首行缩进的页面都要加上一段javascript代码那么干脆把代码放到单独的js文件去吧。
+首先我们加三个css类。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='scss'><span class='line'><span class="nc">.indent2em</span><span class="p">{</span>
+</span><span class='line'>    <span class="na">text-indent</span><span class="o">:</span> <span class="mi">2</span><span class="kt">em</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="nc">.begin-indent2em</span><span class="p">{</span>
+</span><span class='line'>    <span class="na">display</span><span class="o">:</span> <span class="no">none</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="nc">.end-indent2em</span><span class="p">{</span>
+</span><span class='line'>    <span class="na">display</span><span class="o">:</span> <span class="no">none</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>第一个自不必说了，<em>begin-indent2em</em>和<em>end-indent2em</em>则用来分别标出开始和结束首行缩进的位置。这样就能在行文中自如的控制缩进格式了。</p>
+
+<p>接着加入一段javascript。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">$</span><span class="p">){</span>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">addIndent2em</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>        <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;.begin-indent2em&#39;</span><span class="p">).</span><span class="nx">each</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">index</span><span class="p">,</span> <span class="nx">ele</span><span class="p">){</span>
+</span><span class='line'>            <span class="kd">var</span> <span class="nx">qele</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="nx">ele</span><span class="p">);</span>
+</span><span class='line'>            <span class="nx">qele</span><span class="p">.</span><span class="nx">nextUntil</span><span class="p">(</span><span class="s1">&#39;.end-indent2em&#39;</span><span class="p">,</span> <span class="nx">qele</span><span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s1">&#39;filter&#39;</span><span class="p">)</span><span class="o">||</span><span class="s1">&#39;p&#39;</span><span class="p">).</span><span class="nx">addClass</span><span class="p">(</span><span class="s1">&#39;indent2em&#39;</span><span class="p">);</span>
+</span><span class='line'>        <span class="p">});</span>
+</span><span class='line'>    <span class="p">};</span>
+</span><span class='line'>    <span class="nx">addIndent2em</span><span class="p">();</span>
+</span><span class='line'><span class="p">})(</span><span class="nx">jQuery</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>来看一下怎么用吧。下面这段文字来自我非常喜欢的一本书<a href="http://book.douban.com/subject/1794620/">芒果街上的小屋</a>，这是<em>头发（hair）</em>这一章的中英文对照。中文需要首行缩进，而英文不要。于是在markdown代码中加入了两个不占用空间的<em>div</em>风别标识需要开始和结束缩进的位置。而<em>begin div</em>的<em>filter</em>属性中可以加入过滤选择器，默认的时候只选择<em>p</em>标签。这样就能较为自由的控制缩进格式了。而实际效果也还可以，除了某些时候。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&#39;begin-indent2em&#39;</span> <span class="na">filter=</span><span class="s">&#39;p, block&#39;</span><span class="nt">&gt;&lt;/div&gt;</span>
+</span><span class='line'>我们家里每个人的头发都不一样。爸爸的头发像扫把，根根直立往上插。而我，我的投放挺懒惰。它从来不听发夹和发带的话。卡洛斯的头发又直又厚。他不用梳头。蕾妮的头发滑滑的——会从你手里溜走。还有奇奇，他最小，茸茸的头发像毛皮。
+</span><span class='line'>
+</span><span class='line'>只有妈妈的头发，妈妈的头发，好像一朵朵小小的玫瑰花结，一枚枚小小的糖果圈儿，圈都那么拳曲，那么漂亮，因为她成天给它们上发卷。把鼻子伸进去闻一闻吧，当她搂着你时。当她搂着你时，你觉得那么安全，闻到的气味那么香甜。是那种待烤的面包的暖暖的香味，是那种她给你让出一角被窝时，和着体温散发的芬芳。你睡在她的身旁，外面下着雨，爸爸打着鼾。哦，鼾声、雨声，还有妈妈吗那闻起来像面包的头发。
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&#39;end-indent2em&#39;</span><span class="nt">&gt;&lt;/div&gt;</span>
+</span><span class='line'>Everybody in our family has different hair. My Papa’s hair is like a broom, all up in the air. And me, my hair is lazy. It never obeys barrettes or bands. Carlos’s hair is thick and straight. He doesn’t need to comb it. Nenny’s hair is slippery -- slides out of  your hand. And Kiki, who is the youngest, has hair like fur.
+</span><span class='line'>
+</span><span class='line'>But my mother’s hair, my mother’s hair, like little rosettes, like little candy circles all curly and pretty because she pinned it in pincurls all day, sweet to put your nose into when she is holding you, holding you and you feel safe, is the warm smell of bread before you bake it, is the smell when she makes room for you on her side of the bed still warm with her skin, and you sleep near her, the rain outside falling and Papa snoring. The snoring, the rain outside falling and Papa snoring. The snoring, the rain, and Mama’s hair that smells like bread.
+</span></code></pre></td></tr></table></div></figure>
+
+
+
 ]]></content>
   </entry>
   
