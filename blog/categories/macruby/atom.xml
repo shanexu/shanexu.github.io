@@ -4,7 +4,7 @@
   <title><![CDATA[Category: macruby | Shane Xu's Home]]></title>
   <link href="http://shanexu.org/blog/categories/macruby/atom.xml" rel="self"/>
   <link href="http://shanexu.org/"/>
-  <updated>2013-05-04T11:07:43+08:00</updated>
+  <updated>2013-05-23T18:03:37+08:00</updated>
   <id>http://shanexu.org/</id>
   <author>
     <name><![CDATA[Shane Xu]]></name>
@@ -37,12 +37,12 @@
 
 <p>``` ruby</p>
 
-<h1>-<em>- coding: utf-8 -</em>-</h1>
+<h1>&ndash;<em>&ndash; coding: utf-8 &ndash;</em>&ndash;</h1>
 
-<p>framework "AppKit"
-framework "CoreGraphics"</p>
+<p>framework &ldquo;AppKit&rdquo;
+framework &ldquo;CoreGraphics&rdquo;</p>
 
-<p>require 'logger'</p>
+<p>require &lsquo;logger&rsquo;</p>
 
 <p>module RMonad
   self.instance_eval do</p>

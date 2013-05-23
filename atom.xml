@@ -4,7 +4,7 @@
   <title><![CDATA[Shane Xu's Home]]></title>
   <link href="http://shanexu.org/atom.xml" rel="self"/>
   <link href="http://shanexu.org/"/>
-  <updated>2013-05-04T11:07:43+08:00</updated>
+  <updated>2013-05-23T18:03:37+08:00</updated>
   <id>http://shanexu.org/</id>
   <author>
     <name><![CDATA[Shane Xu]]></name>
@@ -12,6 +12,185 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Java Code Conventions]]></title>
+    <link href="http://shanexu.org/blog/2013/05/22/java-code-conventions/"/>
+    <updated>2013-05-22T21:33:00+08:00</updated>
+    <id>http://shanexu.org/blog/2013/05/22/java-code-conventions</id>
+    <content type="html"><![CDATA[<p>今天想聊一下java的代码规范的事情。</p>
+
+<p>想写这样的篇文章并不是什么空穴来风，我想起过去在某公司实习的日子，被当时的主管不停的叮嘱coding style的日子，终于现在轮到自己看代码的时候，才意识coding style的重要性。</p>
+
+<p>于是在google搜索java coding style，结果出来的sun在1997年的时候写的<a href="http://www.oracle.com/technetwork/java/codeconv-138413.html"><em>Java Code Conventions</em></a>，笔者觉得这是一篇非常值得仔细阅读的文章。在这里笔者摘出一些，自己认为比较重要的条目。</p>
+
+<h2>1.1 Why Have Code Conventions</h2>
+
+<p>Code conventions are important to programmers for a number of reasons:</p>
+
+<p>• 80% of the lifetime cost of a piece of software goes to maintenance.<br/>
+软件开发的生命周期中80%时间花在维护上。<br/>
+• Hardly any software is maintained for its whole life by the original author.<br/>
+在软件开发的整个生命周期中，很少有软件的维护完全是由原开发者完成的。<br/>
+• Code conventions improve the readability of the software, allowing engineers to understand new code more quickly and thoroughly.<br/>
+代码约定能够提高代码的可读性，能够使得工程师们更快更透彻地理解新代码。<br/>
+• If you ship your source code as a product, you need to make sure it is as well packaged and clean as any other product you create.<br/>
+如果你要将你的源代码随着你的产品一起发布，你必须确保它们如你的别的产品一样的封装完备且干净。</p>
+
+<h3>3.1.3 Class and Interface Declarations</h3>
+
+<p>1. Class/interface documentation comment(/**..*/)
+类或接口的文档<br/>
+2. Class or interfaces statement
+类或接口声明<br/>
+3. Class/interface implementation comment(/*&hellip;*/), if necessary
+类或接口的实现注释（可选）<br/>
+4. Class (static) variables
+类（静态）变量<br/>
+5. Instance variables
+实例变量<br/>
+6. Constructors
+构造方法<br/>
+7. Methods
+类方法（类方法的组织不需要按照scop来排序，而是按照业务需求来进行排序）</p>
+
+<h2>6.1 Number Per Line</h2>
+
+<p>One declaration per line is recomended since it encourages commenting. In other words,<br/>
+每个声明独占一行，这样也更容易对变量进行注释，也就是说，</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kt">int</span> <span class="n">level</span><span class="o">;</span> <span class="c1">// indentation level</span>
+</span><span class='line'><span class="kt">int</span> <span class="n">size</span><span class="o">;</span>  <span class="c1">// size of table</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>is preferred over<br/>
+上面的代码比下面的代码更符合规范。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kt">int</span> <span class="n">level</span><span class="o">,</span> <span class="n">size</span><span class="o">;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>6.2 Placement</h2>
+
+<p>Put declarations only at the beginning of blocks. (A block is any code surrounded by curly braces &ldquo;{&rdquo; and &ldquo;}&rdquo;.) Don’t wait to declare variables until their first use; it can confuse the unwary programmer and hamper code portability within the scope.<br/>
+将变量声明放置在代码块开始的地方。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kt">void</span> <span class="nf">MyMethod</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>    <span class="kt">int</span> <span class="n">int1</span><span class="o">;</span>              <span class="c1">// beginning of method block</span>
+</span><span class='line'>    <span class="k">if</span> <span class="o">(</span><span class="n">condition</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>        <span class="kt">int</span> <span class="n">int2</span><span class="o">;</span>          <span class="c1">// beginning of &quot;if&quot; block</span>
+</span><span class='line'>        <span class="o">...</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The one exception to the rule is indexes of for loops, which in Java can be declared in the for statement:<br/>
+对于这一条，只有一个特例，就是for循环。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">maxLoops</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span> <span class="o">...</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Avoid local declarations that hide declarations at higher levels. For example, do not declare the same variable name in an inner block:<br/>
+注意不要在更深层的代码块中使用与外部代码块相同的变量名。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kt">int</span> <span class="n">count</span><span class="o">;</span>
+</span><span class='line'><span class="o">...</span>
+</span><span class='line'><span class="n">func</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>    <span class="k">if</span> <span class="o">(</span><span class="n">condition</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>        <span class="kt">int</span> <span class="n">count</span><span class="o">;</span>
+</span><span class='line'>        <span class="o">...</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'>    <span class="o">...</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h1>9. Naming Conventions</h1>
+
+<p>命名规范</p>
+
+<table>
+<tr>
+<th>Identifier Type</th>
+<th>Rules for Naming</th>
+<th>Rules for Naming|Examples</th>
+</tr>
+<tr>
+<td>Classes</td>
+<td>Class names should be nouns, in mixed case with the first letter of each internal word capitalized. Thy to keep your class names simple and descriptive. Use whole words&#8211;avoid acronyms and abbreviations (unless the abbreviation is much more widely used than the long form, such as URL or HTML).</td>
+<td>class Raster;<br> class ImageSprite; </td>
+</tr>
+<tr>
+<td>Interfaces</td>
+<td>Interface names should be capitalized like class names. </td>
+<td>interface RasterDelegate;<br>interface Storing;</td>
+</tr>
+<tr>
+<td>Methods</td>
+<td>Methods should be verbs, in mixed case with the first letter lowercase, with the first letter of each internal word capitalized. </td>
+<td>run();<br>runFast();<br>getBackground();</td>
+</tr>
+<tr>
+<td>Variables</td>
+<td>Except for variables, all instance, class, and 
+class constants are in mixed case with a lower- 
+case first letter. Internal words start with capi- 
+tal letters. 
+Variable names should be short yet meaningful. The choice of a variable name should be mnemonic&#8211;that is, designed to indicate to the casual observer the intent of its use. One-char-acter variable names should be avoided except for temporary “throwaway” variables. Common names for temporary variables are i, j, k, m, and n for integers; c, d, and e for characters.</td>
+<td>int i;<br>char cp;<br>flaot myWidth;</td>
+</tr>
+<tr>
+<td>Constants</td>
+<td>The names of variables declared class constants and of ANSI constants should be all uppercase with words separated by underscores (&#8220;_&#8221;). (ANSI constants should be avoided, for ease of debugging.)</td>
+<td>int MIN_WIDTH = 4;<br>int MAX_WIDTH = 999;<br>int GET_THE_CPU = 1;</td>
+</tr>
+</table>
+
+
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[使用trac进行项目管理]]></title>
+    <link href="http://shanexu.org/blog/2013/05/10/shi-yong-tracjin-xing-xiang-mu-guan-li/"/>
+    <updated>2013-05-10T09:03:00+08:00</updated>
+    <id>http://shanexu.org/blog/2013/05/10/shi-yong-tracjin-xing-xiang-mu-guan-li</id>
+    <content type="html"><![CDATA[
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[使用nexus搭建maven私服]]></title>
+    <link href="http://shanexu.org/blog/2013/05/10/shi-yong-nexusda-jian-mavensi-fu/"/>
+    <updated>2013-05-10T09:03:00+08:00</updated>
+    <id>http://shanexu.org/blog/2013/05/10/shi-yong-nexusda-jian-mavensi-fu</id>
+    <content type="html"><![CDATA[
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[macbook fn key and Linux]]></title>
@@ -188,47 +367,47 @@ It aims to provide a more expressive &amp; easy to use way to write Mac and iOS 
 
 <p>And in conclusion, we have found Apache to be excellent server for our web applications. Any questions?</p>
 
-<p><em>Yes. I have a question. Why didn&#8217;t you use Node.js. Node.js is an event driven non-blocking IO server, that can be used to build high performance web applications.</em></p>
+<p><em>Yes. I have a question. Why didn&rsquo;t you use Node.js. Node.js is an event driven non-blocking IO server, that can be used to build high performance web applications.</em></p>
 
 <p>That is an excellent question. We evaluated several alternative web servers, and concluded that, while options like Node.js are very interesting, Apache meets our needs and has a solid track record.</p>
 
-<p><em>But it doesn&#8217;t have performance. Everybody knows that Apache applications are slow, because they use blocking IO and have context switches.</em></p>
+<p><em>But it doesn&rsquo;t have performance. Everybody knows that Apache applications are slow, because they use blocking IO and have context switches.</em></p>
 
-<p>That&#8217;s a commonly held belief, that threaded web servers are somehow less performant or scalable than event based servers. If fact, if you measure carefully, you&#8217;ll find that both models have similar performance charasteristics.</p>
+<p>That&rsquo;s a commonly held belief, that threaded web servers are somehow less performant or scalable than event based servers. If fact, if you measure carefully, you&rsquo;ll find that both models have similar performance charasteristics.</p>
 
-<p><em>Threads don&#8217;t scale, simple as that.</em></p>
+<p><em>Threads don&rsquo;t scale, simple as that.</em></p>
 
-<p>That may have been true 10 years ago, it&#8217;s not true today.</p>
+<p>That may have been true 10 years ago, it&rsquo;s not true today.</p>
 
 <p><em>Node.js will run circles around Apache, because Apache was build before async was discovered.</em></p>
 
-<p>This is where I&#8217;d typically stab myself repeatedly in the ears with a fork until I stop hearing you.</p>
+<p>This is where I&rsquo;d typically stab myself repeatedly in the ears with a fork until I stop hearing you.</p>
 
-<p>I&#8217;ve looked at Node. It uses a single threaded loop that dispatches events to handlers. It&#8217;s a proven model that solves some concurrency problems, but at the cost of code complexity.</p>
+<p>I&rsquo;ve looked at Node. It uses a single threaded loop that dispatches events to handlers. It&rsquo;s a proven model that solves some concurrency problems, but at the cost of code complexity.</p>
 
 <p><em>It gives techies like me the control, to wring every last CPU cycle out of our servers.</em></p>
 
 <p>it must feel empowering to be totally responsible to the performance of your application. To be always on the lookout for blocking operations that should be split into little pieces each perfectly tailored to optimize concurrent throughput, all the complexities of assembler with the efficiencies of JavaScript</p>
 
-<p><em>I&#8217;m a total speed junky.</em></p>
+<p><em>I&rsquo;m a total speed junky.</em></p>
 
 <p>Do you know what this reminds me?</p>
 
 <p><em>The invention of the transistor.</em></p>
 
-<p>It reminds me the invention of threads. Threading libraries do exactly what you are doing manually. They break up pieces of code to be executed intermittently, switching from instruction that are waiting on IO, to instructions that are ready to run. But your sequential code stays intact. You may recall sequential code. That&#8217;s the code you can read.</p>
+<p>It reminds me the invention of threads. Threading libraries do exactly what you are doing manually. They break up pieces of code to be executed intermittently, switching from instruction that are waiting on IO, to instructions that are ready to run. But your sequential code stays intact. You may recall sequential code. That&rsquo;s the code you can read.</p>
 
-<p><em>But it&#8217;s slow as a dog.</em></p>
+<p><em>But it&rsquo;s slow as a dog.</em></p>
 
-<p>Your async program is like something from the 19th century Gothic horror story, drunk with your own sense of power, you reassemble pieces of code that were once coherent, stitching them together with event loops and call-back functions, until your monster, grotesque and menacing, is ready to be brought to life in a JavaScript VM. You throw the switch and the hideous creatures awakes, rises, and lurches forward, you simultaneously elated and terrified that something so unnatural could work at all. When you realized what you&#8217;ve unleashed, the pure immorality of it, your creation reaches out with its bloodied mangled arms and strangles you.</p>
+<p>Your async program is like something from the 19th century Gothic horror story, drunk with your own sense of power, you reassemble pieces of code that were once coherent, stitching them together with event loops and call-back functions, until your monster, grotesque and menacing, is ready to be brought to life in a JavaScript VM. You throw the switch and the hideous creatures awakes, rises, and lurches forward, you simultaneously elated and terrified that something so unnatural could work at all. When you realized what you&rsquo;ve unleashed, the pure immorality of it, your creation reaches out with its bloodied mangled arms and strangles you.</p>
 
-<p><em>But it&#8217;s fast as hell.</em></p>
+<p><em>But it&rsquo;s fast as hell.</em></p>
 
 <p>If you are willing to suffer complex code for performance, why not write an Nginx module in C?</p>
 
 <p><em>Node.js is the most bad ass rock star tech to come out, since Ruby on Rails.</em></p>
 
-<p>As much as I want to be optimistic and look forward to human progress, people like you stop me dead in my tracks. You are fanatic in the church of technology fashion. I could present you with fact after fact after fact that your thinking about asynchronous programing is completely wrong, but why bother when you equate technology to rock bands, fancy yourself a software hipster by wearing your Node T-shirt and celebrate horrible code. Maybe you&#8217;re cool. Hell, maybe you have groupies, but when it comes to knowing what the fuck you are talking about, you have all facilities of a parrot that says non-blocking, over and over again.</p>
+<p>As much as I want to be optimistic and look forward to human progress, people like you stop me dead in my tracks. You are fanatic in the church of technology fashion. I could present you with fact after fact after fact that your thinking about asynchronous programing is completely wrong, but why bother when you equate technology to rock bands, fancy yourself a software hipster by wearing your Node T-shirt and celebrate horrible code. Maybe you&rsquo;re cool. Hell, maybe you have groupies, but when it comes to knowing what the fuck you are talking about, you have all facilities of a parrot that says non-blocking, over and over again.</p>
 
 <p><em>Non-blocking, is the secret in the async sauce. With it, you go fast, without it, you go slow.</em></p>
 
@@ -242,13 +421,13 @@ It aims to provide a more expressive &amp; easy to use way to write Mac and iOS 
 
 <p>It was utterly brilliant. But somehow, for one and half millennia, it was common knowledge that the world was flat, hundreds and hundreds and hundreds years of raft ignorance. How in motherfucking hell does this happen?</p>
 
-<p>It was you. You, who made claims about thread performance without measuring. You, who claimed hacking your code with a machete, turning it inside out into a twisted unrecognizable mass will somehow make it go faster. You, who spend your time alternating between problems that are already solved, and problems that don&#8217;t actually exist.</p>
+<p>It was you. You, who made claims about thread performance without measuring. You, who claimed hacking your code with a machete, turning it inside out into a twisted unrecognizable mass will somehow make it go faster. You, who spend your time alternating between problems that are already solved, and problems that don&rsquo;t actually exist.</p>
 
-<p>You are the reason that science was set back a thousand years. The reason we&#8217;ve not cured cancer. The reason we&#8217;ve not solved world hunger.</p>
+<p>You are the reason that science was set back a thousand years. The reason we&rsquo;ve not cured cancer. The reason we&rsquo;ve not solved world hunger.</p>
 
-<p>It&#8217;s because of you, motherfucker, that we are not all using Lisp.</p>
+<p>It&rsquo;s because of you, motherfucker, that we are not all using Lisp.</p>
 
-<p><em>I&#8217;m sorry, what was the last part again?</em></p>
+<p><em>I&rsquo;m sorry, what was the last part again?</em></p>
 
 <p>Nevermind.</p>
 
@@ -256,7 +435,7 @@ It aims to provide a more expressive &amp; easy to use way to write Mac and iOS 
 
 <p>You misheard me.</p>
 
-<p><em>I could&#8217;ve sworn you just said Lisp.</em></p>
+<p><em>I could&rsquo;ve sworn you just said Lisp.</em></p>
 
 <p>If there are no other questions, this concludes my presentation.</p>
 ]]></content>
@@ -327,7 +506,7 @@ It aims to provide a more expressive &amp; easy to use way to write Mac and iOS 
 
 <p>在我对在os x下使用平铺式窗口管理器差不多快绝望的时候，我在github上竟然发现<a href="https://github.com/xmonad/osxmonad.git">osxmonad</a>这个项目。来我们重温那句话。</p>
 
-<blockquote><p>I would die for XMonad working with native OSX windows. Interested in any answers beyond the crappy things I&#8217;ve seen already.</p></blockquote>
+<blockquote><p>I would die for XMonad working with native OSX windows. Interested in any answers beyond the crappy things I&rsquo;ve seen already.</p></blockquote>
 
 <p>后来看了下，这个comment是在2011年的时候发布的，而osxmonad则开始于9个月前。好吧不知道这个老兄现在知不知道这个东西的存在。好吧现在来说说osxmonad的安装方法吧。</p>
 
@@ -353,7 +532,7 @@ It aims to provide a more expressive &amp; easy to use way to write Mac and iOS 
 </span><span class='line'>cabal install</span></code></pre></td></tr></table></div></figure>
 
 
-<p>以上是github上提供的安装方法。作者是对xmonad-1.0.1版本进行了补丁，而到目前为止，xmonad已经发布了1.1版本，所以作者的path无法在1.1版本的xmonad上上使用。然后看了看path文件，大概明白了补丁的意思。于是在XMonad/Core.hs的源代码的465行加上&#8221;-framework&#8221;,&#8221;Cocoa&#8221;编译选项，同时修改osxmonad/osxmonad.cabal的24行将xmonad的版本号改成0.11，就能按照上面的步骤编译安装了，当然ghc要从haskell的官网上下载haskel platform。</p>
+<p>以上是github上提供的安装方法。作者是对xmonad-1.0.1版本进行了补丁，而到目前为止，xmonad已经发布了1.1版本，所以作者的path无法在1.1版本的xmonad上上使用。然后看了看path文件，大概明白了补丁的意思。于是在XMonad/Core.hs的源代码的465行加上&#8221;-framework&#8221;,&ldquo;Cocoa&#8221;编译选项，同时修改osxmonad/osxmonad.cabal的24行将xmonad的版本号改成0.11，就能按照上面的步骤编译安装了，当然ghc要从haskell的官网上下载haskel platform。</p>
 
 <p>然后编写xmonad的配置文件~/.xmonad/xmonad.hs</p>
 
@@ -967,7 +1146,7 @@ It aims to provide a more expressive &amp; easy to use way to write Mac and iOS 
     <content type="html"><![CDATA[<div class='begin-indent2em' filter='p:not(:has(a.fancybox :first-child))'></div>
 
 
-<blockquote><p>I would die for XMonad working with native OSX windows. Interested in any answers beyond the crappy things I&#8217;ve seen already.</p></blockquote>
+<blockquote><p>I would die for XMonad working with native OSX windows. Interested in any answers beyond the crappy things I&rsquo;ve seen already.</p></blockquote>
 
 <p>写这篇文章是因为实在对os x的窗口管理实在已经吐槽无力了。</p>
 
@@ -1112,7 +1291,7 @@ It aims to provide a more expressive &amp; easy to use way to write Mac and iOS 
     <content type="html"><![CDATA[<div class='begin-indent2em' filter='p:not(:has(a.fancybox :first-child))'></div>
 
 
-<p>前几日想在博客blogs列表上上做一个read more &amp; less的效果，几经周折，总算做了一个比较满意的版本。其实原理很简单只是细节问题接踵而至。octopress中有<em>&lt;!&minus;&minus; more &minus;&minus;&gt;</em>这个注释把文章分成两截，其实在执行<em>Read more</em>的时候只要从文章中找到<em>&lt;!&minus;&minus; more &minus;&minus;&gt;</em>注释并截取下半截，并添加到原来的“.entry-content div”中即可。一开始也没有多想，在我看来jQuery应该是没有选取注释的选择器的，的确最后证明我的想法的确是正确的。于是又用了在文档中添加display为none的元素的方法。于是我就是在<em>&lt;!&minus;&minus; more &minus;&minus;&gt;</em>的后面增加了一个<em>&lt;div class=&#8217;read-more-mark&#8217;&gt;&lt;/div&gt;</em>这样的标记性元素。于是要选取后半截只要这样就行了。</p>
+<p>前几日想在博客blogs列表上上做一个read more &amp; less的效果，几经周折，总算做了一个比较满意的版本。其实原理很简单只是细节问题接踵而至。octopress中有<em>&lt;!&minus;&minus; more &minus;&minus;&gt;</em>这个注释把文章分成两截，其实在执行<em>Read more</em>的时候只要从文章中找到<em>&lt;!&minus;&minus; more &minus;&minus;&gt;</em>注释并截取下半截，并添加到原来的“.entry-content div”中即可。一开始也没有多想，在我看来jQuery应该是没有选取注释的选择器的，的确最后证明我的想法的确是正确的。于是又用了在文档中添加display为none的元素的方法。于是我就是在<em>&lt;!&minus;&minus; more &minus;&minus;&gt;</em>的后面增加了一个<em>&lt;div class=&lsquo;read-more-mark&rsquo;&gt;&lt;/div&gt;</em>这样的标记性元素。于是要选取后半截只要这样就行了。</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;.read-more-mark&#39;</span><span class="p">).</span><span class="nx">nextAll</span><span class="p">();</span>
@@ -1241,7 +1420,7 @@ It aims to provide a more expressive &amp; easy to use way to write Mac and iOS 
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>上面的代码可以揣摩出，使用xml dom element的.nextSlibling方法是可以获得任何类型的xml dom element的。下表是从w3schools.com中摘录的<em>NodeTypes - Named Constants</em>表格。</p>
+<p>上面的代码可以揣摩出，使用xml dom element的.nextSlibling方法是可以获得任何类型的xml dom element的。下表是从w3schools.com中摘录的<em>NodeTypes &ndash; Named Constants</em>表格。</p>
 
 <table>
     <tr>
@@ -1424,206 +1603,6 @@ It aims to provide a more expressive &amp; easy to use way to write Mac and iOS 
 <p>重新用iPhone载入页面，原来参差不齐的代码字体就变得整齐了。</p>
 
 <p><img src="http://fileserver.cloudfoundry.com/images/mobile_safari-2.png" title="#2" alt="set -webkit-text-size-adjus to 100%"></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[我知道 by By2]]></title>
-    <link href="http://shanexu.org/blog/2013/03/08/wo-zhi-dao-by-by2/"/>
-    <updated>2013-03-08T00:34:00+08:00</updated>
-    <id>http://shanexu.org/blog/2013/03/08/wo-zhi-dao-by-by2</id>
-    <content type="html"><![CDATA[<div class='begin-indent2em'></div>
-
-
-<p>好吧，我知道我自己这几天已经百无聊赖到了一定程度了。从墙外把好多年前的写的东西运回来的时候发现了一句很莫名其妙的歌词，</p>
-
-<blockquote><p>我知道你还是爱着我 虽然 分开的理由 我们都已接受&#8230;&#8230;</p></blockquote>
-
-<div class='end-indent2em'></div>
-
-
-<p>而我已经完完全全忘记了曾经反复单曲循环的歌的。果然我是一个记不住歌词的人。</p>
-
-<iframe height=498 width=510 frameborder=0 src="http://player.youku.com/embed/XODM5ODMxOTY=" allowfullscreen></iframe>
-
-
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[关于首行缩进]]></title>
-    <link href="http://shanexu.org/blog/2013/03/07/guan-yu-shou-xing-suo-jin/"/>
-    <updated>2013-03-07T10:24:00+08:00</updated>
-    <id>http://shanexu.org/blog/2013/03/07/guan-yu-shou-xing-suo-jin</id>
-    <content type="html"><![CDATA[<div class="begin-indent2em"></div>
-
-
-<p>最近在把以前写的小说搬到了这个地方。有件事情让我有些苦恼，原来没有首行缩进的中文文本是非常难看的东西。我想最直接方式就是给每个p标签加上一段style。</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;p</span> <span class="na">style=</span><span class="s">&quot;text-indent: 2em;&quot;</span><span class="nt">&gt;</span>
-</span><span class='line'>    接下来的日子与琳琅失去联络。于是只好用回忆来消磨时光。
-</span><span class='line'>    可回忆却像是嚼久了的口香糖，越嚼越硬，最后竟硌伤了我自己。
-</span><span class='line'>    琳琅终究还是从未喜欢过我。
-</span><span class='line'><span class="nt">&lt;/p&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>然后把这段style放在css中。</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='css'><span class='line'><span class="nc">.indent2em</span> <span class="p">{</span>
-</span><span class='line'>    <span class="k">text-indent</span><span class="o">:</span> <span class="m">2em</span><span class="p">;</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>然而octopress的post文档是从markdown文件生成的。markdown文本生成html时候并不能给生成的tag加上class等属性，要么使用html混排的方式把class写进tag中，但是这样一来就完全失去了使用markdown编写post的优势了，还不如整个去写一个html文档算了。所以要么把格式直接写在p标签里。比如这样，修改<a href="https://github.com/tommy351/Octopress-Theme-Slash">slash</a>主题的_post.scss文件。</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class='scss'><span class='line'><span class="nc">.post</span><span class="p">{</span>
-</span><span class='line'>    <span class="nt">h2</span><span class="nc">.title</span><span class="o">,</span> <span class="nc">.entry-content</span><span class="p">{</span>
-</span><span class='line'>        <span class="nt">p</span><span class="p">{</span>
-</span><span class='line'>            <span class="na">text-indent</span><span class="o">:</span> <span class="mi">2</span><span class="kt">em</span><span class="p">;</span>
-</span><span class='line'>        <span class="p">}</span>
-</span><span class='line'>    <span class="p">}</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>但是这样势必造成所有的p标签都首行缩进，而且也只有对p标签起到作用。其实归根到底，我想要的效果就是只在需要缩进的地方缩进。既然markdown没有提供加入class的办法，那就只能靠javascript。</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">$</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
-</span><span class='line'>    <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;a[href=&quot;the-path-of-blog&quot;]:eq(0)&#39;</span><span class="p">)</span>
-</span><span class='line'>        <span class="p">.</span><span class="nx">parent</span><span class="p">().</span><span class="nx">next</span><span class="p">().</span><span class="nx">find</span><span class="p">(</span><span class="s1">&#39;&gt;p&#39;</span><span class="p">)</span>
-</span><span class='line'>        <span class="p">.</span><span class="nx">addClass</span><span class="p">(</span><span class="s1">&#39;indent2em&#39;</span><span class="p">).</span><span class="nx">length</span>
-</span><span class='line'>        <span class="o">||</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;.entry-content &gt; p&#39;</span><span class="p">).</span><span class="nx">addClass</span><span class="p">(</span><span class="s1">&#39;indent2em&#39;</span><span class="p">);</span>
-</span><span class='line'><span class="p">});</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>把这段放在<em>&lt;!&minus;&minus; more &minus;&minus;&gt;</em>之前，这样折叠之前的内容和折叠之后的内容都会有首行缩进的样式。这样还是有问题，不仅每次都要把这么一段代码放到文档中，同时段落的缩进还是很难控制，当然可以通过修改javascript代码来做到。还有一个麻烦的地方是每次都要把当前的博文的地址放到<em>“the-path-of-blog”</em>中去。好吧既然每张需要首行缩进的页面都要加上一段javascript代码那么干脆把代码放到单独的js文件去吧。
-首先我们加三个css类。</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-</pre></td><td class='code'><pre><code class='scss'><span class='line'><span class="nc">.indent2em</span><span class="p">{</span>
-</span><span class='line'>    <span class="na">text-indent</span><span class="o">:</span> <span class="mi">2</span><span class="kt">em</span><span class="p">;</span>
-</span><span class='line'><span class="p">}</span>
-</span><span class='line'><span class="nc">.begin-indent2em</span><span class="p">{</span>
-</span><span class='line'>    <span class="na">display</span><span class="o">:</span> <span class="no">none</span><span class="p">;</span>
-</span><span class='line'><span class="p">}</span>
-</span><span class='line'><span class="nc">.end-indent2em</span><span class="p">{</span>
-</span><span class='line'>    <span class="na">display</span><span class="o">:</span> <span class="no">none</span><span class="p">;</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>第一个自不必说了，<em>begin-indent2em</em>和<em>end-indent2em</em>则用来分别标出开始和结束首行缩进的位置。这样就能在行文中自如的控制缩进格式了。</p>
-
-<p>接着加入一段javascript。</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">$</span><span class="p">){</span>
-</span><span class='line'>    <span class="kd">var</span> <span class="nx">addIndent2em</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(){</span>
-</span><span class='line'>        <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;.begin-indent2em&#39;</span><span class="p">).</span><span class="nx">each</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">index</span><span class="p">,</span> <span class="nx">ele</span><span class="p">){</span>
-</span><span class='line'>            <span class="kd">var</span> <span class="nx">qele</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="nx">ele</span><span class="p">);</span>
-</span><span class='line'>            <span class="nx">qele</span><span class="p">.</span><span class="nx">nextUntil</span><span class="p">(</span><span class="s1">&#39;.end-indent2em&#39;</span><span class="p">,</span> <span class="nx">qele</span><span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s1">&#39;filter&#39;</span><span class="p">)</span><span class="o">||</span><span class="s1">&#39;p&#39;</span><span class="p">).</span><span class="nx">addClass</span><span class="p">(</span><span class="s1">&#39;indent2em&#39;</span><span class="p">);</span>
-</span><span class='line'>        <span class="p">});</span>
-</span><span class='line'>    <span class="p">};</span>
-</span><span class='line'>    <span class="nx">addIndent2em</span><span class="p">();</span>
-</span><span class='line'><span class="p">})(</span><span class="nx">jQuery</span><span class="p">);</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>来看一下怎么用吧。下面这段文字来自我非常喜欢的一本书<a href="http://book.douban.com/subject/1794620/">芒果街上的小屋</a>，这是<em>头发（hair）</em>这一章的中英文对照。中文需要首行缩进，而英文不要。于是在markdown代码中加入了两个不占用空间的<em>div</em>风别标识需要开始和结束缩进的位置。而<em>begin div</em>的<em>filter</em>属性中可以加入过滤选择器，默认的时候只选择<em>p</em>标签。这样就能较为自由的控制缩进格式了。而实际效果也还可以，除了某些时候。</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&#39;begin-indent2em&#39;</span> <span class="na">filter=</span><span class="s">&#39;p, block&#39;</span><span class="nt">&gt;&lt;/div&gt;</span>
-</span><span class='line'>我们家里每个人的头发都不一样。爸爸的头发像扫把，根根直立往上插。而我，我的投放挺懒惰。它从来不听发夹和发带的话。卡洛斯的头发又直又厚。他不用梳头。蕾妮的头发滑滑的——会从你手里溜走。还有奇奇，他最小，茸茸的头发像毛皮。
-</span><span class='line'>
-</span><span class='line'>只有妈妈的头发，妈妈的头发，好像一朵朵小小的玫瑰花结，一枚枚小小的糖果圈儿，圈都那么拳曲，那么漂亮，因为她成天给它们上发卷。把鼻子伸进去闻一闻吧，当她搂着你时。当她搂着你时，你觉得那么安全，闻到的气味那么香甜。是那种待烤的面包的暖暖的香味，是那种她给你让出一角被窝时，和着体温散发的芬芳。你睡在她的身旁，外面下着雨，爸爸打着鼾。哦，鼾声、雨声，还有妈妈吗那闻起来像面包的头发。
-</span><span class='line'>
-</span><span class='line'><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&#39;end-indent2em&#39;</span><span class="nt">&gt;&lt;/div&gt;</span>
-</span><span class='line'>Everybody in our family has different hair. My Papa’s hair is like a broom, all up in the air. And me, my hair is lazy. It never obeys barrettes or bands. Carlos’s hair is thick and straight. He doesn’t need to comb it. Nenny’s hair is slippery -- slides out of  your hand. And Kiki, who is the youngest, has hair like fur.
-</span><span class='line'>
-</span><span class='line'>But my mother’s hair, my mother’s hair, like little rosettes, like little candy circles all curly and pretty because she pinned it in pincurls all day, sweet to put your nose into when she is holding you, holding you and you feel safe, is the warm smell of bread before you bake it, is the smell when she makes room for you on her side of the bed still warm with her skin, and you sleep near her, the rain outside falling and Papa snoring. The snoring, the rain outside falling and Papa snoring. The snoring, the rain, and Mama’s hair that smells like bread.
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[emacs-mac-port]]></title>
-    <link href="http://shanexu.org/blog/2013/03/06/emacs-mac-port/"/>
-    <updated>2013-03-06T10:47:00+08:00</updated>
-    <id>http://shanexu.org/blog/2013/03/06/emacs-mac-port</id>
-    <content type="html"><![CDATA[<div class='begin-indent2em'></div>
-
-
-<p>把工作环境迁移到OS X下面已经是几个月前的事情了，说实话一开始真的很难适应奇怪的OS X系统。比如奇怪的窗口管理器行为，没有双击标题栏最大化，即便是点击了窗口的最大化按钮（我现在还是不知道这个按钮的确是叫这个名字的，反正就是那个绿色的按钮）的行为也是非常的暧昧，还有Dock上的图标竟然不具备最小化窗口的功能（Yes, I&#8217;m a long-term PC user.）。</p>
-
-<p>况且在此之前我一直用着xmonad和shellshape这样的平铺窗口管理器。如今OS X下还要手动调节窗口大小，这诚然是梦魇啊。后来我安装了SizeUp之后我所有的窗口基本上就只有两个模式了——普通大小和最大化。然后用Command-Tab切换窗口。也就将就着用了。其实在我妥协之前我还在我的mac上装了Archlinux但是最后还是放弃了。我发现我已经懒于配置一个系统了。</p>
-
-<p>切入正题吧。工作环境切换到OS X之后还有一些比较不习惯的事情就是emacs，尝试的装了homebrew和macports下的emacs，但是总有一些不太对的地方。最后终于在某一天查看emacs的mailing list的时候发现了<a href="https://github.com/railwaycat/emacs-mac-port">emacs mac port</a> by Yamamoto Mitsuharu。以下是我的安装过程。</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>git clone https://github.com/railwaycat/emacs-mac-port.git
-</span><span class='line'>cd emacs-mac-port
-</span><span class='line'>cp mac/Emacs.app/Contents/Resources/Emacs.icns.official mac/Emacs.app/Contents/Resources/Emacs.icns #我比较喜欢原版的图标
-</span><span class='line'>./configure --with-mac --enable-mac-app --prefix=/opt/local
-</span><span class='line'>make
-</span><span class='line'>sudo make install</span></code></pre></td></tr></table></div></figure>
-
 ]]></content>
   </entry>
   

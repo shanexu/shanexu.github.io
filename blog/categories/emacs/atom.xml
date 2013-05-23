@@ -4,7 +4,7 @@
   <title><![CDATA[Category: emacs | Shane Xu's Home]]></title>
   <link href="http://shanexu.org/blog/categories/emacs/atom.xml" rel="self"/>
   <link href="http://shanexu.org/"/>
-  <updated>2013-05-04T11:07:43+08:00</updated>
+  <updated>2013-05-23T18:03:37+08:00</updated>
   <id>http://shanexu.org/</id>
   <author>
     <name><![CDATA[Shane Xu]]></name>
@@ -35,7 +35,7 @@ It aims to provide a more expressive &amp; easy to use way to write Mac and iOS 
 (require 'tranquil-mode)
 </code></p>
 
-<p><img src="http://fileserver.cloudfoundry.com/images/tranquil-mode.png" title="tranquil-mode" alt="tranquil-mode"></p>
+<p><img class="<a" src="href="http://fileserver.cloudfoundry.com/images/tranquil-mode.png">http://fileserver.cloudfoundry.com/images/tranquil-mode.png</a>" title="&lsquo;tranquil-mode&rsquo; &lsquo;tranquil-mode&rsquo;" ></p>
 ]]></content>
   </entry>
   
@@ -68,9 +68,9 @@ It aims to provide a more expressive &amp; easy to use way to write Mac and iOS 
 <!-- more -->
 
 
-<p><img src="http://fileserver.cloudfoundry.com/images/emacs24.3-1.png" title="Wellcome to Emacs" alt="Wellcome to Emacs">
-<img src="http://fileserver.cloudfoundry.com/images/emacs24.3-2.png" title="M-x list-packages" alt="M-x list-packages">
-<img src="http://fileserver.cloudfoundry.com/images/emacs24.3-3.png" title="M-x customize-themes" alt="M-x customize-themes"></p>
+<p><img class="<a" src="href="http://fileserver.cloudfoundry.com/images/emacs24.3-1.png">http://fileserver.cloudfoundry.com/images/emacs24.3-1.png</a>" title="&lsquo;Wellcome to Emacs&rsquo; &lsquo;Wellcome to Emacs&rsquo;" >
+<img class="<a" src="href="http://fileserver.cloudfoundry.com/images/emacs24.3-2.png">http://fileserver.cloudfoundry.com/images/emacs24.3-2.png</a>" title="&rsquo;M-x list-packages' &rsquo;M-x list-packages'" >
+<img class="<a" src="href="http://fileserver.cloudfoundry.com/images/emacs24.3-3.png">http://fileserver.cloudfoundry.com/images/emacs24.3-3.png</a>" title="&rsquo;M-x customize-themes' &rsquo;M-x customize-themes'" ></p>
 ]]></content>
   </entry>
   
@@ -82,7 +82,7 @@ It aims to provide a more expressive &amp; easy to use way to write Mac and iOS 
     <content type="html"><![CDATA[<div class='begin-indent2em'></div>
 
 
-<p>把工作环境迁移到OS X下面已经是几个月前的事情了，说实话一开始真的很难适应奇怪的OS X系统。比如奇怪的窗口管理器行为，没有双击标题栏最大化，即便是点击了窗口的最大化按钮（我现在还是不知道这个按钮的确是叫这个名字的，反正就是那个绿色的按钮）的行为也是非常的暧昧，还有Dock上的图标竟然不具备最小化窗口的功能（Yes, I'm a long-term PC user.）。</p>
+<p>把工作环境迁移到OS X下面已经是几个月前的事情了，说实话一开始真的很难适应奇怪的OS X系统。比如奇怪的窗口管理器行为，没有双击标题栏最大化，即便是点击了窗口的最大化按钮（我现在还是不知道这个按钮的确是叫这个名字的，反正就是那个绿色的按钮）的行为也是非常的暧昧，还有Dock上的图标竟然不具备最小化窗口的功能（Yes, I&rsquo;m a long-term PC user.）。</p>
 
 <p>况且在此之前我一直用着xmonad和shellshape这样的平铺窗口管理器。如今OS X下还要手动调节窗口大小，这诚然是梦魇啊。后来我安装了SizeUp之后我所有的窗口基本上就只有两个模式了——普通大小和最大化。然后用Command-Tab切换窗口。也就将就着用了。其实在我妥协之前我还在我的mac上装了Archlinux但是最后还是放弃了。我发现我已经懒于配置一个系统了。</p>
 

@@ -9,7 +9,7 @@
   <meta name="author" content="Shane Xu">
 
   
-  <meta name="description" content="Kylee的《大好きなのに》，同时也是《绝园的暴风雨》的op2。喜欢这首歌很可能是因为这首歌的歌词。《绝园的暴风雨》进入第二章之后就觉得越来越无趣了，也许是因为提前看了漫画的缘故吧。但是的确第二章的故事都太顺理成章了，似乎惟一的看点都集中到了对于爱花的回忆上了。 说不出 说不出 离别的话语 &hellip;">
+  <meta name="description" content=" 好吧，我知道我自己这几天已经百无聊赖到了一定程度了。从墙外把好多年前的写的东西运回来的时候发现了一句很莫名其妙的歌词， 我知道你还是爱着我 虽然 分开的理由 我们都已接受&hellip;&hellip; 而我已经完完全全忘记了曾经反复单曲循环的歌的。果然我是一个记不住歌词的人。 ">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -65,6 +65,287 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/03/08/wo-zhi-dao-by-by2/">我知道 by By2</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-03-08T00:34:00+08:00" pubdate data-updated="true">Mar 8<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='begin-indent2em'></div>
+
+
+<p>好吧，我知道我自己这几天已经百无聊赖到了一定程度了。从墙外把好多年前的写的东西运回来的时候发现了一句很莫名其妙的歌词，</p>
+
+<blockquote><p>我知道你还是爱着我 虽然 分开的理由 我们都已接受&hellip;&hellip;</p></blockquote>
+
+<div class='end-indent2em'></div>
+
+
+<p>而我已经完完全全忘记了曾经反复单曲循环的歌的。果然我是一个记不住歌词的人。</p>
+
+<iframe height=498 width=510 frameborder=0 src="http://player.youku.com/embed/XODM5ODMxOTY=" allowfullscreen></iframe>
+
+
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/03/07/guan-yu-shou-xing-suo-jin/">关于首行缩进</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-03-07T10:24:00+08:00" pubdate data-updated="true">Mar 7<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class="begin-indent2em"></div>
+
+
+<p>最近在把以前写的小说搬到了这个地方。有件事情让我有些苦恼，原来没有首行缩进的中文文本是非常难看的东西。我想最直接方式就是给每个p标签加上一段style。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;p</span> <span class="na">style=</span><span class="s">&quot;text-indent: 2em;&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>    接下来的日子与琳琅失去联络。于是只好用回忆来消磨时光。
+</span><span class='line'>    可回忆却像是嚼久了的口香糖，越嚼越硬，最后竟硌伤了我自己。
+</span><span class='line'>    琳琅终究还是从未喜欢过我。
+</span><span class='line'><span class="nt">&lt;/p&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>然后把这段style放在css中。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='css'><span class='line'><span class="nc">.indent2em</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">text-indent</span><span class="o">:</span> <span class="m">2em</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>然而octopress的post文档是从markdown文件生成的。markdown文本生成html时候并不能给生成的tag加上class等属性，要么使用html混排的方式把class写进tag中，但是这样一来就完全失去了使用markdown编写post的优势了，还不如整个去写一个html文档算了。所以要么把格式直接写在p标签里。比如这样，修改<a href="https://github.com/tommy351/Octopress-Theme-Slash">slash</a>主题的_post.scss文件。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='scss'><span class='line'><span class="nc">.post</span><span class="p">{</span>
+</span><span class='line'>    <span class="nt">h2</span><span class="nc">.title</span><span class="o">,</span> <span class="nc">.entry-content</span><span class="p">{</span>
+</span><span class='line'>        <span class="nt">p</span><span class="p">{</span>
+</span><span class='line'>            <span class="na">text-indent</span><span class="o">:</span> <span class="mi">2</span><span class="kt">em</span><span class="p">;</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>但是这样势必造成所有的p标签都首行缩进，而且也只有对p标签起到作用。其实归根到底，我想要的效果就是只在需要缩进的地方缩进。既然markdown没有提供加入class的办法，那就只能靠javascript。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">$</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>    <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;a[href=&quot;the-path-of-blog&quot;]:eq(0)&#39;</span><span class="p">)</span>
+</span><span class='line'>        <span class="p">.</span><span class="nx">parent</span><span class="p">().</span><span class="nx">next</span><span class="p">().</span><span class="nx">find</span><span class="p">(</span><span class="s1">&#39;&gt;p&#39;</span><span class="p">)</span>
+</span><span class='line'>        <span class="p">.</span><span class="nx">addClass</span><span class="p">(</span><span class="s1">&#39;indent2em&#39;</span><span class="p">).</span><span class="nx">length</span>
+</span><span class='line'>        <span class="o">||</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;.entry-content &gt; p&#39;</span><span class="p">).</span><span class="nx">addClass</span><span class="p">(</span><span class="s1">&#39;indent2em&#39;</span><span class="p">);</span>
+</span><span class='line'><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>把这段放在<em>&lt;!&minus;&minus; more &minus;&minus;&gt;</em>之前，这样折叠之前的内容和折叠之后的内容都会有首行缩进的样式。这样还是有问题，不仅每次都要把这么一段代码放到文档中，同时段落的缩进还是很难控制，当然可以通过修改javascript代码来做到。还有一个麻烦的地方是每次都要把当前的博文的地址放到<em>“the-path-of-blog”</em>中去。好吧既然每张需要首行缩进的页面都要加上一段javascript代码那么干脆把代码放到单独的js文件去吧。
+首先我们加三个css类。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='scss'><span class='line'><span class="nc">.indent2em</span><span class="p">{</span>
+</span><span class='line'>    <span class="na">text-indent</span><span class="o">:</span> <span class="mi">2</span><span class="kt">em</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="nc">.begin-indent2em</span><span class="p">{</span>
+</span><span class='line'>    <span class="na">display</span><span class="o">:</span> <span class="no">none</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="nc">.end-indent2em</span><span class="p">{</span>
+</span><span class='line'>    <span class="na">display</span><span class="o">:</span> <span class="no">none</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>第一个自不必说了，<em>begin-indent2em</em>和<em>end-indent2em</em>则用来分别标出开始和结束首行缩进的位置。这样就能在行文中自如的控制缩进格式了。</p>
+
+<p>接着加入一段javascript。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">$</span><span class="p">){</span>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">addIndent2em</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>        <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;.begin-indent2em&#39;</span><span class="p">).</span><span class="nx">each</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">index</span><span class="p">,</span> <span class="nx">ele</span><span class="p">){</span>
+</span><span class='line'>            <span class="kd">var</span> <span class="nx">qele</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="nx">ele</span><span class="p">);</span>
+</span><span class='line'>            <span class="nx">qele</span><span class="p">.</span><span class="nx">nextUntil</span><span class="p">(</span><span class="s1">&#39;.end-indent2em&#39;</span><span class="p">,</span> <span class="nx">qele</span><span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s1">&#39;filter&#39;</span><span class="p">)</span><span class="o">||</span><span class="s1">&#39;p&#39;</span><span class="p">).</span><span class="nx">addClass</span><span class="p">(</span><span class="s1">&#39;indent2em&#39;</span><span class="p">);</span>
+</span><span class='line'>        <span class="p">});</span>
+</span><span class='line'>    <span class="p">};</span>
+</span><span class='line'>    <span class="nx">addIndent2em</span><span class="p">();</span>
+</span><span class='line'><span class="p">})(</span><span class="nx">jQuery</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>来看一下怎么用吧。下面这段文字来自我非常喜欢的一本书<a href="http://book.douban.com/subject/1794620/">芒果街上的小屋</a>，这是<em>头发（hair）</em>这一章的中英文对照。中文需要首行缩进，而英文不要。于是在markdown代码中加入了两个不占用空间的<em>div</em>风别标识需要开始和结束缩进的位置。而<em>begin div</em>的<em>filter</em>属性中可以加入过滤选择器，默认的时候只选择<em>p</em>标签。这样就能较为自由的控制缩进格式了。而实际效果也还可以，除了某些时候。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&#39;begin-indent2em&#39;</span> <span class="na">filter=</span><span class="s">&#39;p, block&#39;</span><span class="nt">&gt;&lt;/div&gt;</span>
+</span><span class='line'>我们家里每个人的头发都不一样。爸爸的头发像扫把，根根直立往上插。而我，我的投放挺懒惰。它从来不听发夹和发带的话。卡洛斯的头发又直又厚。他不用梳头。蕾妮的头发滑滑的——会从你手里溜走。还有奇奇，他最小，茸茸的头发像毛皮。
+</span><span class='line'>
+</span><span class='line'>只有妈妈的头发，妈妈的头发，好像一朵朵小小的玫瑰花结，一枚枚小小的糖果圈儿，圈都那么拳曲，那么漂亮，因为她成天给它们上发卷。把鼻子伸进去闻一闻吧，当她搂着你时。当她搂着你时，你觉得那么安全，闻到的气味那么香甜。是那种待烤的面包的暖暖的香味，是那种她给你让出一角被窝时，和着体温散发的芬芳。你睡在她的身旁，外面下着雨，爸爸打着鼾。哦，鼾声、雨声，还有妈妈吗那闻起来像面包的头发。
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&#39;end-indent2em&#39;</span><span class="nt">&gt;&lt;/div&gt;</span>
+</span><span class='line'>Everybody in our family has different hair. My Papa’s hair is like a broom, all up in the air. And me, my hair is lazy. It never obeys barrettes or bands. Carlos’s hair is thick and straight. He doesn’t need to comb it. Nenny’s hair is slippery -- slides out of  your hand. And Kiki, who is the youngest, has hair like fur.
+</span><span class='line'>
+</span><span class='line'>But my mother’s hair, my mother’s hair, like little rosettes, like little candy circles all curly and pretty because she pinned it in pincurls all day, sweet to put your nose into when she is holding you, holding you and you feel safe, is the warm smell of bread before you bake it, is the smell when she makes room for you on her side of the bed still warm with her skin, and you sleep near her, the rain outside falling and Papa snoring. The snoring, the rain outside falling and Papa snoring. The snoring, the rain, and Mama’s hair that smells like bread.
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/03/06/emacs-mac-port/">Emacs-mac-port</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-03-06T10:47:00+08:00" pubdate data-updated="true">Mar 6<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='begin-indent2em'></div>
+
+
+<p>把工作环境迁移到OS X下面已经是几个月前的事情了，说实话一开始真的很难适应奇怪的OS X系统。比如奇怪的窗口管理器行为，没有双击标题栏最大化，即便是点击了窗口的最大化按钮（我现在还是不知道这个按钮的确是叫这个名字的，反正就是那个绿色的按钮）的行为也是非常的暧昧，还有Dock上的图标竟然不具备最小化窗口的功能（Yes, I&rsquo;m a long-term PC user.）。</p>
+
+<p>况且在此之前我一直用着xmonad和shellshape这样的平铺窗口管理器。如今OS X下还要手动调节窗口大小，这诚然是梦魇啊。后来我安装了SizeUp之后我所有的窗口基本上就只有两个模式了——普通大小和最大化。然后用Command-Tab切换窗口。也就将就着用了。其实在我妥协之前我还在我的mac上装了Archlinux但是最后还是放弃了。我发现我已经懒于配置一个系统了。</p>
+
+<p>切入正题吧。工作环境切换到OS X之后还有一些比较不习惯的事情就是emacs，尝试的装了homebrew和macports下的emacs，但是总有一些不太对的地方。最后终于在某一天查看emacs的mailing list的时候发现了<a href="https://github.com/railwaycat/emacs-mac-port">emacs mac port</a> by Yamamoto Mitsuharu。以下是我的安装过程。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>git clone https://github.com/railwaycat/emacs-mac-port.git
+</span><span class='line'>cd emacs-mac-port
+</span><span class='line'>cp mac/Emacs.app/Contents/Resources/Emacs.icns.official mac/Emacs.app/Contents/Resources/Emacs.icns #我比较喜欢原版的图标
+</span><span class='line'>./configure --with-mac --enable-mac-app --prefix=/opt/local
+</span><span class='line'>make
+</span><span class='line'>sudo make install</span></code></pre></td></tr></table></div></figure>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -415,159 +696,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2007/04/11/ji-yi-sen-lin/">记忆森林</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2007-04-11T23:51:00+08:00" pubdate data-updated="true">Apr 11<span>th</span>, 2007</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><iframe width="420" height="315" src="http://www.youtube.com/embed/ZV6u2fopwVk" frameborder="0" allowfullscreen></iframe>
-
-
-
-
-<div class='begin-indent2em'></div>
-
-
-<p>很久很久以前，G城的边缘地带，有一座森林。森林里住着年迈的守林老人，过着快乐但又寂寞的生活。后来，森林成了树林，老人死了，再也没有人愿意来接替他的位置了。再然后，我和沙鼠，还有晓树出生了。</p>
-
-<hr />
-
-<p>那是七月的最后一个雨天，我坐在沙鼠的车上，驶向我不知道的地方，两边是熟悉而又陌生的建筑物，怎么看怎么像双手叉腰的赫拉克勒斯。怎么不欢迎我吗？——我暗问道。那倒也不是——无声的回答。</p>
-
-<p>车慢慢驶向那一座森林。“我们要去哪儿？”</p>
-
-<p>“守林老人的小木屋。”沙鼠以极其低缓的声音回答道。</p>
-
-<p>车终于停了。</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2007/04/11/ji-yi-sen-lin/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2007/03/24/xi-ji-tu-shu-guan/">袭击图书馆</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2007-03-24T23:44:00+08:00" pubdate data-updated="true">Mar 24<span>th</span>, 2007</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><div class='begin-indent2em'></div>
-
-
-<p>“图书馆很静。书把所有的声音都吸了进去。”这是村上春树的说法。现在我要讲的故事发生在另一个图书馆，当然它也非常安静。只不过，困难的是，我必须换一个说法，嗯，比方说，那里静得能听清蝴蝶羽化的声音，静得能听清蜗牛分娩的声音，静得能听清荷花绽放的声音，好吧，好吧，那儿是那样得安静，以致翻动书页的声音就好像偶尔路过的冒着黑烟的拖拉机那样带给人不快。总之，就是在这样的一个图书馆里发生了一件意想不到的事情。</p>
-
-<p>说起图书馆，脑子里就冒出另一个故事。那是几年前的平安夜，正巧又是月圆的晚上，我和女友，惟，偷偷地溜进了我读过书的小学的图书室，疯狂地找寻我以前看过的书，然后，随手扔到地上，你猜结果怎么样？唉，结果我们被自己扔出来的书给埋了起来，直到第二天早上才被学校的警卫救出来。原本很浪漫的事，结果却如此如此。我也只能说一句：“哦，算了吧。”</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2007/03/24/xi-ji-tu-shu-guan/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2007/03/18/zhi-fu-qi/">纸夫妻</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2007-03-18T23:40:00+08:00" pubdate data-updated="true">Mar 18<span>th</span>, 2007</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><div class='begin-indent2em'></div>
-
-
-<p>那天，一模的成绩几乎刚刚出来。</p>
-
-<p>我们三个人组成了奇特的三人组——白痴三人组。我走在中间，左手边是Q，右手边是K（他是我表姐的表弟，但既不是我的表哥又不是我的表弟，因为他是我妈的哥的老婆的妹妹的儿子）。那两个沮丧的人中间夹着我这个无聊的人。我问K，理综考了多少，他说，别提了。</p>
-
-<p>然后，在那座桥的桥顶，在我们以极小极小的功率到达那儿的时候，琳琅骑着她的绿色的电毛驴飞驰而过，就这样消失在我们所处的地平线下面了，留下了她衣服的一抹红。接着我们几乎不约而同地想起在过去的72小时前，在那个刮着足以将陶勒斯卷到奥兹国的风的傍晚，骑车的人们上桥时如同太空漫步的情景。为什么我们还是这么慢呢？我和K的视线转到了Q的身上，怎么不骑车呢？——“我以为风还是那样大。”</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2007/03/18/zhi-fu-qi/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/4/">&larr; Older</a>
@@ -585,23 +713,23 @@
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/blog/2013/04/29/macbook-fn-key-and-linux/">macbook fn key and Linux</a>
+        <a href="/blog/2013/05/22/java-code-conventions/">Java Code Conventions</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/05/10/shi-yong-tracjin-xing-xiang-mu-guan-li/">使用trac进行项目管理</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/05/10/shi-yong-nexusda-jian-mavensi-fu/">使用nexus搭建maven私服</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/04/29/macbook-fn-key-and-linux/">Macbook Fn Key and Linux</a>
       </li>
     
       <li class="post">
         <a href="/blog/2013/04/24/zuo-yi-tian-de-ni/">做一天的你</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/04/13/ci-yu-wo-wang-guan-%2Cgei-yu-wo-shi-lian/">赐予我王冠，给予我试炼</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/04/12/tranquil-mode/">tranquil-mode</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/04/09/its-because-of-you/">It&#8217;s because of you, motherfucker, that we are not all using Lisp.</a>
       </li>
     
   </ul>

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: jQuery | Shane Xu's Home]]></title>
   <link href="http://shanexu.org/blog/categories/jquery/atom.xml" rel="self"/>
   <link href="http://shanexu.org/"/>
-  <updated>2013-05-04T11:07:43+08:00</updated>
+  <updated>2013-05-23T18:03:37+08:00</updated>
   <id>http://shanexu.org/</id>
   <author>
     <name><![CDATA[Shane Xu]]></name>
@@ -21,7 +21,7 @@
     <content type="html"><![CDATA[<div class='begin-indent2em' filter='p:not(:has(a.fancybox :first-child))'></div>
 
 
-<p>前几日想在博客blogs列表上上做一个read more &amp; less的效果，几经周折，总算做了一个比较满意的版本。其实原理很简单只是细节问题接踵而至。octopress中有<em>&lt;!&minus;&minus; more &minus;&minus;&gt;</em>这个注释把文章分成两截，其实在执行<em>Read more</em>的时候只要从文章中找到<em>&lt;!&minus;&minus; more &minus;&minus;&gt;</em>注释并截取下半截，并添加到原来的“.entry-content div”中即可。一开始也没有多想，在我看来jQuery应该是没有选取注释的选择器的，的确最后证明我的想法的确是正确的。于是又用了在文档中添加display为none的元素的方法。于是我就是在<em>&lt;!&minus;&minus; more &minus;&minus;&gt;</em>的后面增加了一个<em>&lt;div class='read-more-mark'&gt;&lt;/div&gt;</em>这样的标记性元素。于是要选取后半截只要这样就行了。</p>
+<p>前几日想在博客blogs列表上上做一个read more &amp; less的效果，几经周折，总算做了一个比较满意的版本。其实原理很简单只是细节问题接踵而至。octopress中有<em>&lt;!&minus;&minus; more &minus;&minus;&gt;</em>这个注释把文章分成两截，其实在执行<em>Read more</em>的时候只要从文章中找到<em>&lt;!&minus;&minus; more &minus;&minus;&gt;</em>注释并截取下半截，并添加到原来的“.entry-content div”中即可。一开始也没有多想，在我看来jQuery应该是没有选取注释的选择器的，的确最后证明我的想法的确是正确的。于是又用了在文档中添加display为none的元素的方法。于是我就是在<em>&lt;!&minus;&minus; more &minus;&minus;&gt;</em>的后面增加了一个<em>&lt;div class=&lsquo;read-more-mark&rsquo;&gt;&lt;/div&gt;</em>这样的标记性元素。于是要选取后半截只要这样就行了。</p>
 
 <p><code>javascript
 $('.read-more-mark').nextAll();
@@ -32,7 +32,8 @@ $('.read-more-mark').nextAll();
 
 <p>但在文档中插入没什么用的标记元素总觉得不太好，经过google关键词检索搜到了一篇题为<a href="http://www.bennadel.com/blog/1563-jQuery-Comments-Plug-in-To-Access-HTML-Comments-For-DOM-Templating.htm">jQuery Comments() Plug-in To Access HTML Comments For DOM Templating</a>文章提供的代码如下：</p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>jQuery Comments() Plug-in</span><a href='http://www.bennadel.com/index.cfm?event=blog.downloadcode&amp;id=1563&amp;index=1'>Download </a></figcaption> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>jQuery Comments() Plug-in <a href="http://www.bennadel.com/index.cfm?event=blog.downloadcode&amp;id=1563&amp;index=1">http://www.bennadel.com/index.cfm?event=blog.downloadcode&amp;id=1563&amp;index=1</a> Download </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -152,7 +153,7 @@ $('.read-more-mark').nextAll();
 </span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div></p>
 
-<p>上面的代码可以揣摩出，使用xml dom element的.nextSlibling方法是可以获得任何类型的xml dom element的。下表是从w3schools.com中摘录的<em>NodeTypes - Named Constants</em>表格。</p>
+<p>上面的代码可以揣摩出，使用xml dom element的.nextSlibling方法是可以获得任何类型的xml dom element的。下表是从w3schools.com中摘录的<em>NodeTypes &ndash; Named Constants</em>表格。</p>
 
 <table>
     <tr>
@@ -219,7 +220,7 @@ $('.read-more-mark').nextAll();
 <p>利用<em>.contents()</em>方法可以下面的方式获得文档中的注释。</p>
 
 <p>``` javascript
-$(".entry-content").contents().filter(function(){</p>
+$(&ldquo;.entry-content&rdquo;).contents().filter(function(){</p>
 
 <pre><code>return this.nodeType === 8;
 </code></pre>
