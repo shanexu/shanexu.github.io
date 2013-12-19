@@ -1,0 +1,265 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Tiling Window Manager (4) - Shane Xu's Home</title>
+  <meta name="author" content="Shane Xu">
+
+  
+  <meta name="description" content="没想到这个系列竟然能够写到第四篇，我真的对自己的人生到底有多么无聊已经无法掌控了。 就在我对在os x下使用tiling window manager绝望，并且用macruby写了一段还算能用的又臭又长又丑陋的脚本的时候我在github的角落里发现了osxmonad。在过去的六个月里， &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://shanexu.org/blog/2013/04/08/tiling-window-manager-4">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Shane Xu's Home" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Shane Xu's Home</a></h1>
+  
+    <h2>Powered by Octopress Blog Framework</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:shanexu.org" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Tiling Window Manager (4)</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-04-08T20:42:00+08:00" pubdate data-updated="true">Apr 8<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><div class='begin-indent2em' filter='p:not(:has(a.fancybox :first-child))'></div>
+
+
+<p>没想到这个系列竟然能够写到第四篇，我真的对自己的人生到底有多么无聊已经无法掌控了。</p>
+
+<p>就在我对在os x下使用tiling window manager绝望，并且用macruby写了一段还算能用的又臭又长又丑陋的脚本的时候我在github的角落里发现了osxmonad。在过去的六个月里，我竟然没有想到过把os x和xmonad两个单词结合起来，可想那过去的几个月无脑的人生有多么悲惨。</p>
+
+<p>osxmonad其实已经可以满足日常需要了，但是那个焦点管理的确有时候会影响心情，毕竟macbook的触摸板还是非常好用的（这半年里我几乎没有碰过鼠标，现在我多年的鼠标手已经消失了），时而会手贱会用触摸板切换窗口焦点。然后当我输入第一个字母的时候，焦点就被转移到了某个osxmonad计算出的焦点，也就是会强制使我想输入文字的窗口失去焦点。</p>
+
+<p>但是你永远不知道下一秒会发生什么，一个错误会让你痛恨一生，但是有时候一个错误也能造就一段美丽的佳话。你永远不会想到，你输了一百多遍的单词xmonad有一天会不小心输成了xnomad，然后你习惯性的按下了回车键，接着google非常谦卑地帮你去搜索了xnomad，他甚至还小心翼翼的问你是不是要找xmonad，不过等等，把我的狗眼往下稍微移一移，你会看到在github上竟然有这么一个神奇的项目，<a href="https://github.com/fjolnir/xnomad">xnomad</a>。</p>
+
+<p>于是这就是我要的人生了吗？</p>
+
+<p><img src="http://fileserver.cfapps.io/images/tiling-4-1.png" title="Mountain Lion with xnomad, tall layout" alt="Mountain Lion with xnomad, tall layout"></p>
+
+<p><img src="http://fileserver.cfapps.io/images/tiling-4-2.png" title="Mountain Lion with xnomad, tall layout with more windows" alt="Mountain Lion with xnomad, tall layout with more windows"></p>
+
+<p><img src="http://fileserver.cfapps.io/images/tiling-4-3.png" title="Mountain Lion with xnomad wide layout" alt="Mountain Lion with xnomad wide layout"></p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Shane Xu</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-04-08T20:42:00+08:00" pubdate data-updated="true">Apr 8<span>th</span>, 2013</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/tiling-window-manager/'>tiling window manager</a>, <a class='category' href='/blog/categories/xmonad/'>xmonad</a>, <a class='category' href='/blog/categories/xnomad/'>xnomad</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://shanexu.org/blog/2013/04/08/tiling-window-manager-4/" data-via="" data-counturl="http://shanexu.org/blog/2013/04/08/tiling-window-manager-4/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2013/04/08/tiling-window-manager-3/" title="Previous Post: Tiling Window Manager (3)">&laquo; Tiling Window Manager (3)</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2013/04/08/vimperator/" title="Next Post: vimperator">vimperator &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/05/22/java-code-conventions/">Java Code Conventions</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/04/29/macbook-fn-key-and-linux/">Macbook Fn Key and Linux</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/04/24/zuo-yi-tian-de-ni/">做一天的你</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/04/13/ci-yu-wo-wang-guan-%2Cgei-yu-wo-shi-lian/">赐予我王冠，给予我试炼</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/04/12/tranquil-mode/">Tranquil-mode</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/shanexu">@shanexu</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'shanexu',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - Shane Xu -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

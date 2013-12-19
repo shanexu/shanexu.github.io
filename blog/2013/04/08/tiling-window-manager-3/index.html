@@ -1,0 +1,309 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Tiling Window Manager (3) - Shane Xu's Home</title>
+  <meta name="author" content="Shane Xu">
+
+  
+  <meta name="description" content="在我对在os x下使用平铺式窗口管理器差不多快绝望的时候，我在github上竟然发现osxmonad这个项目。来我们重温那句话。 I would die for XMonad working with native OSX windows. Interested in any answers &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://shanexu.org/blog/2013/04/08/tiling-window-manager-3">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Shane Xu's Home" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Shane Xu's Home</a></h1>
+  
+    <h2>Powered by Octopress Blog Framework</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:shanexu.org" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Tiling Window Manager (3)</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-04-08T13:20:00+08:00" pubdate data-updated="true">Apr 8<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><div class='begin-indent2em' filter='p:not(:has(a.fancybox :first-child))'></div>
+
+
+<p>在我对在os x下使用平铺式窗口管理器差不多快绝望的时候，我在github上竟然发现<a href="https://github.com/xmonad/osxmonad.git">osxmonad</a>这个项目。来我们重温那句话。</p>
+
+<blockquote><p>I would die for XMonad working with native OSX windows. Interested in any answers beyond the crappy things I&rsquo;ve seen already.</p></blockquote>
+
+<p>后来看了下，这个comment是在2011年的时候发布的，而osxmonad则开始于9个月前。好吧不知道这个老兄现在知不知道这个东西的存在。好吧现在来说说osxmonad的安装方法吧。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>git clone git://github.com/xmonad/osxmonad.git
+</span><span class='line'>darcs get http://code.haskell.org/xmonad
+</span><span class='line'>cd xmonad
+</span><span class='line'>darcs apply ../osxmonad/xmonad.patch
+</span><span class='line'>cabal install "X11 &gt;=1.5 && &lt;1.7"
+</span><span class='line'>cabal configure
+</span><span class='line'>cabal install
+</span><span class='line'>cd ../osxmonad
+</span><span class='line'>cabal configure
+</span><span class='line'>cabal install</span></code></pre></td></tr></table></div></figure>
+
+
+<p>以上是github上提供的安装方法。作者是对xmonad-1.0.1版本进行了补丁，而到目前为止，xmonad已经发布了1.1版本，所以作者的path无法在1.1版本的xmonad上上使用。然后看了看path文件，大概明白了补丁的意思。于是在XMonad/Core.hs的源代码的465行加上&#8221;-framework&#8221;,&ldquo;Cocoa&#8221;编译选项，同时修改osxmonad/osxmonad.cabal的24行将xmonad的版本号改成0.11，就能按照上面的步骤编译安装了，当然ghc要从haskell的官网上下载haskel platform。</p>
+
+<p>然后编写xmonad的配置文件~/.xmonad/xmonad.hs</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='haskell'><span class='line'><span class="kr">import</span> <span class="nn">XMonad</span>
+</span><span class='line'><span class="kr">import</span> <span class="nn">OSXMonad.Core</span>
+</span><span class='line'>
+</span><span class='line'><span class="nf">main</span> <span class="ow">=</span> <span class="n">osxmonad</span> <span class="n">defaultConfig</span> <span class="p">{</span>
+</span><span class='line'>         <span class="n">modMask</span> <span class="ow">=</span> <span class="n">mod1Mask</span> <span class="o">.|.</span> <span class="n">mod4Mask</span><span class="p">,</span>
+</span><span class='line'>         <span class="n">keys</span> <span class="ow">=</span> <span class="n">osxKeys</span>
+</span><span class='line'>       <span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>最后运行xmonad。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='haskell'><span class='line'><span class="o">~/</span><span class="kt">Library</span><span class="o">/</span><span class="kt">Haskell</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">xmonad</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>于是我终于在os x下用上了好久没有（其实我有时候会偷跑到linux下去爽几下）使用的XMonad。当然osxmonad还远远不能说完美，比如反应滞后，窗口焦点只能在自己的机制下维护。但是，够用了。</p>
+
+<p><img src="http://fileserver.cfapps.io/images/tiling-3.png" title="Mountain Lion with osxmonad" alt="Mountain Lion with osxmonad"></p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Shane Xu</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-04-08T13:20:00+08:00" pubdate data-updated="true">Apr 8<span>th</span>, 2013</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/osxmonad/'>osxmonad</a>, <a class='category' href='/blog/categories/tiling-window-manager/'>tiling window manager</a>, <a class='category' href='/blog/categories/xmonad/'>xmonad</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://shanexu.org/blog/2013/04/08/tiling-window-manager-3/" data-via="" data-counturl="http://shanexu.org/blog/2013/04/08/tiling-window-manager-3/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2013/04/07/tiling-window-manager-2/" title="Previous Post: Tiling Window Manager (2)">&laquo; Tiling Window Manager (2)</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2013/04/08/tiling-window-manager-4/" title="Next Post: Tiling Window Manager (4)">Tiling Window Manager (4) &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/05/22/java-code-conventions/">Java Code Conventions</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/04/29/macbook-fn-key-and-linux/">Macbook Fn Key and Linux</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/04/24/zuo-yi-tian-de-ni/">做一天的你</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/04/13/ci-yu-wo-wang-guan-%2Cgei-yu-wo-shi-lian/">赐予我王冠，给予我试炼</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/04/12/tranquil-mode/">Tranquil-mode</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/shanexu">@shanexu</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'shanexu',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - Shane Xu -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,459 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: tiling window manager | Shane Xu's Home]]></title>
+  <link href="http://shanexu.org/blog/categories/tiling-window-manager/atom.xml" rel="self"/>
+  <link href="http://shanexu.org/"/>
+  <updated>2013-12-19T15:25:39+08:00</updated>
+  <id>http://shanexu.org/</id>
+  <author>
+    <name><![CDATA[Shane Xu]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Tiling Window Manager (4)]]></title>
+    <link href="http://shanexu.org/blog/2013/04/08/tiling-window-manager-4/"/>
+    <updated>2013-04-08T20:42:00+08:00</updated>
+    <id>http://shanexu.org/blog/2013/04/08/tiling-window-manager-4</id>
+    <content type="html"><![CDATA[<div class='begin-indent2em' filter='p:not(:has(a.fancybox :first-child))'></div>
+
+
+<p>没想到这个系列竟然能够写到第四篇，我真的对自己的人生到底有多么无聊已经无法掌控了。</p>
+
+<p>就在我对在os x下使用tiling window manager绝望，并且用macruby写了一段还算能用的又臭又长又丑陋的脚本的时候我在github的角落里发现了osxmonad。在过去的六个月里，我竟然没有想到过把os x和xmonad两个单词结合起来，可想那过去的几个月无脑的人生有多么悲惨。</p>
+
+<p>osxmonad其实已经可以满足日常需要了，但是那个焦点管理的确有时候会影响心情，毕竟macbook的触摸板还是非常好用的（这半年里我几乎没有碰过鼠标，现在我多年的鼠标手已经消失了），时而会手贱会用触摸板切换窗口焦点。然后当我输入第一个字母的时候，焦点就被转移到了某个osxmonad计算出的焦点，也就是会强制使我想输入文字的窗口失去焦点。</p>
+
+<p>但是你永远不知道下一秒会发生什么，一个错误会让你痛恨一生，但是有时候一个错误也能造就一段美丽的佳话。你永远不会想到，你输了一百多遍的单词xmonad有一天会不小心输成了xnomad，然后你习惯性的按下了回车键，接着google非常谦卑地帮你去搜索了xnomad，他甚至还小心翼翼的问你是不是要找xmonad，不过等等，把我的狗眼往下稍微移一移，你会看到在github上竟然有这么一个神奇的项目，<a href="https://github.com/fjolnir/xnomad">xnomad</a>。</p>
+
+<p>于是这就是我要的人生了吗？</p>
+
+<p><img class="<a" src="href="http://fileserver.cfapps.io/images/tiling-4-1.png">http://fileserver.cfapps.io/images/tiling-4-1.png</a>" title="&lsquo;Mountain Lion with xnomad, tall layout&rsquo; &lsquo;Mountain Lion with xnomad, tall layout&rsquo;" ></p>
+
+<p><img class="<a" src="href="http://fileserver.cfapps.io/images/tiling-4-2.png">http://fileserver.cfapps.io/images/tiling-4-2.png</a>" title="&lsquo;Mountain Lion with xnomad, tall layout with more windows&rsquo; &lsquo;Mountain Lion with xnomad, tall layout with more windows&rsquo;" ></p>
+
+<p><img class="<a" src="href="http://fileserver.cfapps.io/images/tiling-4-3.png">http://fileserver.cfapps.io/images/tiling-4-3.png</a>" title="&lsquo;Mountain Lion with xnomad wide layout&rsquo; &lsquo;Mountain Lion with xnomad wide layout&rsquo;" ></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Tiling Window Manager (3)]]></title>
+    <link href="http://shanexu.org/blog/2013/04/08/tiling-window-manager-3/"/>
+    <updated>2013-04-08T13:20:00+08:00</updated>
+    <id>http://shanexu.org/blog/2013/04/08/tiling-window-manager-3</id>
+    <content type="html"><![CDATA[<div class='begin-indent2em' filter='p:not(:has(a.fancybox :first-child))'></div>
+
+
+<p>在我对在os x下使用平铺式窗口管理器差不多快绝望的时候，我在github上竟然发现<a href="https://github.com/xmonad/osxmonad.git">osxmonad</a>这个项目。来我们重温那句话。</p>
+
+<blockquote><p>I would die for XMonad working with native OSX windows. Interested in any answers beyond the crappy things I&rsquo;ve seen already.</p></blockquote>
+
+<p>后来看了下，这个comment是在2011年的时候发布的，而osxmonad则开始于9个月前。好吧不知道这个老兄现在知不知道这个东西的存在。好吧现在来说说osxmonad的安装方法吧。</p>
+
+<p><code>
+git clone git://github.com/xmonad/osxmonad.git
+darcs get http://code.haskell.org/xmonad
+cd xmonad
+darcs apply ../osxmonad/xmonad.patch
+cabal install "X11 &gt;=1.5 &amp;&amp; &lt;1.7"
+cabal configure
+cabal install
+cd ../osxmonad
+cabal configure
+cabal install
+</code></p>
+
+<p>以上是github上提供的安装方法。作者是对xmonad-1.0.1版本进行了补丁，而到目前为止，xmonad已经发布了1.1版本，所以作者的path无法在1.1版本的xmonad上上使用。然后看了看path文件，大概明白了补丁的意思。于是在XMonad/Core.hs的源代码的465行加上"-framework",&ldquo;Cocoa"编译选项，同时修改osxmonad/osxmonad.cabal的24行将xmonad的版本号改成0.11，就能按照上面的步骤编译安装了，当然ghc要从haskell的官网上下载haskel platform。</p>
+
+<p>然后编写xmonad的配置文件~/.xmonad/xmonad.hs</p>
+
+<p>``` haskell
+import XMonad
+import OSXMonad.Core</p>
+
+<p>main = osxmonad defaultConfig {</p>
+
+<pre><code>     modMask = mod1Mask .|. mod4Mask,
+     keys = osxKeys
+   }
+</code></pre>
+
+<p>```</p>
+
+<p>最后运行xmonad。</p>
+
+<p><code>
+~/Library/Haskell/bin/xmonad
+</code></p>
+
+<p>于是我终于在os x下用上了好久没有（其实我有时候会偷跑到linux下去爽几下）使用的XMonad。当然osxmonad还远远不能说完美，比如反应滞后，窗口焦点只能在自己的机制下维护。但是，够用了。</p>
+
+<p><img class="<a" src="href="http://fileserver.cfapps.io/images/tiling-3.png">http://fileserver.cfapps.io/images/tiling-3.png</a>" title="&lsquo;Mountain Lion with osxmonad&rsquo; &lsquo;Mountain Lion with osxmonad&rsquo;" ></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Tiling Window Manager (2)]]></title>
+    <link href="http://shanexu.org/blog/2013/04/07/tiling-window-manager-2/"/>
+    <updated>2013-04-07T22:46:00+08:00</updated>
+    <id>http://shanexu.org/blog/2013/04/07/tiling-window-manager-2</id>
+    <content type="html"><![CDATA[<div class="begin-indent2em"></div>
+
+
+<p>OS X下有这么几款窗口管理器，好吧，严格意义上OS X没有什么窗口管理器这种东西，其实有的只是辅助性的工具，比如SizeUp能够用快捷键把窗口放到左半屏，上半屏，四分之一屏，移动窗口等等，然后收费，其实也是可以免费用的，只是过段时间会弹出对话框。然后，<a href="http://www.tylerwm.com/">Tyler</a>，这货其实是很像XMonad的，尤其是看完了他的演示视频。但是</p>
+
+<blockquote><p>Not currently compatible with Mountain Lion. We are working on an update.</p></blockquote>
+
+<p>好吧我没法用。</p>
+
+<p>在搜索tiling window manager for os x的时候我在github上看到了<a href="https://github.com/jigish/slate">slate</a>。slate的功能其实和SizeUp很相近。然而最近这个项目有了很大的突破，比如layout、javascript config file的引入，但是还是没有XMonad带给我体验，我仍旧需要记住有一大堆快捷键，然后用快捷键手动设置每一个窗口的大小。</p>
+
+<p>于是我冒出了一个想法，要不我自己来写一个窗口管理器吧。于是我clone了slate代码下来仔细研读。而事实是，我不太会用Objective-C，我对OC的认识，也差不多仅限于差不多能读懂代码罢了。还好这个世界上有个macruby的东西</p>
+
+<blockquote><p>MacRuby is an implementation of Ruby 1.9 directly on top of Mac OS X core technologies such as the Objective-C runtime and garbage collector, the LLVM compiler infrastructure and the Foundation and ICU frameworks. It is the goal of MacRuby to enable the creation of full-fledged Mac OS X applications which do not sacrifice performance in order to enjoy the benefits of using Ruby.</p></blockquote>
+
+<p>于是我写了这么一个没啥大用的脚本。</p>
+
+<p>``` ruby</p>
+
+<h1>&ndash;<em>&ndash; coding: utf-8 &ndash;</em>&ndash;</h1>
+
+<p>framework &ldquo;AppKit&rdquo;
+framework &ldquo;CoreGraphics&rdquo;</p>
+
+<p>require &lsquo;logger&rsquo;</p>
+
+<p>module RMonad
+  self.instance_eval do</p>
+
+<pre><code>@logger = Logger.new(STDOUT)
+def logger
+  @logger
+end
+</code></pre>
+
+<p>  end</p>
+
+<p>  class RMonadWorkspace</p>
+
+<pre><code>attr_accessor :windows
+attr_accessor :layout
+def initialize
+end
+</code></pre>
+
+<p>  end</p>
+
+<p>  class HLayout</p>
+
+<pre><code>attr_accessor :frames
+def initialize(w,h)
+  @w, @h=w,h
+  @frames=[]
+end
+
+def swap_next(win)
+  return if @frames.count &lt;= 1
+  index = @frames.index{|f| f.win.id == win.id}
+  if index
+    frame = @frames[index]
+    frame_next = @frames[(index+1)%@frames.count]
+    frame.win, frame_next.win = frame_next.win, frame.win
+  end
+end
+
+def swap_prev(win)
+  return if @frames.count &lt;= 1
+  index = @frames.index{|f| f.win.id == win.id}
+  if index
+    frame = @frames[index]
+    frame_prev = @frames[(index-1)%@frames.count]
+    frame.win, frame_prev.win = frame_prev.win, frame.win
+  end
+end
+
+def swap_main(win)
+  return if @frames.count &lt;= 1
+  index = @frames.index{|f| f.win.id == win.id}
+  if index
+    frame = @frames[index]
+    frame_main = @frames[0]
+    frame.win, frame_main.win = frame_main.win, frame.win
+  end
+end
+
+def main
+  @frames[0].win if @frames.count &gt;= 1
+end
+
+def prev(win)
+  index = @frames.index{|f| f.win.id == win.id}
+  @frames[(index+1)%@frames.count].win if index
+end
+
+def next(win)
+  index = @frames.index{|f| f.win.id == win.id}
+  @frames[(index-1)%@frames.count].win if index
+end
+
+def &lt;&lt;(win)
+  if @frames.empty?
+    @frames &lt;&lt; Frame.new(0,0,@w,@h).add(win)
+  else
+    frame1 = @frames[1]
+    if frame1.nil?
+      w = @frames[0].w == @w ? @w/2.0 : @w - @frames[0].w
+      h = @h
+      frame0 = @frames[0]
+      frame0.w = @w-w
+      frame0.adjust
+    else
+      w = frame1.w
+      h = @h / (count).to_f
+    end
+    @frames &lt;&lt; Frame.new(0,0, w, h).add_not_resize(win)
+    @frames[1..-1].each_with_index do |f, i|
+      f.x, f.y, f.h = w, h*i, h
+      f.adjust
+    end
+  end
+  @frames
+end
+
+def &gt;&gt;(win)
+  index = @frames.index{|f| f.win.id == win.id}
+  if index
+    removed_frame = @frames.delete @frames[index]
+
+    return if @frames.count == 0
+    if @frames.count == 1
+      @frames[0].resize(0,0,@w,@h)
+    else
+      @frames[0].resize(0,0,removed_frame.w, removed_frame.h) if index == 0
+      w=@w-@frames[0].w
+      h=@h/(@frames.count -1).to_f
+      @frames[1..-1].each_with_index{|f, i| f.resize(w, h*i, w, h)}
+    end
+  end
+end
+
+def init_layout
+  return if @frames.count == 0
+  if @frames.count == 1
+    @frames[0].resize(0,0,@w,@h)
+  else
+    @frames[0].resize(0,0,@w/2.0, @h)
+    w,h = @w-@frames[0].w, @h/(@frames.count-1).to_f
+    @frames[1..-1].each_with_index{|f, i| f.resize(w, h*i, w, h)}
+  end
+end
+
+def count
+  @frames.count
+end
+
+def contains?(win)
+end
+</code></pre>
+
+<p>  end</p>
+
+<p>  class Frame</p>
+
+<pre><code>attr_accessor :x,:y,:w,:h
+def initialize(x=0,y=0,w=0,h=0)
+  @x,@y,@w,@h = x,y,w,h
+end
+def win
+  @win
+end
+def win=(win)
+  add(win)
+end
+def add_not_resize(win)
+  @win = win
+  self
+end
+def add(win)
+  win.position={x:@x, y:@y}
+  win.size = {w:w, h:h}
+  @win = win
+  self
+end
+def adjust
+  win.position={x:@x, y:@y}
+  win.size = {w:w, h:h}
+  self
+end
+def resize(x,y,w,h)
+  @x,@y,@w,@h = x,y,w,h
+  win.position={x:@x, y:@y}
+  win.size = {w:@w, h:@h}
+  self
+end
+</code></pre>
+
+<p>  end</p>
+
+<p>  class RMonadWindow</p>
+
+<pre><code>def self.current_windows
+  running_apps.inject([]) do |wins, app|
+    puts app.localizedName
+    ws = windows_of_app(app.processIdentifier)
+    wins.concat ws.inject([]){|rws, w| rw = RMonadWindow.new(w); rws &lt;&lt; rw if rw.title &amp;&amp; !rw.title.empty?; rws} if ws
+    wins
+  end
+end
+
+def self.windows_of_app(pid)
+  app=AXUIElementCreateApplication(pid)
+  windows = Pointer.new_with_type("^{__CFArray}")
+  return windows[0] if AXUIElementCopyAttributeValues(app, KAXWindowsAttribute, 0, 100, windows) == KAXErrorSuccess
+end
+
+def self.running_apps
+  app_arr = NSWorkspace.sharedWorkspace.runningApplications
+  app_arr.each_with_index{|a, i| puts "#{i}. #{a.localizedName}"}
+end
+
+def self.current_app
+  current_app = NSRunningApplication.currentApplication
+end
+
+def initialize(axuelementref_window)
+  @axuelementref_window = axuelementref_window
+end
+
+def title
+  ptr = Pointer.new(:id)
+  ptr[0] if AXUIElementCopyAttributeValue(@axuelementref_window, NSAccessibilityTitleAttribute, ptr)== KAXErrorSuccess
+end
+
+def is_main
+
+end
+
+def move(xy={})
+  x=xy[:x]||0
+  y=xy[:y]||0
+  y+=22
+  cgpoint = Pointer.new(CGPoint.type)
+  cgpoint[0] = NSPoint.new(x,y)
+  position = AXValueCreate(KAXValueCGPointType, cgpoint)
+  if AXUIElementSetAttributeValue(@axuelementref_window, NSAccessibilityPositionAttribute, position) == KAXErrorSuccess
+    true
+  else
+    Rmond.logger.error("#{axuelementref_window} could not move to position #{xy}")
+  end
+end
+
+def position
+  ptr = Pointer.new(:id)
+  pos_ptr = Pointer.new(NSPoint.type)
+  if AXUIElementCopyAttributeValue(@axuelementref_window, NSAccessibilityPositionAttribute, ptr) == KAXErrorSuccess and AXValueGetValue(ptr[0], KAXValueCGPointType, pos_ptr)
+    {w:pos_ptr[0].x, h:pos_ptr[0].y}
+  else
+    Rmond.logger.error "#{axuelementref_window} could not get position"
+  end
+end
+
+def position=xy
+  move(xy)
+end
+
+def size
+  ptr = Pointer.new(:id)
+  size_ptr = Pointer.new(NSSize.type)
+  if AXUIElementCopyAttributeValue(@axuelementref_window, NSAccessibilitySizeAttribute, ptr) == KAXErrorSuccess and AXValueGetValue(ptr[0], KAXValueCGSizeType, size_ptr)
+    {w:size_ptr[0].width, h:size_ptr[0].height}
+  else
+    {w:0,h:0}
+  end
+end
+
+def resize(wh)
+  w=wh[:w]||0
+  h=wh[:h]||0
+  size_ptr = Pointer.new(NSSize.type)
+  size_ptr[0] = NSSize.new(w, h)
+  ptr_value = AXValueCreate(KAXValueCGSizeType, size_ptr)
+  unless AXUIElementSetAttributeValue(@axuelementref_window, NSAccessibilitySizeAttribute, ptr_value) == KAXErrorSuccess
+    Rmond.logger.error "#{@axuelementref_window} could not resize"
+  end  
+end
+def size=wh
+  resize({w:0,h:0})
+  resize(wh)
+end
+</code></pre>
+
+<p>  end
+end
+```</p>
+
+<p>然后找个终端运行下面的代码</p>
+
+<p><code>ruby
+RMonand::RMonadWindow::current_windows.inject(RMonad::HLayout.new(1280, 800-22)){|l, m| l &lt;&lt; m; l}
+</code></p>
+
+<p>就能把当前桌面上所有的窗口平铺开来。然后无奈的事情开始了。第一件事情，我如何能够得知当前的桌面是几号桌面。
+<code>ruby
+CGWindowListCopyWindowInfo(KCGWindowListOptionOnScreenOnly | KCGWindowListExcludeDesktopElements, KCGNullWindowID).select{|w| !w['kCGWindowOwnerName'].empty? &amp;&amp; w["kCGWindowLayer"]==0}
+</code>
+这条语句能够得到当前桌面上的所有可见窗口的列表，运行结果形如下面所示，其实也就是一个hash的数组
+<code>ruby
+[{"kCGWindowLayer"=&gt;0, "kCGWindowName"=&gt;"macirb — macruby — 181×48", "kCGWindowMemoryUsage"=&gt;5544180, "kCGWindowIsOnscreen"=&gt;true, "kCGWindowSharingState"=&gt;1, "kCGWindowOwnerPID"=&gt;52112, "kCGWindowNumber"=&gt;15366, "kCGWindowOwnerName"=&gt;"终端", "kCGWindowStoreType"=&gt;2, "kCGWindowBounds"=&gt;{"Height"=&gt;772.0, "X"=&gt;0.0, "Width"=&gt;1277.0, "Y"=&gt;26.0}, "kCGWindowAlpha"=&gt;1.0}, {"kCGWindowLayer"=&gt;0, "kCGWindowName"=&gt;"", "kCGWindowMemoryUsage"=&gt;3933468, "kCGWindowIsOnscreen"=&gt;true, "kCGWindowSharingState"=&gt;1, "kCGWindowOwnerPID"=&gt;90225, "kCGWindowNumber"=&gt;7682, "kCGWindowOwnerName"=&gt;"Emacs", "kCGWindowStoreType"=&gt;2, "kCGWindowBounds"=&gt;{"Height"=&gt;764.0, "X"=&gt;0.0, "Width"=&gt;1274.0, "Y"=&gt;26.0}, "kCGWindowAlpha"=&gt;1.0}, {"kCGWindowLayer"=&gt;0, "kCGWindowName"=&gt;"Emacs@shane-macbook.local", "kCGWindowMemoryUsage"=&gt;4018228, "kCGWindowIsOnscreen"=&gt;true, "kCGWindowSharingState"=&gt;1, "kCGWindowOwnerPID"=&gt;90225, "kCGWindowNumber"=&gt;7683, "kCGWindowOwnerName"=&gt;"Emacs", "kCGWindowStoreType"=&gt;2, "kCGWindowBounds"=&gt;{"Height"=&gt;764.0, "X"=&gt;0.0, "Width"=&gt;1274.0, "Y"=&gt;26.0}, "kCGWindowAlpha"=&gt;1.0}, {"kCGWindowLayer"=&gt;0, "kCGWindowName"=&gt;"Shane's Home - Vimperator", "kCGWindowMemoryUsage"=&gt;5328948, "kCGWindowIsOnscreen"=&gt;true, "kCGWindowSharingState"=&gt;1, "kCGWindowOwnerPID"=&gt;52228, "kCGWindowNumber"=&gt;112, "kCGWindowOwnerName"=&gt;"Firefox", "kCGWindowStoreType"=&gt;2, "kCGWindowBounds"=&gt;{"Height"=&gt;770.0, "X"=&gt;0.0, "Width"=&gt;1280.0, "Y"=&gt;26.0}, "kCGWindowAlpha"=&gt;1.0}]
+</code>
+在10.8之前这个hash里会有一个名为“kCGWindowWorkspace”的键，但是现在已经取消了这个值，我想破脑袋google了一圈又一圈，也真没找到什么行之有效的方式获取当前的桌面号。</p>
+
+<p>第二，怎么把window number和ACXUIElementRef关联起来。上面说过的CGWindowListCopyWindowInfo方法能把当前桌面上的窗口全都找出来，同时还能看到其中有个key为“kCGWindowNumber”，这便是窗口的id。然而我们现在需要对window进行move、resize这些操作，我现在知道的方法就是获取窗口AXUIElementRef，然而使用AXUIElementCopyAttributeValue通过application的reference获得窗口列表里却丝毫找不到关于WindowNumber的影子。好吧，难道我要比较两个对象的窗口位置和大小来匹配CGWindowListCopyWindowInfo和AXUIElementCopyAttributeValue产生的两组结果，真的好荒谬啊。</p>
+
+<p>于是我放弃了，留下了前面那个莫名奇妙的例子。如果非要用的话也未尝不可。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Tiling Window Manager (1)]]></title>
+    <link href="http://shanexu.org/blog/2013/04/07/tiling-window-manager/"/>
+    <updated>2013-04-07T01:19:00+08:00</updated>
+    <id>http://shanexu.org/blog/2013/04/07/tiling-window-manager</id>
+    <content type="html"><![CDATA[<div class='begin-indent2em' filter='p:not(:has(a.fancybox :first-child))'></div>
+
+
+<blockquote><p>I would die for XMonad working with native OSX windows. Interested in any answers beyond the crappy things I&rsquo;ve seen already.</p></blockquote>
+
+<p>写这篇文章是因为实在对os x的窗口管理实在已经吐槽无力了。</p>
+
+<p>首先要解释一下什么是tiling window manager。Tiline Window Manager，也就是平铺式窗口管理器。平铺式窗口管理器区别于普通的窗口管理器，主要体现在平铺两个字。平铺是窗口管理器其主要目的是将屏幕空间分割成互不重合的几个区块。这样的特性能够让人同时关注多个窗口，同时还能尽可能地利用屏幕空间。同时省去了用鼠标调节窗口大小的麻烦，提高工作效率。其实大部分人还是不需要平铺式窗口管理器的。</p>
+
+<p>第一次接触平铺式窗口管理器是在。。。好吧忘了什么时候的事情了。应该是在linuxsir上看到的一篇文章吧。那时候其实很无聊，每天几乎在摆弄linux的桌面环境，从gnome换到kde，再从kde换到xfce，然后用openbox，接着捣鼓fluxbox，然后用了一会儿e17（e17真的很漂亮，但是不好用），然后在fvwm上坚持过一段时间。然后就在好像没什么可以玩的时候，终于读到了那篇介绍平铺是窗口管理器的文章。</p>
+
+<p>好吧，让我回忆一下，最早接触的平铺是窗口管理器是哪一个吧。
+<a href="http://awesome.naquadah.org/">awesome</a>，应该就是他了。其实从名字来看就知道他有多diao了。awesome其实很省心，默认配置自带一个panel，然后还有各种小插件（小插件什么的我几乎一次都没用过），然后官网上还有几个漂亮的主题，让装13的门槛迅速降低数个等级，同时配置文件又是用lua写的，在使用窗口管理器的同时又能学习一门新语言真是双赢啊。</p>
+
+<p><img class="<a" src="href="http://fileserver.cfapps.io/images/tiling-1.png">http://fileserver.cfapps.io/images/tiling-1.png</a>" title="&lsquo;#1&rsquo; &lsquo;ubuntu 13.04 with awesome&rsquo;" ></p>
+
+<p>出于某些原因，我没有长期使用下去，可能当时没有习惯auto tiling window manager吧，打开一个窗口，自动平铺到屏幕上，感觉自己没法控制。接着是<a href="http://aerosuidae.net/musca.html">Musca</a>，和awesome不一样Musca是一个手动平铺式窗口管理器。Musca让用户手动将screen切分成不同的frames，然后把应用程序手动放到一个个frame里面。Musca没有提供任何panel、tab之类的控件，如果非要这些东西不可的话，可以拉一个xfce的panel，或者tint2之类的panel。我那时候的配置应该是Archlinux+ xfce4-panel + musca + dmenu，用了好久好久，那时候做操作系统实验的时候也是这个组合吧。</p>
+
+<p>linux的rm -rf *之类的命令其实是非常危险的，尤其是在rm之前加sudo，然后想都没想直接输入密码。好吧那时候我/etc目录下执行了这个命令，反应过来的时候已经为时已晚。然后马上爬到校内论坛上问大家怎么补救，结果得到的答案便是“重装吧”。之后重装的时候也没有保存home里的配置文件。之后也懒得重写配置文件。</p>
+
+<p>这之后玩的fvwm，其实比较喜欢fvwm那只小猫。用了<a href="http://box-look.org">box-look</a>上的<a href="http://box-look.org/content/show.php/Lethe?content=91022">Lethe</a>这个配置。是个非常清新的配置。</p>
+
+<p>其实我至今都很喜欢kde3.5。kde总是给我很笨重的感觉，尤其是kde4，但是archlinux上有一个非常好的Kdemod，这是经过kde fans的优化的kde3.5桌面环境。这真的是一个值得拥有的桌面环境。可是好景不长，kde4的不断冲击，最后3.5的kdemod终于不再更新了。后来archlinux也衍生出了一个默认（其实只支持）KDE4桌面环境的发行版<a href="http://www.chakra-project.org">Chakra</a>。其实这是KDE狂人搞出来的发行版，他把所有的gtk依赖去除的干干净净。对于像Emacs、Firefox这样的无法替代的软件则使用Bundle系统mount到系统上。如果非常喜欢KDE可以尝试一下这个发行版。</p>
+
+<p>跑题了。好吧我忘了到底在什么情况下我遇到了我的本命，<a href="http://xmonad.org">XMonad</a>，努力回忆下的话还是有点印象的。那时候有货吐槽各种窗口管理器，其中也包括了XMonad，为了装XMonad这个窗口管理器需要安装好几百M的ghc编译器，然后反吐槽的人就说，编译完了就可以把ghc删掉了。然后抱着试试看的心态安装了XMonad，XMonad还有个特点就是可以和现成的桌面环境结合，比如他能够替代xfce、gnome、kde的窗口管理器。同时还提供了在这三种桌面环境上默认配置，非常容易上手。同时XMonad的配置文件使用了Haskell语言进行编写，haskell是一门函数式编程语言，阅读起来也不是那么难。看久了也渐渐喜欢上这么语言，有时间应该去学学。XMonad用了好久好久。在KDE下用，在gnome下用，最后固定在了xfce4上了。</p>
+
+<p><a href="http://subtile.subforge.org">subtile</a>是一个小插曲，那段时间在学习ruby，subtile是用ruby写的手动平铺式窗口管理器。基本上已经没有什么印象了。</p>
+
+<p>时代在进步，终于有一天gnome 3带着他的gnome-shell来了。一开始gnome-shell，只是个花瓶，然后我发现我竟然可以用javascript写插件了，于是开始拥抱gnome-shell。想起那时候为了让right super键能够触发overlay view，挖到Mutter(gnome 3在gnome-shell的状态下的窗口管理器)的源代码里面。那段时间真是幸福。写到这里的时候突然想起漏了点东西，提到XMonad和gnmoe的时候还有一个不得不提的项目，就是<a href="http://www.bluetile.org/">Bluetile</a>，bluetile是一个将gnome和XMonad结合在一起的项目。自从gnome 3出来以后，这个项目也停滞不前了。其实gnome 3在fallback模式下可以用XMonad替代默认窗口管理器。但是实在是，gnome 3的fallback模式真的很难受，gnome 3的可配置度也真的一直在向KDE4看齐。难道在没有安装gnome-tweak-tools的时候，只能用gconftool-2进行配置吗？好在gnome-shell用户做了一个平铺窗口管理插件，<a href="http://gfxmonk.net/shellshape/">shellshape</a>，shellshape is inspired by bluetile。gnome-shell去除了在panel上的task manager，使用overlay view或者alt+tab切换应用程序。其实gnome-shell还有一个更惊人的改动，gnome-shell去除了窗口的最大化和最小化按钮，窗口上就只剩下一个孤零零的关闭按钮。其实他在学一些移动设备吧，每次都只有一个最大化的窗口，还好双击窗口的行为没有变。shellshape的出现，让我坚持使用gnome-shell了一段很长时间。</p>
+
+<p>提到KDE4，其实KDE组是个很用心做软件的组。所有的kde软件都是union在一起的，比如dolphin中打开konsole，好吧，好久不用了，有些忘记了。而且kwin中加入平铺模式。只是kde有些让人无法满意的地方，比如，firefox无法替代，emacs无法替代，而这类gtk的软件真的在kde下很难看。无法忍受。我是一个对这种事情非常吹毛求疵的人。</p>
+]]></content>
+  </entry>
+  
+</feed>

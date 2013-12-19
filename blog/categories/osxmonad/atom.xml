@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: osxmonad | Shane Xu's Home]]></title>
+  <link href="http://shanexu.org/blog/categories/osxmonad/atom.xml" rel="self"/>
+  <link href="http://shanexu.org/"/>
+  <updated>2013-12-19T15:25:39+08:00</updated>
+  <id>http://shanexu.org/</id>
+  <author>
+    <name><![CDATA[Shane Xu]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Tiling Window Manager (3)]]></title>
+    <link href="http://shanexu.org/blog/2013/04/08/tiling-window-manager-3/"/>
+    <updated>2013-04-08T13:20:00+08:00</updated>
+    <id>http://shanexu.org/blog/2013/04/08/tiling-window-manager-3</id>
+    <content type="html"><![CDATA[<div class='begin-indent2em' filter='p:not(:has(a.fancybox :first-child))'></div>
+
+
+<p>在我对在os x下使用平铺式窗口管理器差不多快绝望的时候，我在github上竟然发现<a href="https://github.com/xmonad/osxmonad.git">osxmonad</a>这个项目。来我们重温那句话。</p>
+
+<blockquote><p>I would die for XMonad working with native OSX windows. Interested in any answers beyond the crappy things I&rsquo;ve seen already.</p></blockquote>
+
+<p>后来看了下，这个comment是在2011年的时候发布的，而osxmonad则开始于9个月前。好吧不知道这个老兄现在知不知道这个东西的存在。好吧现在来说说osxmonad的安装方法吧。</p>
+
+<p><code>
+git clone git://github.com/xmonad/osxmonad.git
+darcs get http://code.haskell.org/xmonad
+cd xmonad
+darcs apply ../osxmonad/xmonad.patch
+cabal install "X11 &gt;=1.5 &amp;&amp; &lt;1.7"
+cabal configure
+cabal install
+cd ../osxmonad
+cabal configure
+cabal install
+</code></p>
+
+<p>以上是github上提供的安装方法。作者是对xmonad-1.0.1版本进行了补丁，而到目前为止，xmonad已经发布了1.1版本，所以作者的path无法在1.1版本的xmonad上上使用。然后看了看path文件，大概明白了补丁的意思。于是在XMonad/Core.hs的源代码的465行加上"-framework",&ldquo;Cocoa"编译选项，同时修改osxmonad/osxmonad.cabal的24行将xmonad的版本号改成0.11，就能按照上面的步骤编译安装了，当然ghc要从haskell的官网上下载haskel platform。</p>
+
+<p>然后编写xmonad的配置文件~/.xmonad/xmonad.hs</p>
+
+<p>``` haskell
+import XMonad
+import OSXMonad.Core</p>
+
+<p>main = osxmonad defaultConfig {</p>
+
+<pre><code>     modMask = mod1Mask .|. mod4Mask,
+     keys = osxKeys
+   }
+</code></pre>
+
+<p>```</p>
+
+<p>最后运行xmonad。</p>
+
+<p><code>
+~/Library/Haskell/bin/xmonad
+</code></p>
+
+<p>于是我终于在os x下用上了好久没有（其实我有时候会偷跑到linux下去爽几下）使用的XMonad。当然osxmonad还远远不能说完美，比如反应滞后，窗口焦点只能在自己的机制下维护。但是，够用了。</p>
+
+<p><img class="<a" src="href="http://fileserver.cfapps.io/images/tiling-3.png">http://fileserver.cfapps.io/images/tiling-3.png</a>" title="&lsquo;Mountain Lion with osxmonad&rsquo; &lsquo;Mountain Lion with osxmonad&rsquo;" ></p>
+]]></content>
+  </entry>
+  
+</feed>

@@ -1,0 +1,302 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>macbook fn key and Linux - Shane Xu's Home</title>
+  <meta name="author" content="Shane Xu">
+
+  
+  <meta name="description" content="其实我呢，很不喜欢os x的function key的默认设置，也就是说当我按下F1的时候实际上降低亮度，而且我会经常用到F12，呼出firebug的快捷键，所以在os x下我会改掉function key的默认行为。 然后是新问题，虽然这个问题在刚买了MacBook的那个星期里就碰到了， &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://shanexu.org/blog/2013/04/29/macbook-fn-key-and-linux">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Shane Xu's Home" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Shane Xu's Home</a></h1>
+  
+    <h2>Powered by Octopress Blog Framework</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:shanexu.org" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Macbook Fn Key and Linux</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-04-29T15:01:00+08:00" pubdate data-updated="true">Apr 29<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><div class="begin-indent2em"></div>
+
+
+<p>其实我呢，很不喜欢os x的function key的默认设置，也就是说当我按下F1的时候实际上降低亮度，而且我会经常用到F12，呼出firebug的快捷键，所以在os x下我会改掉function key的默认行为。</p>
+
+<p>然后是新问题，虽然这个问题在刚买了MacBook的那个星期里就碰到了，并且在读了archlinux wiki之后很轻松地解决了，但是直到现在我才想把这个过程写下来。</p>
+
+<p>我的在MacBook上装好LInux之后遇到了些许问题。比如，如何引导Linux启动，然后就是如何设置那个莫名奇妙的function key。</p>
+
+<p>其实要配置到我需要的模式，只需要执行一句命令就可以了</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>echo 2 | sudo tee &gt; /sys/module/hid_apple/parameters/fnmode</span></code></pre></td></tr></table></div></figure>
+
+
+<p>之后就是开机自动执行这个命令，在早些版本的archlinux可以将这些命令放在<em>/etc/rc.local</em>中，然而现在的archlinux使用systemd取代了原先的sysvinit。</p>
+
+<blockquote><p>systemd is a system and service manager for Linux, compatible with SysV and LSB init scripts. systemd provides aggressive parallelization capabilities, uses socket and D-Bus activation for starting services, offers on-demand starting of daemons, keeps track of processes using Linux control groups, supports snapshotting and restoring of the system state, maintains mount and automount points and implements an elaborate transactional dependency-based service control logic. It can work as a drop-in replacement for sysvinit.</p></blockquote>
+
+
+<p>带来便利的同时必然也会带来不便。以前也许只要rc.conf或者rc.local中添加几行代码的事情，现在可能就要写一大段代码然后再加上执行几个命令，有时候，不知道这样的做法是在进步还是一种退步。于是在arch wiki上看了systemd的文档，然后试着去写了一个设置function key的系统服务。</p>
+
+<p>在目录/usr/lib/systemd/system/下创建一个名为fnkey.service的文件，填入以下内容。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>[Unit]
+</span><span class='line'>Description=Set MacBook Fn key
+</span><span class='line'>After=getty.target
+</span><span class='line'>
+</span><span class='line'>[Service]
+</span><span class='line'>Type=oneshot
+</span><span class='line'>ExecStart=/usr/bin/bash -c "echo 2 &gt; /sys/module/hid_apple/parameters/fnmode"
+</span><span class='line'>
+</span><span class='line'>[Install]
+</span><span class='line'>WantedBy=multi-user.target</span></code></pre></td></tr></table></div></figure>
+
+
+<p>然后enable/start fnkey.service。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>sudo systemctl enable fnkey
+</span><span class='line'>#sudo systemctl start fnkey</span></code></pre></td></tr></table></div></figure>
+
+
+
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Shane Xu</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-04-29T15:01:00+08:00" pubdate data-updated="true">Apr 29<span>th</span>, 2013</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/linux/'>Linux</a>, <a class='category' href='/blog/categories/macbook/'>MacBook</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://shanexu.org/blog/2013/04/29/macbook-fn-key-and-linux/" data-via="" data-counturl="http://shanexu.org/blog/2013/04/29/macbook-fn-key-and-linux/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2013/04/24/zuo-yi-tian-de-ni/" title="Previous Post: 做一天的你">&laquo; 做一天的你</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2013/05/22/java-code-conventions/" title="Next Post: Java Code Conventions">Java Code Conventions &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/05/22/java-code-conventions/">Java Code Conventions</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/04/29/macbook-fn-key-and-linux/">Macbook Fn Key and Linux</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/04/24/zuo-yi-tian-de-ni/">做一天的你</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/04/13/ci-yu-wo-wang-guan-%2Cgei-yu-wo-shi-lian/">赐予我王冠，给予我试炼</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/04/12/tranquil-mode/">Tranquil-mode</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/shanexu">@shanexu</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'shanexu',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - Shane Xu -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

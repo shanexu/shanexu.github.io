@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: apache | Shane Xu's Home]]></title>
+  <link href="http://shanexu.org/blog/categories/apache/atom.xml" rel="self"/>
+  <link href="http://shanexu.org/"/>
+  <updated>2013-12-19T15:25:39+08:00</updated>
+  <id>http://shanexu.org/</id>
+  <author>
+    <name><![CDATA[Shane Xu]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[It's because of you, motherfucker, that we are not all using Lisp.]]></title>
+    <link href="http://shanexu.org/blog/2013/04/09/its-because-of-you/"/>
+    <updated>2013-04-09T00:37:00+08:00</updated>
+    <id>http://shanexu.org/blog/2013/04/09/its-because-of-you</id>
+    <content type="html"><![CDATA[<iframe width="560" height="315" src="http://www.youtube.com/embed/bzkRVzciAZg" frameborder="0" allowfullscreen></iframe>
+
+
+<h2>Transcript</h2>
+
+<p>And in conclusion, we have found Apache to be excellent server for our web applications. Any questions?</p>
+
+<p><em>Yes. I have a question. Why didn&rsquo;t you use Node.js. Node.js is an event driven non-blocking IO server, that can be used to build high performance web applications.</em></p>
+
+<p>That is an excellent question. We evaluated several alternative web servers, and concluded that, while options like Node.js are very interesting, Apache meets our needs and has a solid track record.</p>
+
+<p><em>But it doesn&rsquo;t have performance. Everybody knows that Apache applications are slow, because they use blocking IO and have context switches.</em></p>
+
+<p>That&rsquo;s a commonly held belief, that threaded web servers are somehow less performant or scalable than event based servers. If fact, if you measure carefully, you&rsquo;ll find that both models have similar performance charasteristics.</p>
+
+<p><em>Threads don&rsquo;t scale, simple as that.</em></p>
+
+<p>That may have been true 10 years ago, it&rsquo;s not true today.</p>
+
+<p><em>Node.js will run circles around Apache, because Apache was build before async was discovered.</em></p>
+
+<p>This is where I&rsquo;d typically stab myself repeatedly in the ears with a fork until I stop hearing you.</p>
+
+<p>I&rsquo;ve looked at Node. It uses a single threaded loop that dispatches events to handlers. It&rsquo;s a proven model that solves some concurrency problems, but at the cost of code complexity.</p>
+
+<p><em>It gives techies like me the control, to wring every last CPU cycle out of our servers.</em></p>
+
+<p>it must feel empowering to be totally responsible to the performance of your application. To be always on the lookout for blocking operations that should be split into little pieces each perfectly tailored to optimize concurrent throughput, all the complexities of assembler with the efficiencies of JavaScript</p>
+
+<p><em>I&rsquo;m a total speed junky.</em></p>
+
+<p>Do you know what this reminds me?</p>
+
+<p><em>The invention of the transistor.</em></p>
+
+<p>It reminds me the invention of threads. Threading libraries do exactly what you are doing manually. They break up pieces of code to be executed intermittently, switching from instruction that are waiting on IO, to instructions that are ready to run. But your sequential code stays intact. You may recall sequential code. That&rsquo;s the code you can read.</p>
+
+<p><em>But it&rsquo;s slow as a dog.</em></p>
+
+<p>Your async program is like something from the 19th century Gothic horror story, drunk with your own sense of power, you reassemble pieces of code that were once coherent, stitching them together with event loops and call-back functions, until your monster, grotesque and menacing, is ready to be brought to life in a JavaScript VM. You throw the switch and the hideous creatures awakes, rises, and lurches forward, you simultaneously elated and terrified that something so unnatural could work at all. When you realized what you&rsquo;ve unleashed, the pure immorality of it, your creation reaches out with its bloodied mangled arms and strangles you.</p>
+
+<p><em>But it&rsquo;s fast as hell.</em></p>
+
+<p>If you are willing to suffer complex code for performance, why not write an Nginx module in C?</p>
+
+<p><em>Node.js is the most bad ass rock star tech to come out, since Ruby on Rails.</em></p>
+
+<p>As much as I want to be optimistic and look forward to human progress, people like you stop me dead in my tracks. You are fanatic in the church of technology fashion. I could present you with fact after fact after fact that your thinking about asynchronous programing is completely wrong, but why bother when you equate technology to rock bands, fancy yourself a software hipster by wearing your Node T-shirt and celebrate horrible code. Maybe you&rsquo;re cool. Hell, maybe you have groupies, but when it comes to knowing what the fuck you are talking about, you have all facilities of a parrot that says non-blocking, over and over again.</p>
+
+<p><em>Non-blocking, is the secret in the async sauce. With it, you go fast, without it, you go slow.</em></p>
+
+<p>Do you know when human discovered that the world is round?</p>
+
+<p><em>1492, Columbus sailed the ocean blue.</em></p>
+
+<p>It was 240 BC, by a Greek mathematician named Eratosthenes. He conducted a simple experiment using the length of shadows and the distance between cities, to not only prove the earth is round, but also calculated its circumference.</p>
+
+<p><em>Sounds low-tech.</em></p>
+
+<p>It was utterly brilliant. But somehow, for one and half millennia, it was common knowledge that the world was flat, hundreds and hundreds and hundreds years of raft ignorance. How in motherfucking hell does this happen?</p>
+
+<p>It was you. You, who made claims about thread performance without measuring. You, who claimed hacking your code with a machete, turning it inside out into a twisted unrecognizable mass will somehow make it go faster. You, who spend your time alternating between problems that are already solved, and problems that don&rsquo;t actually exist.</p>
+
+<p>You are the reason that science was set back a thousand years. The reason we&rsquo;ve not cured cancer. The reason we&rsquo;ve not solved world hunger.</p>
+
+<p>It&rsquo;s because of you, motherfucker, that we are not all using Lisp.</p>
+
+<p><em>I&rsquo;m sorry, what was the last part again?</em></p>
+
+<p>Nevermind.</p>
+
+<p><em>Did you just say Lisp?</em></p>
+
+<p>You misheard me.</p>
+
+<p><em>I could&rsquo;ve sworn you just said Lisp.</em></p>
+
+<p>If there are no other questions, this concludes my presentation.</p>
+]]></content>
+  </entry>
+  
+</feed>

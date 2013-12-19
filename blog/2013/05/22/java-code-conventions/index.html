@@ -1,0 +1,402 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Java Code Conventions - Shane Xu's Home</title>
+  <meta name="author" content="Shane Xu">
+
+  
+  <meta name="description" content="今天想聊一下java的代码规范的事情。 想写这样的篇文章并不是什么空穴来风，我想起过去在某公司实习的日子，被当时的主管不停的叮嘱coding style的日子，终于现在轮到自己看代码的时候，才意识coding style的重要性。 于是在google搜索java coding style， &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://shanexu.org/blog/2013/05/22/java-code-conventions">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Shane Xu's Home" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Shane Xu's Home</a></h1>
+  
+    <h2>Powered by Octopress Blog Framework</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:shanexu.org" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Java Code Conventions</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-05-22T21:33:00+08:00" pubdate data-updated="true">May 22<span>nd</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>今天想聊一下java的代码规范的事情。</p>
+
+<p>想写这样的篇文章并不是什么空穴来风，我想起过去在某公司实习的日子，被当时的主管不停的叮嘱coding style的日子，终于现在轮到自己看代码的时候，才意识coding style的重要性。</p>
+
+<p>于是在google搜索java coding style，结果出来的sun在1997年的时候写的<a href="http://www.oracle.com/technetwork/java/codeconv-138413.html"><em>Java Code Conventions</em></a>，笔者觉得这是一篇非常值得仔细阅读的文章。在这里笔者摘出一些，自己认为比较重要的条目。</p>
+
+<h2>1.1 Why Have Code Conventions</h2>
+
+<p>Code conventions are important to programmers for a number of reasons:</p>
+
+<p>• 80% of the lifetime cost of a piece of software goes to maintenance.<br/>
+软件开发的生命周期中80%时间花在维护上。<br/>
+• Hardly any software is maintained for its whole life by the original author.<br/>
+在软件开发的整个生命周期中，很少有软件的维护完全是由原开发者完成的。<br/>
+• Code conventions improve the readability of the software, allowing engineers to understand new code more quickly and thoroughly.<br/>
+代码约定能够提高代码的可读性，能够使得工程师们更快更透彻地理解新代码。<br/>
+• If you ship your source code as a product, you need to make sure it is as well packaged and clean as any other product you create.<br/>
+如果你要将你的源代码随着你的产品一起发布，你必须确保它们如你的别的产品一样的封装完备且干净。</p>
+
+<h3>3.1.3 Class and Interface Declarations</h3>
+
+<p>1. Class/interface documentation comment(/**..*/)
+类或接口的文档<br/>
+2. Class or interfaces statement
+类或接口声明<br/>
+3. Class/interface implementation comment(/*&hellip;*/), if necessary
+类或接口的实现注释（可选）<br/>
+4. Class (static) variables
+类（静态）变量<br/>
+5. Instance variables
+实例变量<br/>
+6. Constructors
+构造方法<br/>
+7. Methods
+类方法（类方法的组织不需要按照scop来排序，而是按照业务需求来进行排序）</p>
+
+<h2>6.1 Number Per Line</h2>
+
+<p>One declaration per line is recomended since it encourages commenting. In other words,<br/>
+每个声明独占一行，这样也更容易对变量进行注释，也就是说，</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kt">int</span> <span class="n">level</span><span class="o">;</span> <span class="c1">// indentation level</span>
+</span><span class='line'><span class="kt">int</span> <span class="n">size</span><span class="o">;</span>  <span class="c1">// size of table</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>is preferred over<br/>
+上面的代码比下面的代码更符合规范。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kt">int</span> <span class="n">level</span><span class="o">,</span> <span class="n">size</span><span class="o">;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>6.2 Placement</h2>
+
+<p>Put declarations only at the beginning of blocks. (A block is any code surrounded by curly braces &ldquo;{&rdquo; and &ldquo;}&rdquo;.) Don’t wait to declare variables until their first use; it can confuse the unwary programmer and hamper code portability within the scope.<br/>
+将变量声明放置在代码块开始的地方。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kt">void</span> <span class="nf">MyMethod</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>    <span class="kt">int</span> <span class="n">int1</span><span class="o">;</span>              <span class="c1">// beginning of method block</span>
+</span><span class='line'>    <span class="k">if</span> <span class="o">(</span><span class="n">condition</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>        <span class="kt">int</span> <span class="n">int2</span><span class="o">;</span>          <span class="c1">// beginning of &quot;if&quot; block</span>
+</span><span class='line'>        <span class="o">...</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The one exception to the rule is indexes of for loops, which in Java can be declared in the for statement:<br/>
+对于这一条，只有一个特例，就是for循环。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">maxLoops</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span> <span class="o">...</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Avoid local declarations that hide declarations at higher levels. For example, do not declare the same variable name in an inner block:<br/>
+注意不要在更深层的代码块中使用与外部代码块相同的变量名。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kt">int</span> <span class="n">count</span><span class="o">;</span>
+</span><span class='line'><span class="o">...</span>
+</span><span class='line'><span class="n">func</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>    <span class="k">if</span> <span class="o">(</span><span class="n">condition</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>        <span class="kt">int</span> <span class="n">count</span><span class="o">;</span>
+</span><span class='line'>        <span class="o">...</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'>    <span class="o">...</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h1>9. Naming Conventions</h1>
+
+<p>命名规范</p>
+
+<table>
+<tr>
+<th>Identifier Type</th>
+<th>Rules for Naming</th>
+<th>Rules for Naming|Examples</th>
+</tr>
+<tr>
+<td>Classes</td>
+<td>Class names should be nouns, in mixed case with the first letter of each internal word capitalized. Thy to keep your class names simple and descriptive. Use whole words&#8211;avoid acronyms and abbreviations (unless the abbreviation is much more widely used than the long form, such as URL or HTML).</td>
+<td>class Raster;<br> class ImageSprite; </td>
+</tr>
+<tr>
+<td>Interfaces</td>
+<td>Interface names should be capitalized like class names. </td>
+<td>interface RasterDelegate;<br>interface Storing;</td>
+</tr>
+<tr>
+<td>Methods</td>
+<td>Methods should be verbs, in mixed case with the first letter lowercase, with the first letter of each internal word capitalized. </td>
+<td>run();<br>runFast();<br>getBackground();</td>
+</tr>
+<tr>
+<td>Variables</td>
+<td>Except for variables, all instance, class, and 
+class constants are in mixed case with a lower- 
+case first letter. Internal words start with capi- 
+tal letters. 
+Variable names should be short yet meaningful. The choice of a variable name should be mnemonic&#8211;that is, designed to indicate to the casual observer the intent of its use. One-char-acter variable names should be avoided except for temporary “throwaway” variables. Common names for temporary variables are i, j, k, m, and n for integers; c, d, and e for characters.</td>
+<td>int i;<br>char cp;<br>flaot myWidth;</td>
+</tr>
+<tr>
+<td>Constants</td>
+<td>The names of variables declared class constants and of ANSI constants should be all uppercase with words separated by underscores (&#8220;_&#8221;). (ANSI constants should be avoided, for ease of debugging.)</td>
+<td>int MIN_WIDTH = 4;<br>int MAX_WIDTH = 999;<br>int GET_THE_CPU = 1;</td>
+</tr>
+</table>
+
+
+<h1>10. Programming Practices</h1>
+
+<h2>10.1 Providing Access to Instance and Class Variables</h2>
+
+<p>防止直接访问实例或者类的变量</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Shane Xu</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-05-22T21:33:00+08:00" pubdate data-updated="true">May 22<span>nd</span>, 2013</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/java/'>java</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://shanexu.org/blog/2013/05/22/java-code-conventions/" data-via="" data-counturl="http://shanexu.org/blog/2013/05/22/java-code-conventions/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2013/04/29/macbook-fn-key-and-linux/" title="Previous Post: macbook fn key and Linux">&laquo; macbook fn key and Linux</a>
+      
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/05/22/java-code-conventions/">Java Code Conventions</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/04/29/macbook-fn-key-and-linux/">Macbook Fn Key and Linux</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/04/24/zuo-yi-tian-de-ni/">做一天的你</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/04/13/ci-yu-wo-wang-guan-%2Cgei-yu-wo-shi-lian/">赐予我王冠，给予我试炼</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/04/12/tranquil-mode/">Tranquil-mode</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/shanexu">@shanexu</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'shanexu',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - Shane Xu -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

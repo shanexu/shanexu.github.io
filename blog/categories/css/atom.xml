@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: css | Shane Xu's Home]]></title>
+  <link href="http://shanexu.org/blog/categories/css/atom.xml" rel="self"/>
+  <link href="http://shanexu.org/"/>
+  <updated>2013-12-19T15:25:39+08:00</updated>
+  <id>http://shanexu.org/</id>
+  <author>
+    <name><![CDATA[Shane Xu]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Mobile Safari Automatically Scales Text]]></title>
+    <link href="http://shanexu.org/blog/2013/03/08/mobile-safari-automatically-scales-text/"/>
+    <updated>2013-03-08T22:13:00+08:00</updated>
+    <id>http://shanexu.org/blog/2013/03/08/mobile-safari-automatically-scales-text</id>
+    <content type="html"><![CDATA[<div class='begin-indent2em' filter='p:not(:has(a.fancybox :first-child))'></div>
+
+
+<p>今天用iPhone浏览昨天写的<a href="/blog/2013/03/07/guan-yu-shou-xing-suo-jin/"><em>关于首行缩进</em></a>的日志的时候发现代码引用部分字体出现莫名其妙的放大现象，导致效果很不好。以为是最近老是换iPhone的字体所致，于是就打开了xcode的iPhone模拟器，一来可以看看模拟器上是不是出现这样的现象，二来也可以顺便调戏一下模拟器上的Mobile Safari。</p>
+
+<p>结果模拟器上的Mobile Safari也出现了这样的现象。于是打开Safari调戏Mobile Safari。发现从code标签开始到最深处的span之前的那一层的font-size的计算值都是好的，直到最后一层的时候就莫名其妙的变大了。即便我在最后一层的span上设置了font-size的大小也无济于事，总之，折腾了半天，也没有个结果。无奈之下只能求助于google。</p>
+
+<p><img class="<a" src="href="http://fileserver.cfapps.io/images/mobile_safari-1.png">http://fileserver.cfapps.io/images/mobile_safari-1.png</a>" title="&lsquo;#1&rsquo; &lsquo;Mobile Safari automatically scales text&rsquo;" ></p>
+
+<!-- more -->
+
+
+<p>Mobile Safari（也包括Android下的Chrome，FireFox，以及IE Mobile）在默认状态下会自动调整字体的大小以满足可读性的需求。如果把<em>-webkit-text-size-adjust（-moz-text-size-adjust 或者 -ms-text-size-adjust）</em>设置成<em>100%</em>或者<em>none</em>，Mobile Safari就不会自动缩放文本。于是我在<em>custom/_layout.scss</em>里加段补丁。</p>
+
+<p>``` scss
+body{</p>
+
+<pre><code>-webkit-text-size-adjust: 100%;
+-moz-text-size-adjust: 100%;
+-ms-text-size-adjust: 100%;
+</code></pre>
+
+<p>}</p>
+
+<p>@media only screen and (min-width:768px) {</p>
+
+<pre><code>body{
+    -webkit-text-size-adjust: auto;
+    -moz-text-size-adjust: auto;
+    -ms-text-size-adjust: auto;
+}
+</code></pre>
+
+<p>}
+```
+重新用iPhone载入页面，原来参差不齐的代码字体就变得整齐了。</p>
+
+<p><img class="<a" src="href="http://fileserver.cfapps.io/images/mobile_safari-2.png">http://fileserver.cfapps.io/images/mobile_safari-2.png</a>" title="&lsquo;#2&rsquo; &lsquo;set -webkit-text-size-adjus to 100%&rsquo;" ></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[关于首行缩进]]></title>
+    <link href="http://shanexu.org/blog/2013/03/07/guan-yu-shou-xing-suo-jin/"/>
+    <updated>2013-03-07T10:24:00+08:00</updated>
+    <id>http://shanexu.org/blog/2013/03/07/guan-yu-shou-xing-suo-jin</id>
+    <content type="html"><![CDATA[<div class="begin-indent2em"></div>
+
+
+<p>最近在把以前写的小说搬到了这个地方。有件事情让我有些苦恼，原来没有首行缩进的中文文本是非常难看的东西。我想最直接方式就是给每个p标签加上一段style。
+``` html</p>
+
+<p style="text-indent: 2em;">
+    接下来的日子与琳琅失去联络。于是只好用回忆来消磨时光。
+    可回忆却像是嚼久了的口香糖，越嚼越硬，最后竟硌伤了我自己。
+    琳琅终究还是从未喜欢过我。
+</p>
+
+
+<p><code>
+然后把这段style放在css中。
+</code> css
+.indent2em {</p>
+
+<pre><code>text-indent: 2em;
+</code></pre>
+
+<p>}
+<code>
+然而octopress的post文档是从markdown文件生成的。markdown文本生成html时候并不能给生成的tag加上class等属性，要么使用html混排的方式把class写进tag中，但是这样一来就完全失去了使用markdown编写post的优势了，还不如整个去写一个html文档算了。所以要么把格式直接写在p标签里。比如这样，修改[slash](https://github.com/tommy351/Octopress-Theme-Slash)主题的_post.scss文件。
+</code> scss
+.post{</p>
+
+<pre><code>h2.title, .entry-content{
+    p{
+        text-indent: 2em;
+    }
+}
+</code></pre>
+
+<p>}
+<code>
+但是这样势必造成所有的p标签都首行缩进，而且也只有对p标签起到作用。其实归根到底，我想要的效果就是只在需要缩进的地方缩进。既然markdown没有提供加入class的办法，那就只能靠javascript。
+</code> javascript
+$(function(){</p>
+
+<pre><code>$('a[href="the-path-of-blog"]:eq(0)')
+    .parent().next().find('&gt;p')
+    .addClass('indent2em').length
+    || $('.entry-content &gt; p').addClass('indent2em');
+</code></pre>
+
+<p>});
+<code>
+把这段放在*&amp;lt;!&amp;minus;&amp;minus; more &amp;minus;&amp;minus;&amp;gt;*之前，这样折叠之前的内容和折叠之后的内容都会有首行缩进的样式。这样还是有问题，不仅每次都要把这么一段代码放到文档中，同时段落的缩进还是很难控制，当然可以通过修改javascript代码来做到。还有一个麻烦的地方是每次都要把当前的博文的地址放到*“the-path-of-blog”*中去。好吧既然每张需要首行缩进的页面都要加上一段javascript代码那么干脆把代码放到单独的js文件去吧。
+首先我们加三个css类。
+</code> scss
+.indent2em{</p>
+
+<pre><code>text-indent: 2em;
+</code></pre>
+
+<p>}
+.begin-indent2em{</p>
+
+<pre><code>display: none;
+</code></pre>
+
+<p>}
+.end-indent2em{</p>
+
+<pre><code>display: none;
+</code></pre>
+
+<p>}
+```
+第一个自不必说了，<em>begin-indent2em</em>和<em>end-indent2em</em>则用来分别标出开始和结束首行缩进的位置。这样就能在行文中自如的控制缩进格式了。</p>
+
+<p>接着加入一段javascript。
+``` javascript
+(function($){</p>
+
+<pre><code>var addIndent2em = function(){
+    $('.begin-indent2em').each(function(index, ele){
+        var qele = $(ele);
+        qele.nextUntil('.end-indent2em', qele.attr('filter')||'p').addClass('indent2em');
+    });
+};
+addIndent2em();
+</code></pre>
+
+<p>})(jQuery);
+```</p>
+
+<p>来看一下怎么用吧。下面这段文字来自我非常喜欢的一本书<a href="http://book.douban.com/subject/1794620/">芒果街上的小屋</a>，这是<em>头发（hair）</em>这一章的中英文对照。中文需要首行缩进，而英文不要。于是在markdown代码中加入了两个不占用空间的<em>div</em>风别标识需要开始和结束缩进的位置。而<em>begin div</em>的<em>filter</em>属性中可以加入过滤选择器，默认的时候只选择<em>p</em>标签。这样就能较为自由的控制缩进格式了。而实际效果也还可以，除了某些时候。</p>
+
+<p>``` html</p>
+
+<div class='begin-indent2em' filter='p, block'></div>
+
+
+<p>我们家里每个人的头发都不一样。爸爸的头发像扫把，根根直立往上插。而我，我的投放挺懒惰。它从来不听发夹和发带的话。卡洛斯的头发又直又厚。他不用梳头。蕾妮的头发滑滑的——会从你手里溜走。还有奇奇，他最小，茸茸的头发像毛皮。</p>
+
+<p>只有妈妈的头发，妈妈的头发，好像一朵朵小小的玫瑰花结，一枚枚小小的糖果圈儿，圈都那么拳曲，那么漂亮，因为她成天给它们上发卷。把鼻子伸进去闻一闻吧，当她搂着你时。当她搂着你时，你觉得那么安全，闻到的气味那么香甜。是那种待烤的面包的暖暖的香味，是那种她给你让出一角被窝时，和着体温散发的芬芳。你睡在她的身旁，外面下着雨，爸爸打着鼾。哦，鼾声、雨声，还有妈妈吗那闻起来像面包的头发。</p>
+
+<div class='end-indent2em'></div>
+
+
+<p>Everybody in our family has different hair. My Papa’s hair is like a broom, all up in the air. And me, my hair is lazy. It never obeys barrettes or bands. Carlos’s hair is thick and straight. He doesn’t need to comb it. Nenny’s hair is slippery &mdash; slides out of  your hand. And Kiki, who is the youngest, has hair like fur.</p>
+
+<p>But my mother’s hair, my mother’s hair, like little rosettes, like little candy circles all curly and pretty because she pinned it in pincurls all day, sweet to put your nose into when she is holding you, holding you and you feel safe, is the warm smell of bread before you bake it, is the smell when she makes room for you on her side of the bed still warm with her skin, and you sleep near her, the rain outside falling and Papa snoring. The snoring, the rain outside falling and Papa snoring. The snoring, the rain, and Mama’s hair that smells like bread.
+```</p>
+]]></content>
+  </entry>
+  
+</feed>

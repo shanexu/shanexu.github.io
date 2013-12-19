@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: firefox | Shane Xu's Home]]></title>
+  <link href="http://shanexu.org/blog/categories/firefox/atom.xml" rel="self"/>
+  <link href="http://shanexu.org/"/>
+  <updated>2013-12-19T15:25:39+08:00</updated>
+  <id>http://shanexu.org/</id>
+  <author>
+    <name><![CDATA[Shane Xu]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[vimperator]]></title>
+    <link href="http://shanexu.org/blog/2013/04/08/vimperator/"/>
+    <updated>2013-04-08T22:07:00+08:00</updated>
+    <id>http://shanexu.org/blog/2013/04/08/vimperator</id>
+    <content type="html"><![CDATA[<div class='begin-indent2em' filter='p:not(:has(a.fancybox :first-child))'></div>
+
+
+<p>我曾经说过Firefox是不可替代的，那是因为Firefox上有那么几个插件我无法割舍的，比如firebug，再入autoproxy，然后我想说的就是我用了数年之久的Vimperator。</p>
+
+<p>心情不好的时候我会自虐般的用一下这个命令</p>
+
+<p><code>
+:set toolbars=none
+</code></p>
+
+<p><img class="<a" src="href="http://fileserver.cfapps.io/images/vimperator.png">http://fileserver.cfapps.io/images/vimperator.png</a>" title="&lsquo;Firefox with Vimperator&rsquo; &lsquo;Firefox with Vimperator&rsquo;" ></p>
+
+<p>于是世界清净了。</p>
+
+<p>这里就给一张Vimperator的Cheat Sheet。</p>
+
+<div class="flash-video"><div><iframe width="510" height="498" frameborder="0" allowfullscreen="" src="http://sheet.shiar.nl/vimperator"></iframe></div></div>
+
+
+
+]]></content>
+  </entry>
+  
+</feed>

@@ -1,0 +1,1554 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Shane Xu's Home</title>
+  <meta name="author" content="Shane Xu">
+
+  
+  <meta name="description" content="今天想聊一下java的代码规范的事情。 想写这样的篇文章并不是什么空穴来风，我想起过去在某公司实习的日子，被当时的主管不停的叮嘱coding style的日子，终于现在轮到自己看代码的时候，才意识coding style的重要性。 于是在google搜索java coding style， &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://shanexu.org">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Shane Xu's Home" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Shane Xu's Home</a></h1>
+  
+    <h2>Powered by Octopress Blog Framework</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:shanexu.org" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
+  
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/05/22/java-code-conventions/">Java Code Conventions</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-05-22T21:33:00+08:00" pubdate data-updated="true">May 22<span>nd</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>今天想聊一下java的代码规范的事情。</p>
+
+<p>想写这样的篇文章并不是什么空穴来风，我想起过去在某公司实习的日子，被当时的主管不停的叮嘱coding style的日子，终于现在轮到自己看代码的时候，才意识coding style的重要性。</p>
+
+<p>于是在google搜索java coding style，结果出来的sun在1997年的时候写的<a href="http://www.oracle.com/technetwork/java/codeconv-138413.html"><em>Java Code Conventions</em></a>，笔者觉得这是一篇非常值得仔细阅读的文章。在这里笔者摘出一些，自己认为比较重要的条目。</p>
+
+<h2>1.1 Why Have Code Conventions</h2>
+
+<p>Code conventions are important to programmers for a number of reasons:</p>
+
+<p>• 80% of the lifetime cost of a piece of software goes to maintenance.<br/>
+软件开发的生命周期中80%时间花在维护上。<br/>
+• Hardly any software is maintained for its whole life by the original author.<br/>
+在软件开发的整个生命周期中，很少有软件的维护完全是由原开发者完成的。<br/>
+• Code conventions improve the readability of the software, allowing engineers to understand new code more quickly and thoroughly.<br/>
+代码约定能够提高代码的可读性，能够使得工程师们更快更透彻地理解新代码。<br/>
+• If you ship your source code as a product, you need to make sure it is as well packaged and clean as any other product you create.<br/>
+如果你要将你的源代码随着你的产品一起发布，你必须确保它们如你的别的产品一样的封装完备且干净。</p>
+
+<h3>3.1.3 Class and Interface Declarations</h3>
+
+<p>1. Class/interface documentation comment(/**..*/)
+类或接口的文档<br/>
+2. Class or interfaces statement
+类或接口声明<br/>
+3. Class/interface implementation comment(/*&hellip;*/), if necessary
+类或接口的实现注释（可选）<br/>
+4. Class (static) variables
+类（静态）变量<br/>
+5. Instance variables
+实例变量<br/>
+6. Constructors
+构造方法<br/>
+7. Methods
+类方法（类方法的组织不需要按照scop来排序，而是按照业务需求来进行排序）</p>
+
+<h2>6.1 Number Per Line</h2>
+
+<p>One declaration per line is recomended since it encourages commenting. In other words,<br/>
+每个声明独占一行，这样也更容易对变量进行注释，也就是说，</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kt">int</span> <span class="n">level</span><span class="o">;</span> <span class="c1">// indentation level</span>
+</span><span class='line'><span class="kt">int</span> <span class="n">size</span><span class="o">;</span>  <span class="c1">// size of table</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>is preferred over<br/>
+上面的代码比下面的代码更符合规范。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kt">int</span> <span class="n">level</span><span class="o">,</span> <span class="n">size</span><span class="o">;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>6.2 Placement</h2>
+
+<p>Put declarations only at the beginning of blocks. (A block is any code surrounded by curly braces &ldquo;{&rdquo; and &ldquo;}&rdquo;.) Don’t wait to declare variables until their first use; it can confuse the unwary programmer and hamper code portability within the scope.<br/>
+将变量声明放置在代码块开始的地方。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kt">void</span> <span class="nf">MyMethod</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>    <span class="kt">int</span> <span class="n">int1</span><span class="o">;</span>              <span class="c1">// beginning of method block</span>
+</span><span class='line'>    <span class="k">if</span> <span class="o">(</span><span class="n">condition</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>        <span class="kt">int</span> <span class="n">int2</span><span class="o">;</span>          <span class="c1">// beginning of &quot;if&quot; block</span>
+</span><span class='line'>        <span class="o">...</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The one exception to the rule is indexes of for loops, which in Java can be declared in the for statement:<br/>
+对于这一条，只有一个特例，就是for循环。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">maxLoops</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span> <span class="o">...</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Avoid local declarations that hide declarations at higher levels. For example, do not declare the same variable name in an inner block:<br/>
+注意不要在更深层的代码块中使用与外部代码块相同的变量名。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kt">int</span> <span class="n">count</span><span class="o">;</span>
+</span><span class='line'><span class="o">...</span>
+</span><span class='line'><span class="n">func</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>    <span class="k">if</span> <span class="o">(</span><span class="n">condition</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>        <span class="kt">int</span> <span class="n">count</span><span class="o">;</span>
+</span><span class='line'>        <span class="o">...</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'>    <span class="o">...</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h1>9. Naming Conventions</h1>
+
+<p>命名规范</p>
+
+<table>
+<tr>
+<th>Identifier Type</th>
+<th>Rules for Naming</th>
+<th>Rules for Naming|Examples</th>
+</tr>
+<tr>
+<td>Classes</td>
+<td>Class names should be nouns, in mixed case with the first letter of each internal word capitalized. Thy to keep your class names simple and descriptive. Use whole words&#8211;avoid acronyms and abbreviations (unless the abbreviation is much more widely used than the long form, such as URL or HTML).</td>
+<td>class Raster;<br> class ImageSprite; </td>
+</tr>
+<tr>
+<td>Interfaces</td>
+<td>Interface names should be capitalized like class names. </td>
+<td>interface RasterDelegate;<br>interface Storing;</td>
+</tr>
+<tr>
+<td>Methods</td>
+<td>Methods should be verbs, in mixed case with the first letter lowercase, with the first letter of each internal word capitalized. </td>
+<td>run();<br>runFast();<br>getBackground();</td>
+</tr>
+<tr>
+<td>Variables</td>
+<td>Except for variables, all instance, class, and 
+class constants are in mixed case with a lower- 
+case first letter. Internal words start with capi- 
+tal letters. 
+Variable names should be short yet meaningful. The choice of a variable name should be mnemonic&#8211;that is, designed to indicate to the casual observer the intent of its use. One-char-acter variable names should be avoided except for temporary “throwaway” variables. Common names for temporary variables are i, j, k, m, and n for integers; c, d, and e for characters.</td>
+<td>int i;<br>char cp;<br>flaot myWidth;</td>
+</tr>
+<tr>
+<td>Constants</td>
+<td>The names of variables declared class constants and of ANSI constants should be all uppercase with words separated by underscores (&#8220;_&#8221;). (ANSI constants should be avoided, for ease of debugging.)</td>
+<td>int MIN_WIDTH = 4;<br>int MAX_WIDTH = 999;<br>int GET_THE_CPU = 1;</td>
+</tr>
+</table>
+
+
+<h1>10. Programming Practices</h1>
+
+<h2>10.1 Providing Access to Instance and Class Variables</h2>
+
+<p>防止直接访问实例或者类的变量</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/04/29/macbook-fn-key-and-linux/">Macbook Fn Key and Linux</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-04-29T15:01:00+08:00" pubdate data-updated="true">Apr 29<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class="begin-indent2em"></div>
+
+
+<p>其实我呢，很不喜欢os x的function key的默认设置，也就是说当我按下F1的时候实际上降低亮度，而且我会经常用到F12，呼出firebug的快捷键，所以在os x下我会改掉function key的默认行为。</p>
+
+<p>然后是新问题，虽然这个问题在刚买了MacBook的那个星期里就碰到了，并且在读了archlinux wiki之后很轻松地解决了，但是直到现在我才想把这个过程写下来。</p>
+
+<p>我的在MacBook上装好LInux之后遇到了些许问题。比如，如何引导Linux启动，然后就是如何设置那个莫名奇妙的function key。</p>
+
+<p>其实要配置到我需要的模式，只需要执行一句命令就可以了</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>echo 2 | sudo tee &gt; /sys/module/hid_apple/parameters/fnmode</span></code></pre></td></tr></table></div></figure>
+
+
+<p>之后就是开机自动执行这个命令，在早些版本的archlinux可以将这些命令放在<em>/etc/rc.local</em>中，然而现在的archlinux使用systemd取代了原先的sysvinit。</p>
+
+<blockquote><p>systemd is a system and service manager for Linux, compatible with SysV and LSB init scripts. systemd provides aggressive parallelization capabilities, uses socket and D-Bus activation for starting services, offers on-demand starting of daemons, keeps track of processes using Linux control groups, supports snapshotting and restoring of the system state, maintains mount and automount points and implements an elaborate transactional dependency-based service control logic. It can work as a drop-in replacement for sysvinit.</p></blockquote>
+
+
+<p>带来便利的同时必然也会带来不便。以前也许只要rc.conf或者rc.local中添加几行代码的事情，现在可能就要写一大段代码然后再加上执行几个命令，有时候，不知道这样的做法是在进步还是一种退步。于是在arch wiki上看了systemd的文档，然后试着去写了一个设置function key的系统服务。</p>
+
+<p>在目录/usr/lib/systemd/system/下创建一个名为fnkey.service的文件，填入以下内容。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>[Unit]
+</span><span class='line'>Description=Set MacBook Fn key
+</span><span class='line'>After=getty.target
+</span><span class='line'>
+</span><span class='line'>[Service]
+</span><span class='line'>Type=oneshot
+</span><span class='line'>ExecStart=/usr/bin/bash -c "echo 2 &gt; /sys/module/hid_apple/parameters/fnmode"
+</span><span class='line'>
+</span><span class='line'>[Install]
+</span><span class='line'>WantedBy=multi-user.target</span></code></pre></td></tr></table></div></figure>
+
+
+<p>然后enable/start fnkey.service。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>sudo systemctl enable fnkey
+</span><span class='line'>#sudo systemctl start fnkey</span></code></pre></td></tr></table></div></figure>
+
+
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/04/24/zuo-yi-tian-de-ni/">做一天的你</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-04-24T20:22:00+08:00" pubdate data-updated="true">Apr 24<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><blockquote><p>不想不想再被你看轻<br/>可是我始终还不够聪明<br/>在你面前不敢表现不高兴<br/>不想不想爱被看清<br/>然而决定总是不够坚定<br/>狠不下心不懂对你任性<br/>为何付出的心都得不到回应<br/>一切努力都是零<br/>多么可惜我还分得清<br/>这是同情不是感情</p><p>我只要做一天的你<br/>让我用一天你的表情<br/>了解你的心情<br/>永远受欢迎<br/>带一点烦恼的高兴<br/>只要你做一天的我<br/>让你过一天我的心情<br/>耗尽所有热情所有决心<br/>还被你否定<br/>是多么不公平</p><p>不想不想爱被看清<br/>然而决定总是不够坚定<br/>狠不下心不懂对你任性<br/>为何付出的心都得不到回应<br/>一切努力都是零<br/>多么可惜我还分得清<br/>这是同情不是感情<br/>我只要做一天的你<br/>让我用一天你的表情<br/>了解你的心情<br/>永远受欢迎<br/>带一点烦恼的高兴<br/>只要你做一天的我<br/>让你过一天我的心情<br/>耗尽所有热情所有决心<br/>还被你否定<br/>是多么不公平</p><p>我只要做一天的你<br/>让我用一天你的姓<br/>让我疲倦的心<br/>能和你合并<br/>就算是最虚荣的梦境<br/>只要你做一天的我<br/>让你过一天我的心情<br/>耗尽所有热情所有决心<br/>还被你否定<br/>是多么不公平</p></blockquote>
+
+
+
+
+<div class="begin-indent2em"></div>
+
+
+<p>在微信的朋友圈看到了友人分享的歌曲，想起这首虐心的歌了。想起曾经用复读机反复听着Jolin的歌的时候，想起那段偶有烦恼但是只要睡一觉一切问题都能解决的年少时光。今天下午又去做了无聊的事情，明明自己完全不想去，却还要煞费苦心从家里跑过去，同时还要被百度地图忽悠一把，最后还要在没有大排饭的沙县里面吃鸭腿饭。现在的我是处在，人生的最低谷，还是已经没有办法救赎了呢。今天的我，竟然踏进了久违的书店，书页发出的胶水味道原来是如此的温馨。双手接触到书本的时候我竟然会有那么微微的感动，我感到身体里有什么东西发酵了或者腐烂。</p>
+
+<p>我啊完全在浪费时间吧。</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/04/13/ci-yu-wo-wang-guan-%2Cgei-yu-wo-shi-lian/">赐予我王冠，给予我试炼</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-04-13T19:43:00+08:00" pubdate data-updated="true">Apr 13<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='begin-indent2em' filter='p:not(:has(a.fancybox :first-child))'></div>
+
+
+<p>我觉得标题很好。</p>
+
+<p>我不知道这个标题是不是我自己原创的。我一直觉得这个标题是我有次在梦醒的时候拾获的，但是有时候又觉得是在某次逛论坛的时候看到的。总之，看到这句话的时候，稍稍对自己的生活产生了一点信心。那时候我把这句话和某个人分享，破天荒地得到了赏识。</p>
+
+<p><em>罪恶王冠</em>，可以说是我开始工作以来，追的第一部动漫。追动漫这种事情，以前在学校里是极少发生的，大部分时候我都是等动漫完结了，直接一口气看上一天看完的。真正有映像追过的番，竟然是<em>半价便当争夺战</em>。</p>
+
+<p>最初追罪恶王冠可能真的只是因为那个猎奇的开头，以及集为了祈不过一切的样子（第四话最后的拔剑情景我不知道看了多少回），还有最重要的东西，chelly的歌，我几乎从来没有跳过前12话的ED，Departures。</p>
+
+<blockquote><p>已不被你所愛<br/>也不被你所需<br/>就這樣我成了孤單一人<br/>那時你說了些什麼呢？<br/>無法傳達的言語漫天飛舞著<br/>明明知道<br/>但今天仍許下無法實現的願望</p><p>不要離開我<br/>請緊緊握住我的手<br/>說出你我兩人會持續下去<br/>握住的手是如此溫暖<br/>如此溫柔</p><p>你總是那樣<br/>讓我生氣讓我哭泣<br/>只是那之後<br/>你那帶著歉意的表情<br/>我好喜歡</p><p>不要離開我<br/>緊緊地盡情地抱著我<br/>想在你的雙臂中<br/>兩人臉貼著臉入眠</p><p>你已知我們不會再見面了嗎？</p><p>不要離開我<br/>緊緊地抱著我我喜歡著你<br/>就不能再一次對我微笑嗎<br/>在你的溫存消失前<br/>請抱緊我</p></blockquote>
+
+
+<p>ED的画面再次出现在我的眼前，祈慢慢地一步一步向前走着，在我第一次看到这个ed的时候我就想起了凌波女神那在月光下的湖面上投射下的漫步的声影。只不同的是，凌波女神更为矜持，她永远只给我看了那个孤单的身影。</p>
+
+<p>GC和EVA在某种意义上真的很像。Apocalypse病毒，失落的圣诞节，亚当夏娃，GC里放着那么几个意义清晰的宗教名词，还有人类进化这个大主题。但是GC就是GC，永远无法变成EVA，我并不没有贬低GC的意思，毕竟EVA永远是一座丰碑，是一座难以逾越的山峰。尽管GC有着宗教成分、进化的噱头，然而他们想诠释的主题是不一样。比如主角，樱满集是一个温柔的人，是一个温柔的王，尤其是在后期，完成从一个温柔的男孩到温柔的男人的蜕变，并且在他的温柔中甚至还融入了果敢。然而EVA中的碇真嗣却只能用懦弱来概括。樱满集能够肩负整个世界的命运，而真嗣却只会说“救救我”。</p>
+
+<iframe height=498 width=510 src="http://player.youku.com/embed/XNTc2ODk5OTI4" frameborder=0 allowfullscreen></iframe>
+
+
+<p>后面几话的时候<em>こゑだ</em>和<em>chelly</em>调换了下，总觉得<em>chelly</em>的声线不适合唱快歌，然而直到最后一话的时候终于喜欢上了op2。</p>
+
+<hr />
+
+<p>距离上面的内容大概已经过了10天了，昨天看了<em>EVA Q</em>，趁着这个新鲜劲把EVA和GC的这篇文章写完吧。</p>
+
+<p>GC永远成不了EVA这样的神作。也许今年来的动画华的作品大多取自轻小说的缘故，好多番基本上都是以烂尾结束的，结局较为满意的就只有《中二病也要谈恋爱》和《K》，但是一个是将原作完全改的面目全非，另一个则是完全是一个全新的运作模式（「K」是以革新作家集团「GoRA」的7名匿名作家的小说为原著，动画公司GoHands制作的原创TVA动画。）。严格意义上GC也是用了类似《K》的做法，但似乎完全没有把握好一个度。以下是我对GC的一点吐槽。</p>
+
+<p>首先，能出发剧情的人物太多。达利安少爷竟然和鸫两个人能够触发剧情，路边的镰刀妹子竟然会来护驾，这段剧情不禁让我想起新加坡版的神雕侠侣中的路人道士（混蛋，你竟然欺负一个断了手臂又要护着伤者的小伙子。）。然后达利安和鸫的Flag都立好了，又没有下文了。嘘介少佐这么有个性并且有如此头脑的人物的历史却完全没有展开。然而那个Apocalypse病毒还有Daath（什么生物进化意志）的事情也没说清。也许有人说EVA也很多事情没有解释，然而EVA整整花了两话的时间再加上全程剧透的方式，在真相上套了一层加一层的面纱，以致于最后都可以拿着这个谜团污钱的境地了。然而GC却在这点上远远没有EVA这么成功，虽然也有一话的回忆，却在解释完完全全的两件事情，直到最后的最后，甚至只能靠莫名奇妙的话语来搪塞观众，也许是本人智商问题吧，总之，今天也遭受了一点点智商上的挑战。</p>
+
+<p>EVA成功的另一个原因可能是不急于铺成剧情的发展，而是积极地去探讨人性，或者说是积极地去挖掘主角的黑历史。再者，或者EVA更懂得如何抓住观众的心，记得TV版第一话的时候，凌波女神的莫名其妙的闪现，只是那么一个简单到那么微不足道的场景已经让我被这个剧吸引住了。然而在GC则需要chelly的歌声配合猎奇的葬仪社的MV才能差不多达到相同的效果。也许近年来看动漫的人的低龄化趋势和观众文化程度的降低趋势，再加上没有绝好的脚本编剧的支持，总之今年来的动漫鲜有佳作。</p>
+
+<p>然而，尽管GC存在着各种各样的吐槽点。甚至在B站能看到谩骂，但是我还是觉得这是一部近来鲜有的佳作。值得慢慢回味。比如，祭死去的那一段。</p>
+
+<blockquote><p>集，有个叫《善良国王》的绘本，你看过吗？里面的国王，很善良的。他把自己的钱和分给大家，土地也让给大家，最后，国家就不复存在了。虽然大家都对国王很生气，但是我还是很喜欢那个国王。大概，他就是我的初恋吧。集，你很像那个国王，虽然善良让他一无所有。我，觉得集一定会成为一个好国王，所以……集……真好……能把我的……给集……</p></blockquote>
+
+<p>这一段很虐心，为了记录下上面这段文字，我又重温了这个场景。</p>
+
+<p>当然最后一话也是看了多遍才体会到其中的意境，集说的那句“即便是恨着我的人，也是在爱中诞生的。”所以集的虚空之力才是，包容一切的能力，集在最后应验了祭的期许，成为了一个好国王。</p>
+
+<p>我的那么点关于GC的断想，也就此打住吧。</p>
+
+<p>最后的最后还是让我用自己的那句话给自己打打气吧。</p>
+
+<blockquote><p>赐予我王冠，给予我试炼。</p></blockquote>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/04/12/tranquil-mode/">Tranquil-mode</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-04-12T16:22:00+08:00" pubdate data-updated="true">Apr 12<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='begin-indent2em' filter='p:not(:has(a.fancybox :first-child))'></div>
+
+
+<p>前面几篇写tiling window manager的文章里提到了，xnomad这个在os x下极端好用的窗口管理器，这个窗口管理器是用tranquil这个语言写的。目前<a href="https://github.com/fjolnir/tranquil">tranquil</a>这门语言还只是在github上的一个项目。</p>
+
+<blockquote><p>Tranquil is a programming language built on top of LLVM &amp; the Objective-C Runtime.
+It aims to provide a more expressive &amp; easy to use way to write Mac and iOS Apps.</p></blockquote>
+
+<p>Tranquil是一门基于LLVM和Objective-C runtime的编程语言，其目的在与提供一种更具表现力的和方便的方法来编写Mac应用和IOS Apps。</p>
+
+<p>作者在他的repository里只提供了vim的语法高亮插件，于是只能自己去写一个emacs的mode，于是通过看elisp手册，emacswiki以及阅读js.el和ruby-mode.el，加上不断的google，还有[\C-h f]终于写出了我自己的勉强还能用的<a href="https://github.com/shanexu/tranquil-mode">tranquil-mode</a>。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>(add-to-list 'load-path "~/path/to/tranquil-mode/")
+</span><span class='line'>(require 'tranquil-mode)</span></code></pre></td></tr></table></div></figure>
+
+
+<p><img src="http://fileserver.cfapps.io/images/tranquil-mode.png" title="tranquil-mode" alt="tranquil-mode"></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/04/09/its-because-of-you/">It&#8217;s Because of You, Motherfucker, That We Are Not All Using Lisp.</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-04-09T00:37:00+08:00" pubdate data-updated="true">Apr 9<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><iframe width="560" height="315" src="http://www.youtube.com/embed/bzkRVzciAZg" frameborder="0" allowfullscreen></iframe>
+
+
+<h2>Transcript</h2>
+
+<p>And in conclusion, we have found Apache to be excellent server for our web applications. Any questions?</p>
+
+<p><em>Yes. I have a question. Why didn&rsquo;t you use Node.js. Node.js is an event driven non-blocking IO server, that can be used to build high performance web applications.</em></p>
+
+<p>That is an excellent question. We evaluated several alternative web servers, and concluded that, while options like Node.js are very interesting, Apache meets our needs and has a solid track record.</p>
+
+<p><em>But it doesn&rsquo;t have performance. Everybody knows that Apache applications are slow, because they use blocking IO and have context switches.</em></p>
+
+<p>That&rsquo;s a commonly held belief, that threaded web servers are somehow less performant or scalable than event based servers. If fact, if you measure carefully, you&rsquo;ll find that both models have similar performance charasteristics.</p>
+
+<p><em>Threads don&rsquo;t scale, simple as that.</em></p>
+
+<p>That may have been true 10 years ago, it&rsquo;s not true today.</p>
+
+<p><em>Node.js will run circles around Apache, because Apache was build before async was discovered.</em></p>
+
+<p>This is where I&rsquo;d typically stab myself repeatedly in the ears with a fork until I stop hearing you.</p>
+
+<p>I&rsquo;ve looked at Node. It uses a single threaded loop that dispatches events to handlers. It&rsquo;s a proven model that solves some concurrency problems, but at the cost of code complexity.</p>
+
+<p><em>It gives techies like me the control, to wring every last CPU cycle out of our servers.</em></p>
+
+<p>it must feel empowering to be totally responsible to the performance of your application. To be always on the lookout for blocking operations that should be split into little pieces each perfectly tailored to optimize concurrent throughput, all the complexities of assembler with the efficiencies of JavaScript</p>
+
+<p><em>I&rsquo;m a total speed junky.</em></p>
+
+<p>Do you know what this reminds me?</p>
+
+<p><em>The invention of the transistor.</em></p>
+
+<p>It reminds me the invention of threads. Threading libraries do exactly what you are doing manually. They break up pieces of code to be executed intermittently, switching from instruction that are waiting on IO, to instructions that are ready to run. But your sequential code stays intact. You may recall sequential code. That&rsquo;s the code you can read.</p>
+
+<p><em>But it&rsquo;s slow as a dog.</em></p>
+
+<p>Your async program is like something from the 19th century Gothic horror story, drunk with your own sense of power, you reassemble pieces of code that were once coherent, stitching them together with event loops and call-back functions, until your monster, grotesque and menacing, is ready to be brought to life in a JavaScript VM. You throw the switch and the hideous creatures awakes, rises, and lurches forward, you simultaneously elated and terrified that something so unnatural could work at all. When you realized what you&rsquo;ve unleashed, the pure immorality of it, your creation reaches out with its bloodied mangled arms and strangles you.</p>
+
+<p><em>But it&rsquo;s fast as hell.</em></p>
+
+<p>If you are willing to suffer complex code for performance, why not write an Nginx module in C?</p>
+
+<p><em>Node.js is the most bad ass rock star tech to come out, since Ruby on Rails.</em></p>
+
+<p>As much as I want to be optimistic and look forward to human progress, people like you stop me dead in my tracks. You are fanatic in the church of technology fashion. I could present you with fact after fact after fact that your thinking about asynchronous programing is completely wrong, but why bother when you equate technology to rock bands, fancy yourself a software hipster by wearing your Node T-shirt and celebrate horrible code. Maybe you&rsquo;re cool. Hell, maybe you have groupies, but when it comes to knowing what the fuck you are talking about, you have all facilities of a parrot that says non-blocking, over and over again.</p>
+
+<p><em>Non-blocking, is the secret in the async sauce. With it, you go fast, without it, you go slow.</em></p>
+
+<p>Do you know when human discovered that the world is round?</p>
+
+<p><em>1492, Columbus sailed the ocean blue.</em></p>
+
+<p>It was 240 BC, by a Greek mathematician named Eratosthenes. He conducted a simple experiment using the length of shadows and the distance between cities, to not only prove the earth is round, but also calculated its circumference.</p>
+
+<p><em>Sounds low-tech.</em></p>
+
+<p>It was utterly brilliant. But somehow, for one and half millennia, it was common knowledge that the world was flat, hundreds and hundreds and hundreds years of raft ignorance. How in motherfucking hell does this happen?</p>
+
+<p>It was you. You, who made claims about thread performance without measuring. You, who claimed hacking your code with a machete, turning it inside out into a twisted unrecognizable mass will somehow make it go faster. You, who spend your time alternating between problems that are already solved, and problems that don&rsquo;t actually exist.</p>
+
+<p>You are the reason that science was set back a thousand years. The reason we&rsquo;ve not cured cancer. The reason we&rsquo;ve not solved world hunger.</p>
+
+<p>It&rsquo;s because of you, motherfucker, that we are not all using Lisp.</p>
+
+<p><em>I&rsquo;m sorry, what was the last part again?</em></p>
+
+<p>Nevermind.</p>
+
+<p><em>Did you just say Lisp?</em></p>
+
+<p>You misheard me.</p>
+
+<p><em>I could&rsquo;ve sworn you just said Lisp.</em></p>
+
+<p>If there are no other questions, this concludes my presentation.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/04/08/vimperator/">Vimperator</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-04-08T22:07:00+08:00" pubdate data-updated="true">Apr 8<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='begin-indent2em' filter='p:not(:has(a.fancybox :first-child))'></div>
+
+
+<p>我曾经说过Firefox是不可替代的，那是因为Firefox上有那么几个插件我无法割舍的，比如firebug，再入autoproxy，然后我想说的就是我用了数年之久的Vimperator。</p>
+
+<p>心情不好的时候我会自虐般的用一下这个命令</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>:set toolbars=none</span></code></pre></td></tr></table></div></figure>
+
+
+<p><img src="http://fileserver.cfapps.io/images/vimperator.png" title="Firefox with Vimperator" alt="Firefox with Vimperator"></p>
+
+<p>于是世界清净了。</p>
+
+<p>这里就给一张Vimperator的Cheat Sheet。</p>
+
+<div class="flash-video"><div><iframe width="510" height="498" frameborder="0" allowfullscreen="" src="http://sheet.shiar.nl/vimperator"></iframe></div></div>
+
+
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/04/08/tiling-window-manager-4/">Tiling Window Manager (4)</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-04-08T20:42:00+08:00" pubdate data-updated="true">Apr 8<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='begin-indent2em' filter='p:not(:has(a.fancybox :first-child))'></div>
+
+
+<p>没想到这个系列竟然能够写到第四篇，我真的对自己的人生到底有多么无聊已经无法掌控了。</p>
+
+<p>就在我对在os x下使用tiling window manager绝望，并且用macruby写了一段还算能用的又臭又长又丑陋的脚本的时候我在github的角落里发现了osxmonad。在过去的六个月里，我竟然没有想到过把os x和xmonad两个单词结合起来，可想那过去的几个月无脑的人生有多么悲惨。</p>
+
+<p>osxmonad其实已经可以满足日常需要了，但是那个焦点管理的确有时候会影响心情，毕竟macbook的触摸板还是非常好用的（这半年里我几乎没有碰过鼠标，现在我多年的鼠标手已经消失了），时而会手贱会用触摸板切换窗口焦点。然后当我输入第一个字母的时候，焦点就被转移到了某个osxmonad计算出的焦点，也就是会强制使我想输入文字的窗口失去焦点。</p>
+
+<p>但是你永远不知道下一秒会发生什么，一个错误会让你痛恨一生，但是有时候一个错误也能造就一段美丽的佳话。你永远不会想到，你输了一百多遍的单词xmonad有一天会不小心输成了xnomad，然后你习惯性的按下了回车键，接着google非常谦卑地帮你去搜索了xnomad，他甚至还小心翼翼的问你是不是要找xmonad，不过等等，把我的狗眼往下稍微移一移，你会看到在github上竟然有这么一个神奇的项目，<a href="https://github.com/fjolnir/xnomad">xnomad</a>。</p>
+
+<p>于是这就是我要的人生了吗？</p>
+
+<p><img src="http://fileserver.cfapps.io/images/tiling-4-1.png" title="Mountain Lion with xnomad, tall layout" alt="Mountain Lion with xnomad, tall layout"></p>
+
+<p><img src="http://fileserver.cfapps.io/images/tiling-4-2.png" title="Mountain Lion with xnomad, tall layout with more windows" alt="Mountain Lion with xnomad, tall layout with more windows"></p>
+
+<p><img src="http://fileserver.cfapps.io/images/tiling-4-3.png" title="Mountain Lion with xnomad wide layout" alt="Mountain Lion with xnomad wide layout"></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/04/08/tiling-window-manager-3/">Tiling Window Manager (3)</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-04-08T13:20:00+08:00" pubdate data-updated="true">Apr 8<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='begin-indent2em' filter='p:not(:has(a.fancybox :first-child))'></div>
+
+
+<p>在我对在os x下使用平铺式窗口管理器差不多快绝望的时候，我在github上竟然发现<a href="https://github.com/xmonad/osxmonad.git">osxmonad</a>这个项目。来我们重温那句话。</p>
+
+<blockquote><p>I would die for XMonad working with native OSX windows. Interested in any answers beyond the crappy things I&rsquo;ve seen already.</p></blockquote>
+
+<p>后来看了下，这个comment是在2011年的时候发布的，而osxmonad则开始于9个月前。好吧不知道这个老兄现在知不知道这个东西的存在。好吧现在来说说osxmonad的安装方法吧。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>git clone git://github.com/xmonad/osxmonad.git
+</span><span class='line'>darcs get http://code.haskell.org/xmonad
+</span><span class='line'>cd xmonad
+</span><span class='line'>darcs apply ../osxmonad/xmonad.patch
+</span><span class='line'>cabal install "X11 &gt;=1.5 && &lt;1.7"
+</span><span class='line'>cabal configure
+</span><span class='line'>cabal install
+</span><span class='line'>cd ../osxmonad
+</span><span class='line'>cabal configure
+</span><span class='line'>cabal install</span></code></pre></td></tr></table></div></figure>
+
+
+<p>以上是github上提供的安装方法。作者是对xmonad-1.0.1版本进行了补丁，而到目前为止，xmonad已经发布了1.1版本，所以作者的path无法在1.1版本的xmonad上上使用。然后看了看path文件，大概明白了补丁的意思。于是在XMonad/Core.hs的源代码的465行加上&#8221;-framework&#8221;,&ldquo;Cocoa&#8221;编译选项，同时修改osxmonad/osxmonad.cabal的24行将xmonad的版本号改成0.11，就能按照上面的步骤编译安装了，当然ghc要从haskell的官网上下载haskel platform。</p>
+
+<p>然后编写xmonad的配置文件~/.xmonad/xmonad.hs</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='haskell'><span class='line'><span class="kr">import</span> <span class="nn">XMonad</span>
+</span><span class='line'><span class="kr">import</span> <span class="nn">OSXMonad.Core</span>
+</span><span class='line'>
+</span><span class='line'><span class="nf">main</span> <span class="ow">=</span> <span class="n">osxmonad</span> <span class="n">defaultConfig</span> <span class="p">{</span>
+</span><span class='line'>         <span class="n">modMask</span> <span class="ow">=</span> <span class="n">mod1Mask</span> <span class="o">.|.</span> <span class="n">mod4Mask</span><span class="p">,</span>
+</span><span class='line'>         <span class="n">keys</span> <span class="ow">=</span> <span class="n">osxKeys</span>
+</span><span class='line'>       <span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>最后运行xmonad。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='haskell'><span class='line'><span class="o">~/</span><span class="kt">Library</span><span class="o">/</span><span class="kt">Haskell</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">xmonad</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>于是我终于在os x下用上了好久没有（其实我有时候会偷跑到linux下去爽几下）使用的XMonad。当然osxmonad还远远不能说完美，比如反应滞后，窗口焦点只能在自己的机制下维护。但是，够用了。</p>
+
+<p><img src="http://fileserver.cfapps.io/images/tiling-3.png" title="Mountain Lion with osxmonad" alt="Mountain Lion with osxmonad"></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/04/07/tiling-window-manager-2/">Tiling Window Manager (2)</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-04-07T22:46:00+08:00" pubdate data-updated="true">Apr 7<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class="begin-indent2em"></div>
+
+
+<p>OS X下有这么几款窗口管理器，好吧，严格意义上OS X没有什么窗口管理器这种东西，其实有的只是辅助性的工具，比如SizeUp能够用快捷键把窗口放到左半屏，上半屏，四分之一屏，移动窗口等等，然后收费，其实也是可以免费用的，只是过段时间会弹出对话框。然后，<a href="http://www.tylerwm.com/">Tyler</a>，这货其实是很像XMonad的，尤其是看完了他的演示视频。但是</p>
+
+<blockquote><p>Not currently compatible with Mountain Lion. We are working on an update.</p></blockquote>
+
+<p>好吧我没法用。</p>
+
+<p>在搜索tiling window manager for os x的时候我在github上看到了<a href="https://github.com/jigish/slate">slate</a>。slate的功能其实和SizeUp很相近。然而最近这个项目有了很大的突破，比如layout、javascript config file的引入，但是还是没有XMonad带给我体验，我仍旧需要记住有一大堆快捷键，然后用快捷键手动设置每一个窗口的大小。</p>
+
+<p>于是我冒出了一个想法，要不我自己来写一个窗口管理器吧。于是我clone了slate代码下来仔细研读。而事实是，我不太会用Objective-C，我对OC的认识，也差不多仅限于差不多能读懂代码罢了。还好这个世界上有个macruby的东西</p>
+
+<blockquote><p>MacRuby is an implementation of Ruby 1.9 directly on top of Mac OS X core technologies such as the Objective-C runtime and garbage collector, the LLVM compiler infrastructure and the Foundation and ICU frameworks. It is the goal of MacRuby to enable the creation of full-fledged Mac OS X applications which do not sacrifice performance in order to enjoy the benefits of using Ruby.</p></blockquote>
+
+<p>于是我写了这么一个没啥大用的脚本。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+<span class='line-number'>54</span>
+<span class='line-number'>55</span>
+<span class='line-number'>56</span>
+<span class='line-number'>57</span>
+<span class='line-number'>58</span>
+<span class='line-number'>59</span>
+<span class='line-number'>60</span>
+<span class='line-number'>61</span>
+<span class='line-number'>62</span>
+<span class='line-number'>63</span>
+<span class='line-number'>64</span>
+<span class='line-number'>65</span>
+<span class='line-number'>66</span>
+<span class='line-number'>67</span>
+<span class='line-number'>68</span>
+<span class='line-number'>69</span>
+<span class='line-number'>70</span>
+<span class='line-number'>71</span>
+<span class='line-number'>72</span>
+<span class='line-number'>73</span>
+<span class='line-number'>74</span>
+<span class='line-number'>75</span>
+<span class='line-number'>76</span>
+<span class='line-number'>77</span>
+<span class='line-number'>78</span>
+<span class='line-number'>79</span>
+<span class='line-number'>80</span>
+<span class='line-number'>81</span>
+<span class='line-number'>82</span>
+<span class='line-number'>83</span>
+<span class='line-number'>84</span>
+<span class='line-number'>85</span>
+<span class='line-number'>86</span>
+<span class='line-number'>87</span>
+<span class='line-number'>88</span>
+<span class='line-number'>89</span>
+<span class='line-number'>90</span>
+<span class='line-number'>91</span>
+<span class='line-number'>92</span>
+<span class='line-number'>93</span>
+<span class='line-number'>94</span>
+<span class='line-number'>95</span>
+<span class='line-number'>96</span>
+<span class='line-number'>97</span>
+<span class='line-number'>98</span>
+<span class='line-number'>99</span>
+<span class='line-number'>100</span>
+<span class='line-number'>101</span>
+<span class='line-number'>102</span>
+<span class='line-number'>103</span>
+<span class='line-number'>104</span>
+<span class='line-number'>105</span>
+<span class='line-number'>106</span>
+<span class='line-number'>107</span>
+<span class='line-number'>108</span>
+<span class='line-number'>109</span>
+<span class='line-number'>110</span>
+<span class='line-number'>111</span>
+<span class='line-number'>112</span>
+<span class='line-number'>113</span>
+<span class='line-number'>114</span>
+<span class='line-number'>115</span>
+<span class='line-number'>116</span>
+<span class='line-number'>117</span>
+<span class='line-number'>118</span>
+<span class='line-number'>119</span>
+<span class='line-number'>120</span>
+<span class='line-number'>121</span>
+<span class='line-number'>122</span>
+<span class='line-number'>123</span>
+<span class='line-number'>124</span>
+<span class='line-number'>125</span>
+<span class='line-number'>126</span>
+<span class='line-number'>127</span>
+<span class='line-number'>128</span>
+<span class='line-number'>129</span>
+<span class='line-number'>130</span>
+<span class='line-number'>131</span>
+<span class='line-number'>132</span>
+<span class='line-number'>133</span>
+<span class='line-number'>134</span>
+<span class='line-number'>135</span>
+<span class='line-number'>136</span>
+<span class='line-number'>137</span>
+<span class='line-number'>138</span>
+<span class='line-number'>139</span>
+<span class='line-number'>140</span>
+<span class='line-number'>141</span>
+<span class='line-number'>142</span>
+<span class='line-number'>143</span>
+<span class='line-number'>144</span>
+<span class='line-number'>145</span>
+<span class='line-number'>146</span>
+<span class='line-number'>147</span>
+<span class='line-number'>148</span>
+<span class='line-number'>149</span>
+<span class='line-number'>150</span>
+<span class='line-number'>151</span>
+<span class='line-number'>152</span>
+<span class='line-number'>153</span>
+<span class='line-number'>154</span>
+<span class='line-number'>155</span>
+<span class='line-number'>156</span>
+<span class='line-number'>157</span>
+<span class='line-number'>158</span>
+<span class='line-number'>159</span>
+<span class='line-number'>160</span>
+<span class='line-number'>161</span>
+<span class='line-number'>162</span>
+<span class='line-number'>163</span>
+<span class='line-number'>164</span>
+<span class='line-number'>165</span>
+<span class='line-number'>166</span>
+<span class='line-number'>167</span>
+<span class='line-number'>168</span>
+<span class='line-number'>169</span>
+<span class='line-number'>170</span>
+<span class='line-number'>171</span>
+<span class='line-number'>172</span>
+<span class='line-number'>173</span>
+<span class='line-number'>174</span>
+<span class='line-number'>175</span>
+<span class='line-number'>176</span>
+<span class='line-number'>177</span>
+<span class='line-number'>178</span>
+<span class='line-number'>179</span>
+<span class='line-number'>180</span>
+<span class='line-number'>181</span>
+<span class='line-number'>182</span>
+<span class='line-number'>183</span>
+<span class='line-number'>184</span>
+<span class='line-number'>185</span>
+<span class='line-number'>186</span>
+<span class='line-number'>187</span>
+<span class='line-number'>188</span>
+<span class='line-number'>189</span>
+<span class='line-number'>190</span>
+<span class='line-number'>191</span>
+<span class='line-number'>192</span>
+<span class='line-number'>193</span>
+<span class='line-number'>194</span>
+<span class='line-number'>195</span>
+<span class='line-number'>196</span>
+<span class='line-number'>197</span>
+<span class='line-number'>198</span>
+<span class='line-number'>199</span>
+<span class='line-number'>200</span>
+<span class='line-number'>201</span>
+<span class='line-number'>202</span>
+<span class='line-number'>203</span>
+<span class='line-number'>204</span>
+<span class='line-number'>205</span>
+<span class='line-number'>206</span>
+<span class='line-number'>207</span>
+<span class='line-number'>208</span>
+<span class='line-number'>209</span>
+<span class='line-number'>210</span>
+<span class='line-number'>211</span>
+<span class='line-number'>212</span>
+<span class='line-number'>213</span>
+<span class='line-number'>214</span>
+<span class='line-number'>215</span>
+<span class='line-number'>216</span>
+<span class='line-number'>217</span>
+<span class='line-number'>218</span>
+<span class='line-number'>219</span>
+<span class='line-number'>220</span>
+<span class='line-number'>221</span>
+<span class='line-number'>222</span>
+<span class='line-number'>223</span>
+<span class='line-number'>224</span>
+<span class='line-number'>225</span>
+<span class='line-number'>226</span>
+<span class='line-number'>227</span>
+<span class='line-number'>228</span>
+<span class='line-number'>229</span>
+<span class='line-number'>230</span>
+<span class='line-number'>231</span>
+<span class='line-number'>232</span>
+<span class='line-number'>233</span>
+<span class='line-number'>234</span>
+<span class='line-number'>235</span>
+<span class='line-number'>236</span>
+<span class='line-number'>237</span>
+<span class='line-number'>238</span>
+<span class='line-number'>239</span>
+<span class='line-number'>240</span>
+<span class='line-number'>241</span>
+<span class='line-number'>242</span>
+<span class='line-number'>243</span>
+<span class='line-number'>244</span>
+<span class='line-number'>245</span>
+<span class='line-number'>246</span>
+<span class='line-number'>247</span>
+<span class='line-number'>248</span>
+<span class='line-number'>249</span>
+<span class='line-number'>250</span>
+<span class='line-number'>251</span>
+<span class='line-number'>252</span>
+<span class='line-number'>253</span>
+<span class='line-number'>254</span>
+<span class='line-number'>255</span>
+<span class='line-number'>256</span>
+<span class='line-number'>257</span>
+<span class='line-number'>258</span>
+<span class='line-number'>259</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># -*- coding: utf-8 -*-</span>
+</span><span class='line'><span class="n">framework</span> <span class="s2">&quot;AppKit&quot;</span>
+</span><span class='line'><span class="n">framework</span> <span class="s2">&quot;CoreGraphics&quot;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nb">require</span> <span class="s1">&#39;logger&#39;</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">module</span> <span class="nn">RMonad</span>
+</span><span class='line'>  <span class="nb">self</span><span class="o">.</span><span class="n">instance_eval</span> <span class="k">do</span>
+</span><span class='line'>    <span class="vi">@logger</span> <span class="o">=</span> <span class="no">Logger</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="no">STDOUT</span><span class="p">)</span>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">logger</span>
+</span><span class='line'>      <span class="vi">@logger</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">class</span> <span class="nc">RMonadWorkspace</span>
+</span><span class='line'>    <span class="kp">attr_accessor</span> <span class="ss">:windows</span>
+</span><span class='line'>    <span class="kp">attr_accessor</span> <span class="ss">:layout</span>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">initialize</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">class</span> <span class="nc">HLayout</span>
+</span><span class='line'>    <span class="kp">attr_accessor</span> <span class="ss">:frames</span>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">w</span><span class="p">,</span><span class="n">h</span><span class="p">)</span>
+</span><span class='line'>      <span class="vi">@w</span><span class="p">,</span> <span class="vi">@h</span><span class="o">=</span><span class="n">w</span><span class="p">,</span><span class="n">h</span>
+</span><span class='line'>      <span class="vi">@frames</span><span class="o">=[]</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">swap_next</span><span class="p">(</span><span class="n">win</span><span class="p">)</span>
+</span><span class='line'>      <span class="k">return</span> <span class="k">if</span> <span class="vi">@frames</span><span class="o">.</span><span class="n">count</span> <span class="o">&lt;=</span> <span class="mi">1</span>
+</span><span class='line'>      <span class="n">index</span> <span class="o">=</span> <span class="vi">@frames</span><span class="o">.</span><span class="n">index</span><span class="p">{</span><span class="o">|</span><span class="n">f</span><span class="o">|</span> <span class="n">f</span><span class="o">.</span><span class="n">win</span><span class="o">.</span><span class="n">id</span> <span class="o">==</span> <span class="n">win</span><span class="o">.</span><span class="n">id</span><span class="p">}</span>
+</span><span class='line'>      <span class="k">if</span> <span class="n">index</span>
+</span><span class='line'>        <span class="n">frame</span> <span class="o">=</span> <span class="vi">@frames</span><span class="o">[</span><span class="n">index</span><span class="o">]</span>
+</span><span class='line'>        <span class="n">frame_next</span> <span class="o">=</span> <span class="vi">@frames</span><span class="o">[</span><span class="p">(</span><span class="n">index</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="sx">%@frames.count]</span>
+</span><span class='line'><span class="sx">        frame.win, frame_next.win = frame_next.win, frame.win</span>
+</span><span class='line'><span class="sx">      end</span>
+</span><span class='line'><span class="sx">    end</span>
+</span><span class='line'>
+</span><span class='line'><span class="sx">    def swap_prev(win)</span>
+</span><span class='line'><span class="sx">      return if @</span><span class="n">frames</span><span class="o">.</span><span class="n">count</span> <span class="o">&lt;=</span> <span class="mi">1</span>
+</span><span class='line'>      <span class="n">index</span> <span class="o">=</span> <span class="vi">@frames</span><span class="o">.</span><span class="n">index</span><span class="p">{</span><span class="o">|</span><span class="n">f</span><span class="o">|</span> <span class="n">f</span><span class="o">.</span><span class="n">win</span><span class="o">.</span><span class="n">id</span> <span class="o">==</span> <span class="n">win</span><span class="o">.</span><span class="n">id</span><span class="p">}</span>
+</span><span class='line'>      <span class="k">if</span> <span class="n">index</span>
+</span><span class='line'>        <span class="n">frame</span> <span class="o">=</span> <span class="vi">@frames</span><span class="o">[</span><span class="n">index</span><span class="o">]</span>
+</span><span class='line'>        <span class="n">frame_prev</span> <span class="o">=</span> <span class="vi">@frames</span><span class="o">[</span><span class="p">(</span><span class="n">index</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="sx">%@frames.count]</span>
+</span><span class='line'><span class="sx">        frame.win, frame_prev.win = frame_prev.win, frame.win</span>
+</span><span class='line'><span class="sx">      end</span>
+</span><span class='line'><span class="sx">    end</span>
+</span><span class='line'>
+</span><span class='line'><span class="sx">    def swap_main(win)</span>
+</span><span class='line'><span class="sx">      return if @</span><span class="n">frames</span><span class="o">.</span><span class="n">count</span> <span class="o">&lt;=</span> <span class="mi">1</span>
+</span><span class='line'>      <span class="n">index</span> <span class="o">=</span> <span class="vi">@frames</span><span class="o">.</span><span class="n">index</span><span class="p">{</span><span class="o">|</span><span class="n">f</span><span class="o">|</span> <span class="n">f</span><span class="o">.</span><span class="n">win</span><span class="o">.</span><span class="n">id</span> <span class="o">==</span> <span class="n">win</span><span class="o">.</span><span class="n">id</span><span class="p">}</span>
+</span><span class='line'>      <span class="k">if</span> <span class="n">index</span>
+</span><span class='line'>        <span class="n">frame</span> <span class="o">=</span> <span class="vi">@frames</span><span class="o">[</span><span class="n">index</span><span class="o">]</span>
+</span><span class='line'>        <span class="n">frame_main</span> <span class="o">=</span> <span class="vi">@frames</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span>
+</span><span class='line'>        <span class="n">frame</span><span class="o">.</span><span class="n">win</span><span class="p">,</span> <span class="n">frame_main</span><span class="o">.</span><span class="n">win</span> <span class="o">=</span> <span class="n">frame_main</span><span class="o">.</span><span class="n">win</span><span class="p">,</span> <span class="n">frame</span><span class="o">.</span><span class="n">win</span>
+</span><span class='line'>      <span class="k">end</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">main</span>
+</span><span class='line'>      <span class="vi">@frames</span><span class="o">[</span><span class="mi">0</span><span class="o">].</span><span class="n">win</span> <span class="k">if</span> <span class="vi">@frames</span><span class="o">.</span><span class="n">count</span> <span class="o">&gt;=</span> <span class="mi">1</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">prev</span><span class="p">(</span><span class="n">win</span><span class="p">)</span>
+</span><span class='line'>      <span class="n">index</span> <span class="o">=</span> <span class="vi">@frames</span><span class="o">.</span><span class="n">index</span><span class="p">{</span><span class="o">|</span><span class="n">f</span><span class="o">|</span> <span class="n">f</span><span class="o">.</span><span class="n">win</span><span class="o">.</span><span class="n">id</span> <span class="o">==</span> <span class="n">win</span><span class="o">.</span><span class="n">id</span><span class="p">}</span>
+</span><span class='line'>      <span class="vi">@frames</span><span class="o">[</span><span class="p">(</span><span class="n">index</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="sx">%@frames.count].win if index</span>
+</span><span class='line'><span class="sx">    end</span>
+</span><span class='line'><span class="sx">    </span>
+</span><span class='line'><span class="sx">    def next(win)</span>
+</span><span class='line'><span class="sx">      index = @</span><span class="n">frames</span><span class="o">.</span><span class="n">index</span><span class="p">{</span><span class="o">|</span><span class="n">f</span><span class="o">|</span> <span class="n">f</span><span class="o">.</span><span class="n">win</span><span class="o">.</span><span class="n">id</span> <span class="o">==</span> <span class="n">win</span><span class="o">.</span><span class="n">id</span><span class="p">}</span>
+</span><span class='line'>      <span class="vi">@frames</span><span class="o">[</span><span class="p">(</span><span class="n">index</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="sx">%@frames.count].win if index</span>
+</span><span class='line'><span class="sx">    end</span>
+</span><span class='line'>
+</span><span class='line'><span class="sx">    def &lt;&lt;(win)</span>
+</span><span class='line'><span class="sx">      if @</span><span class="n">frames</span><span class="o">.</span><span class="n">empty?</span>
+</span><span class='line'>        <span class="vi">@frames</span> <span class="o">&lt;&lt;</span> <span class="no">Frame</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="vi">@w</span><span class="p">,</span><span class="vi">@h</span><span class="p">)</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">win</span><span class="p">)</span>
+</span><span class='line'>      <span class="k">else</span>
+</span><span class='line'>        <span class="n">frame1</span> <span class="o">=</span> <span class="vi">@frames</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span>
+</span><span class='line'>        <span class="k">if</span> <span class="n">frame1</span><span class="o">.</span><span class="n">nil?</span>
+</span><span class='line'>          <span class="n">w</span> <span class="o">=</span> <span class="vi">@frames</span><span class="o">[</span><span class="mi">0</span><span class="o">].</span><span class="n">w</span> <span class="o">==</span> <span class="vi">@w</span> <span class="p">?</span> <span class="vi">@w</span><span class="o">/</span><span class="mi">2</span><span class="o">.</span><span class="mi">0</span> <span class="p">:</span> <span class="vi">@w</span> <span class="o">-</span> <span class="vi">@frames</span><span class="o">[</span><span class="mi">0</span><span class="o">].</span><span class="n">w</span>
+</span><span class='line'>          <span class="n">h</span> <span class="o">=</span> <span class="vi">@h</span>
+</span><span class='line'>          <span class="n">frame0</span> <span class="o">=</span> <span class="vi">@frames</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span>
+</span><span class='line'>          <span class="n">frame0</span><span class="o">.</span><span class="n">w</span> <span class="o">=</span> <span class="vi">@w</span><span class="o">-</span><span class="n">w</span>
+</span><span class='line'>          <span class="n">frame0</span><span class="o">.</span><span class="n">adjust</span>
+</span><span class='line'>        <span class="k">else</span>
+</span><span class='line'>          <span class="n">w</span> <span class="o">=</span> <span class="n">frame1</span><span class="o">.</span><span class="n">w</span>
+</span><span class='line'>          <span class="n">h</span> <span class="o">=</span> <span class="vi">@h</span> <span class="o">/</span> <span class="p">(</span><span class="n">count</span><span class="p">)</span><span class="o">.</span><span class="n">to_f</span>
+</span><span class='line'>        <span class="k">end</span>
+</span><span class='line'>        <span class="vi">@frames</span> <span class="o">&lt;&lt;</span> <span class="no">Frame</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">)</span><span class="o">.</span><span class="n">add_not_resize</span><span class="p">(</span><span class="n">win</span><span class="p">)</span>
+</span><span class='line'>        <span class="vi">@frames</span><span class="o">[</span><span class="mi">1</span><span class="o">.</span><span class="n">.</span><span class="o">-</span><span class="mi">1</span><span class="o">].</span><span class="n">each_with_index</span> <span class="k">do</span> <span class="o">|</span><span class="n">f</span><span class="p">,</span> <span class="n">i</span><span class="o">|</span>
+</span><span class='line'>          <span class="n">f</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">f</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="n">f</span><span class="o">.</span><span class="n">h</span> <span class="o">=</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="o">*</span><span class="n">i</span><span class="p">,</span> <span class="n">h</span>
+</span><span class='line'>          <span class="n">f</span><span class="o">.</span><span class="n">adjust</span>
+</span><span class='line'>        <span class="k">end</span>
+</span><span class='line'>      <span class="k">end</span>
+</span><span class='line'>      <span class="vi">@frames</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">&gt;&gt;</span><span class="p">(</span><span class="n">win</span><span class="p">)</span>
+</span><span class='line'>      <span class="n">index</span> <span class="o">=</span> <span class="vi">@frames</span><span class="o">.</span><span class="n">index</span><span class="p">{</span><span class="o">|</span><span class="n">f</span><span class="o">|</span> <span class="n">f</span><span class="o">.</span><span class="n">win</span><span class="o">.</span><span class="n">id</span> <span class="o">==</span> <span class="n">win</span><span class="o">.</span><span class="n">id</span><span class="p">}</span>
+</span><span class='line'>      <span class="k">if</span> <span class="n">index</span>
+</span><span class='line'>        <span class="n">removed_frame</span> <span class="o">=</span> <span class="vi">@frames</span><span class="o">.</span><span class="n">delete</span> <span class="vi">@frames</span><span class="o">[</span><span class="n">index</span><span class="o">]</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="k">return</span> <span class="k">if</span> <span class="vi">@frames</span><span class="o">.</span><span class="n">count</span> <span class="o">==</span> <span class="mi">0</span>
+</span><span class='line'>        <span class="k">if</span> <span class="vi">@frames</span><span class="o">.</span><span class="n">count</span> <span class="o">==</span> <span class="mi">1</span>
+</span><span class='line'>          <span class="vi">@frames</span><span class="o">[</span><span class="mi">0</span><span class="o">].</span><span class="n">resize</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="vi">@w</span><span class="p">,</span><span class="vi">@h</span><span class="p">)</span>
+</span><span class='line'>        <span class="k">else</span>
+</span><span class='line'>          <span class="vi">@frames</span><span class="o">[</span><span class="mi">0</span><span class="o">].</span><span class="n">resize</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">removed_frame</span><span class="o">.</span><span class="n">w</span><span class="p">,</span> <span class="n">removed_frame</span><span class="o">.</span><span class="n">h</span><span class="p">)</span> <span class="k">if</span> <span class="n">index</span> <span class="o">==</span> <span class="mi">0</span>
+</span><span class='line'>          <span class="n">w</span><span class="o">=</span><span class="vi">@w</span><span class="o">-</span><span class="vi">@frames</span><span class="o">[</span><span class="mi">0</span><span class="o">].</span><span class="n">w</span>
+</span><span class='line'>          <span class="n">h</span><span class="o">=</span><span class="vi">@h</span><span class="o">/</span><span class="p">(</span><span class="vi">@frames</span><span class="o">.</span><span class="n">count</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">to_f</span>
+</span><span class='line'>          <span class="vi">@frames</span><span class="o">[</span><span class="mi">1</span><span class="o">.</span><span class="n">.</span><span class="o">-</span><span class="mi">1</span><span class="o">].</span><span class="n">each_with_index</span><span class="p">{</span><span class="o">|</span><span class="n">f</span><span class="p">,</span> <span class="n">i</span><span class="o">|</span> <span class="n">f</span><span class="o">.</span><span class="n">resize</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="o">*</span><span class="n">i</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">)}</span>
+</span><span class='line'>        <span class="k">end</span>
+</span><span class='line'>      <span class="k">end</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">init_layout</span>
+</span><span class='line'>      <span class="k">return</span> <span class="k">if</span> <span class="vi">@frames</span><span class="o">.</span><span class="n">count</span> <span class="o">==</span> <span class="mi">0</span>
+</span><span class='line'>      <span class="k">if</span> <span class="vi">@frames</span><span class="o">.</span><span class="n">count</span> <span class="o">==</span> <span class="mi">1</span>
+</span><span class='line'>        <span class="vi">@frames</span><span class="o">[</span><span class="mi">0</span><span class="o">].</span><span class="n">resize</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="vi">@w</span><span class="p">,</span><span class="vi">@h</span><span class="p">)</span>
+</span><span class='line'>      <span class="k">else</span>
+</span><span class='line'>        <span class="vi">@frames</span><span class="o">[</span><span class="mi">0</span><span class="o">].</span><span class="n">resize</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="vi">@w</span><span class="o">/</span><span class="mi">2</span><span class="o">.</span><span class="mi">0</span><span class="p">,</span> <span class="vi">@h</span><span class="p">)</span>
+</span><span class='line'>        <span class="n">w</span><span class="p">,</span><span class="n">h</span> <span class="o">=</span> <span class="vi">@w</span><span class="o">-</span><span class="vi">@frames</span><span class="o">[</span><span class="mi">0</span><span class="o">].</span><span class="n">w</span><span class="p">,</span> <span class="vi">@h</span><span class="o">/</span><span class="p">(</span><span class="vi">@frames</span><span class="o">.</span><span class="n">count</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">to_f</span>
+</span><span class='line'>        <span class="vi">@frames</span><span class="o">[</span><span class="mi">1</span><span class="o">.</span><span class="n">.</span><span class="o">-</span><span class="mi">1</span><span class="o">].</span><span class="n">each_with_index</span><span class="p">{</span><span class="o">|</span><span class="n">f</span><span class="p">,</span> <span class="n">i</span><span class="o">|</span> <span class="n">f</span><span class="o">.</span><span class="n">resize</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="o">*</span><span class="n">i</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">)}</span>
+</span><span class='line'>      <span class="k">end</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">count</span>
+</span><span class='line'>      <span class="vi">@frames</span><span class="o">.</span><span class="n">count</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">contains?</span><span class="p">(</span><span class="n">win</span><span class="p">)</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">class</span> <span class="nc">Frame</span>
+</span><span class='line'>    <span class="kp">attr_accessor</span> <span class="ss">:x</span><span class="p">,</span><span class="ss">:y</span><span class="p">,</span><span class="ss">:w</span><span class="p">,</span><span class="ss">:h</span>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">w</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">h</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</span><span class='line'>      <span class="vi">@x</span><span class="p">,</span><span class="vi">@y</span><span class="p">,</span><span class="vi">@w</span><span class="p">,</span><span class="vi">@h</span> <span class="o">=</span> <span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">w</span><span class="p">,</span><span class="n">h</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">win</span>
+</span><span class='line'>      <span class="vi">@win</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">win</span><span class="o">=</span><span class="p">(</span><span class="n">win</span><span class="p">)</span>
+</span><span class='line'>      <span class="n">add</span><span class="p">(</span><span class="n">win</span><span class="p">)</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">add_not_resize</span><span class="p">(</span><span class="n">win</span><span class="p">)</span>
+</span><span class='line'>      <span class="vi">@win</span> <span class="o">=</span> <span class="n">win</span>
+</span><span class='line'>      <span class="nb">self</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">win</span><span class="p">)</span>
+</span><span class='line'>      <span class="n">win</span><span class="o">.</span><span class="n">position</span><span class="o">=</span><span class="p">{</span><span class="ss">x</span><span class="p">:</span><span class="vi">@x</span><span class="p">,</span> <span class="ss">y</span><span class="p">:</span><span class="vi">@y</span><span class="p">}</span>
+</span><span class='line'>      <span class="n">win</span><span class="o">.</span><span class="n">size</span> <span class="o">=</span> <span class="p">{</span><span class="ss">w</span><span class="p">:</span><span class="n">w</span><span class="p">,</span> <span class="ss">h</span><span class="p">:</span><span class="n">h</span><span class="p">}</span>
+</span><span class='line'>      <span class="vi">@win</span> <span class="o">=</span> <span class="n">win</span>
+</span><span class='line'>      <span class="nb">self</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">adjust</span>
+</span><span class='line'>      <span class="n">win</span><span class="o">.</span><span class="n">position</span><span class="o">=</span><span class="p">{</span><span class="ss">x</span><span class="p">:</span><span class="vi">@x</span><span class="p">,</span> <span class="ss">y</span><span class="p">:</span><span class="vi">@y</span><span class="p">}</span>
+</span><span class='line'>      <span class="n">win</span><span class="o">.</span><span class="n">size</span> <span class="o">=</span> <span class="p">{</span><span class="ss">w</span><span class="p">:</span><span class="n">w</span><span class="p">,</span> <span class="ss">h</span><span class="p">:</span><span class="n">h</span><span class="p">}</span>
+</span><span class='line'>      <span class="nb">self</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">resize</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">w</span><span class="p">,</span><span class="n">h</span><span class="p">)</span>
+</span><span class='line'>      <span class="vi">@x</span><span class="p">,</span><span class="vi">@y</span><span class="p">,</span><span class="vi">@w</span><span class="p">,</span><span class="vi">@h</span> <span class="o">=</span> <span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">w</span><span class="p">,</span><span class="n">h</span>
+</span><span class='line'>      <span class="n">win</span><span class="o">.</span><span class="n">position</span><span class="o">=</span><span class="p">{</span><span class="ss">x</span><span class="p">:</span><span class="vi">@x</span><span class="p">,</span> <span class="ss">y</span><span class="p">:</span><span class="vi">@y</span><span class="p">}</span>
+</span><span class='line'>      <span class="n">win</span><span class="o">.</span><span class="n">size</span> <span class="o">=</span> <span class="p">{</span><span class="ss">w</span><span class="p">:</span><span class="vi">@w</span><span class="p">,</span> <span class="ss">h</span><span class="p">:</span><span class="vi">@h</span><span class="p">}</span>
+</span><span class='line'>      <span class="nb">self</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">class</span> <span class="nc">RMonadWindow</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">current_windows</span>
+</span><span class='line'>      <span class="n">running_apps</span><span class="o">.</span><span class="n">inject</span><span class="p">(</span><span class="o">[]</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">wins</span><span class="p">,</span> <span class="n">app</span><span class="o">|</span>
+</span><span class='line'>        <span class="nb">puts</span> <span class="n">app</span><span class="o">.</span><span class="n">localizedName</span>
+</span><span class='line'>        <span class="n">ws</span> <span class="o">=</span> <span class="n">windows_of_app</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">processIdentifier</span><span class="p">)</span>
+</span><span class='line'>        <span class="n">wins</span><span class="o">.</span><span class="n">concat</span> <span class="n">ws</span><span class="o">.</span><span class="n">inject</span><span class="p">(</span><span class="o">[]</span><span class="p">){</span><span class="o">|</span><span class="n">rws</span><span class="p">,</span> <span class="n">w</span><span class="o">|</span> <span class="n">rw</span> <span class="o">=</span> <span class="no">RMonadWindow</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">w</span><span class="p">);</span> <span class="n">rws</span> <span class="o">&lt;&lt;</span> <span class="n">rw</span> <span class="k">if</span> <span class="n">rw</span><span class="o">.</span><span class="n">title</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">rw</span><span class="o">.</span><span class="n">title</span><span class="o">.</span><span class="n">empty?</span><span class="p">;</span> <span class="n">rws</span><span class="p">}</span> <span class="k">if</span> <span class="n">ws</span>
+</span><span class='line'>        <span class="n">wins</span>
+</span><span class='line'>      <span class="k">end</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">windows_of_app</span><span class="p">(</span><span class="n">pid</span><span class="p">)</span>
+</span><span class='line'>      <span class="n">app</span><span class="o">=</span><span class="no">AXUIElementCreateApplication</span><span class="p">(</span><span class="n">pid</span><span class="p">)</span>
+</span><span class='line'>      <span class="n">windows</span> <span class="o">=</span> <span class="no">Pointer</span><span class="o">.</span><span class="n">new_with_type</span><span class="p">(</span><span class="s2">&quot;^{__CFArray}&quot;</span><span class="p">)</span>
+</span><span class='line'>      <span class="k">return</span> <span class="n">windows</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="k">if</span> <span class="no">AXUIElementCopyAttributeValues</span><span class="p">(</span><span class="n">app</span><span class="p">,</span> <span class="no">KAXWindowsAttribute</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="n">windows</span><span class="p">)</span> <span class="o">==</span> <span class="no">KAXErrorSuccess</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">running_apps</span>
+</span><span class='line'>      <span class="n">app_arr</span> <span class="o">=</span> <span class="no">NSWorkspace</span><span class="o">.</span><span class="n">sharedWorkspace</span><span class="o">.</span><span class="n">runningApplications</span>
+</span><span class='line'>      <span class="n">app_arr</span><span class="o">.</span><span class="n">each_with_index</span><span class="p">{</span><span class="o">|</span><span class="n">a</span><span class="p">,</span> <span class="n">i</span><span class="o">|</span> <span class="nb">puts</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">i</span><span class="si">}</span><span class="s2">. </span><span class="si">#{</span><span class="n">a</span><span class="o">.</span><span class="n">localizedName</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">}</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">current_app</span>
+</span><span class='line'>      <span class="n">current_app</span> <span class="o">=</span> <span class="no">NSRunningApplication</span><span class="o">.</span><span class="n">currentApplication</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">axuelementref_window</span><span class="p">)</span>
+</span><span class='line'>      <span class="vi">@axuelementref_window</span> <span class="o">=</span> <span class="n">axuelementref_window</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">title</span>
+</span><span class='line'>      <span class="n">ptr</span> <span class="o">=</span> <span class="no">Pointer</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="ss">:id</span><span class="p">)</span>
+</span><span class='line'>      <span class="n">ptr</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="k">if</span> <span class="no">AXUIElementCopyAttributeValue</span><span class="p">(</span><span class="vi">@axuelementref_window</span><span class="p">,</span> <span class="no">NSAccessibilityTitleAttribute</span><span class="p">,</span> <span class="n">ptr</span><span class="p">)</span><span class="o">==</span> <span class="no">KAXErrorSuccess</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">is_main</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">move</span><span class="p">(</span><span class="n">xy</span><span class="o">=</span><span class="p">{})</span>
+</span><span class='line'>      <span class="n">x</span><span class="o">=</span><span class="n">xy</span><span class="o">[</span><span class="ss">:x</span><span class="o">]||</span><span class="mi">0</span>
+</span><span class='line'>      <span class="n">y</span><span class="o">=</span><span class="n">xy</span><span class="o">[</span><span class="ss">:y</span><span class="o">]||</span><span class="mi">0</span>
+</span><span class='line'>      <span class="n">y</span><span class="o">+=</span><span class="mi">22</span>
+</span><span class='line'>      <span class="n">cgpoint</span> <span class="o">=</span> <span class="no">Pointer</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="no">CGPoint</span><span class="o">.</span><span class="n">type</span><span class="p">)</span>
+</span><span class='line'>      <span class="n">cgpoint</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="o">=</span> <span class="no">NSPoint</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+</span><span class='line'>      <span class="n">position</span> <span class="o">=</span> <span class="no">AXValueCreate</span><span class="p">(</span><span class="no">KAXValueCGPointType</span><span class="p">,</span> <span class="n">cgpoint</span><span class="p">)</span>
+</span><span class='line'>      <span class="k">if</span> <span class="no">AXUIElementSetAttributeValue</span><span class="p">(</span><span class="vi">@axuelementref_window</span><span class="p">,</span> <span class="no">NSAccessibilityPositionAttribute</span><span class="p">,</span> <span class="n">position</span><span class="p">)</span> <span class="o">==</span> <span class="no">KAXErrorSuccess</span>
+</span><span class='line'>        <span class="kp">true</span>
+</span><span class='line'>      <span class="k">else</span>
+</span><span class='line'>        <span class="no">Rmond</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">#{</span><span class="n">axuelementref_window</span><span class="si">}</span><span class="s2"> could not move to position </span><span class="si">#{</span><span class="n">xy</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span class='line'>      <span class="k">end</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">position</span>
+</span><span class='line'>      <span class="n">ptr</span> <span class="o">=</span> <span class="no">Pointer</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="ss">:id</span><span class="p">)</span>
+</span><span class='line'>      <span class="n">pos_ptr</span> <span class="o">=</span> <span class="no">Pointer</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="no">NSPoint</span><span class="o">.</span><span class="n">type</span><span class="p">)</span>
+</span><span class='line'>      <span class="k">if</span> <span class="no">AXUIElementCopyAttributeValue</span><span class="p">(</span><span class="vi">@axuelementref_window</span><span class="p">,</span> <span class="no">NSAccessibilityPositionAttribute</span><span class="p">,</span> <span class="n">ptr</span><span class="p">)</span> <span class="o">==</span> <span class="no">KAXErrorSuccess</span> <span class="ow">and</span> <span class="no">AXValueGetValue</span><span class="p">(</span><span class="n">ptr</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span><span class="p">,</span> <span class="no">KAXValueCGPointType</span><span class="p">,</span> <span class="n">pos_ptr</span><span class="p">)</span>
+</span><span class='line'>        <span class="p">{</span><span class="ss">w</span><span class="p">:</span><span class="n">pos_ptr</span><span class="o">[</span><span class="mi">0</span><span class="o">].</span><span class="n">x</span><span class="p">,</span> <span class="ss">h</span><span class="p">:</span><span class="n">pos_ptr</span><span class="o">[</span><span class="mi">0</span><span class="o">].</span><span class="n">y</span><span class="p">}</span>
+</span><span class='line'>      <span class="k">else</span>
+</span><span class='line'>        <span class="no">Rmond</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">axuelementref_window</span><span class="si">}</span><span class="s2"> could not get position&quot;</span>
+</span><span class='line'>      <span class="k">end</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">position</span><span class="o">=</span><span class="n">xy</span>
+</span><span class='line'>      <span class="n">move</span><span class="p">(</span><span class="n">xy</span><span class="p">)</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">size</span>
+</span><span class='line'>      <span class="n">ptr</span> <span class="o">=</span> <span class="no">Pointer</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="ss">:id</span><span class="p">)</span>
+</span><span class='line'>      <span class="n">size_ptr</span> <span class="o">=</span> <span class="no">Pointer</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="no">NSSize</span><span class="o">.</span><span class="n">type</span><span class="p">)</span>
+</span><span class='line'>      <span class="k">if</span> <span class="no">AXUIElementCopyAttributeValue</span><span class="p">(</span><span class="vi">@axuelementref_window</span><span class="p">,</span> <span class="no">NSAccessibilitySizeAttribute</span><span class="p">,</span> <span class="n">ptr</span><span class="p">)</span> <span class="o">==</span> <span class="no">KAXErrorSuccess</span> <span class="ow">and</span> <span class="no">AXValueGetValue</span><span class="p">(</span><span class="n">ptr</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span><span class="p">,</span> <span class="no">KAXValueCGSizeType</span><span class="p">,</span> <span class="n">size_ptr</span><span class="p">)</span>
+</span><span class='line'>        <span class="p">{</span><span class="ss">w</span><span class="p">:</span><span class="n">size_ptr</span><span class="o">[</span><span class="mi">0</span><span class="o">].</span><span class="n">width</span><span class="p">,</span> <span class="ss">h</span><span class="p">:</span><span class="n">size_ptr</span><span class="o">[</span><span class="mi">0</span><span class="o">].</span><span class="n">height</span><span class="p">}</span>
+</span><span class='line'>      <span class="k">else</span>
+</span><span class='line'>        <span class="p">{</span><span class="ss">w</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="ss">h</span><span class="p">:</span><span class="mi">0</span><span class="p">}</span>
+</span><span class='line'>      <span class="k">end</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">resize</span><span class="p">(</span><span class="n">wh</span><span class="p">)</span>
+</span><span class='line'>      <span class="n">w</span><span class="o">=</span><span class="n">wh</span><span class="o">[</span><span class="ss">:w</span><span class="o">]||</span><span class="mi">0</span>
+</span><span class='line'>      <span class="n">h</span><span class="o">=</span><span class="n">wh</span><span class="o">[</span><span class="ss">:h</span><span class="o">]||</span><span class="mi">0</span>
+</span><span class='line'>      <span class="n">size_ptr</span> <span class="o">=</span> <span class="no">Pointer</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="no">NSSize</span><span class="o">.</span><span class="n">type</span><span class="p">)</span>
+</span><span class='line'>      <span class="n">size_ptr</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="o">=</span> <span class="no">NSSize</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">)</span>
+</span><span class='line'>      <span class="n">ptr_value</span> <span class="o">=</span> <span class="no">AXValueCreate</span><span class="p">(</span><span class="no">KAXValueCGSizeType</span><span class="p">,</span> <span class="n">size_ptr</span><span class="p">)</span>
+</span><span class='line'>      <span class="k">unless</span> <span class="no">AXUIElementSetAttributeValue</span><span class="p">(</span><span class="vi">@axuelementref_window</span><span class="p">,</span> <span class="no">NSAccessibilitySizeAttribute</span><span class="p">,</span> <span class="n">ptr_value</span><span class="p">)</span> <span class="o">==</span> <span class="no">KAXErrorSuccess</span>
+</span><span class='line'>        <span class="no">Rmond</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="vi">@axuelementref_window</span><span class="si">}</span><span class="s2"> could not resize&quot;</span>
+</span><span class='line'>      <span class="k">end</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">size</span><span class="o">=</span><span class="n">wh</span>
+</span><span class='line'>      <span class="n">resize</span><span class="p">({</span><span class="ss">w</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="ss">h</span><span class="p">:</span><span class="mi">0</span><span class="p">})</span>
+</span><span class='line'>      <span class="n">resize</span><span class="p">(</span><span class="n">wh</span><span class="p">)</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>然后找个终端运行下面的代码</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="ss">RMonand</span><span class="p">:</span><span class="ss">:RMonadWindow</span><span class="o">::</span><span class="n">current_windows</span><span class="o">.</span><span class="n">inject</span><span class="p">(</span><span class="ss">RMonad</span><span class="p">:</span><span class="ss">:HLayout</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="mi">1280</span><span class="p">,</span> <span class="mi">800</span><span class="o">-</span><span class="mi">22</span><span class="p">)){</span><span class="o">|</span><span class="n">l</span><span class="p">,</span> <span class="n">m</span><span class="o">|</span> <span class="n">l</span> <span class="o">&lt;&lt;</span> <span class="n">m</span><span class="p">;</span> <span class="n">l</span><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>就能把当前桌面上所有的窗口平铺开来。然后无奈的事情开始了。第一件事情，我如何能够得知当前的桌面是几号桌面。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="no">CGWindowListCopyWindowInfo</span><span class="p">(</span><span class="no">KCGWindowListOptionOnScreenOnly</span> <span class="o">|</span> <span class="no">KCGWindowListExcludeDesktopElements</span><span class="p">,</span> <span class="no">KCGNullWindowID</span><span class="p">)</span><span class="o">.</span><span class="n">select</span><span class="p">{</span><span class="o">|</span><span class="n">w</span><span class="o">|</span> <span class="o">!</span><span class="n">w</span><span class="o">[</span><span class="s1">&#39;kCGWindowOwnerName&#39;</span><span class="o">].</span><span class="n">empty?</span> <span class="o">&amp;&amp;</span> <span class="n">w</span><span class="o">[</span><span class="s2">&quot;kCGWindowLayer&quot;</span><span class="o">]==</span><span class="mi">0</span><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>这条语句能够得到当前桌面上的所有可见窗口的列表，运行结果形如下面所示，其实也就是一个hash的数组</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="o">[</span><span class="p">{</span><span class="s2">&quot;kCGWindowLayer&quot;</span><span class="o">=&gt;</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;kCGWindowName&quot;</span><span class="o">=&gt;</span><span class="s2">&quot;macirb — macruby — 181×48&quot;</span><span class="p">,</span> <span class="s2">&quot;kCGWindowMemoryUsage&quot;</span><span class="o">=&gt;</span><span class="mi">5544180</span><span class="p">,</span> <span class="s2">&quot;kCGWindowIsOnscreen&quot;</span><span class="o">=&gt;</span><span class="kp">true</span><span class="p">,</span> <span class="s2">&quot;kCGWindowSharingState&quot;</span><span class="o">=&gt;</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;kCGWindowOwnerPID&quot;</span><span class="o">=&gt;</span><span class="mi">52112</span><span class="p">,</span> <span class="s2">&quot;kCGWindowNumber&quot;</span><span class="o">=&gt;</span><span class="mi">15366</span><span class="p">,</span> <span class="s2">&quot;kCGWindowOwnerName&quot;</span><span class="o">=&gt;</span><span class="s2">&quot;终端&quot;</span><span class="p">,</span> <span class="s2">&quot;kCGWindowStoreType&quot;</span><span class="o">=&gt;</span><span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;kCGWindowBounds&quot;</span><span class="o">=&gt;</span><span class="p">{</span><span class="s2">&quot;Height&quot;</span><span class="o">=&gt;</span><span class="mi">772</span><span class="o">.</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;X&quot;</span><span class="o">=&gt;</span><span class="mi">0</span><span class="o">.</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;Width&quot;</span><span class="o">=&gt;</span><span class="mi">1277</span><span class="o">.</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;Y&quot;</span><span class="o">=&gt;</span><span class="mi">26</span><span class="o">.</span><span class="mi">0</span><span class="p">},</span> <span class="s2">&quot;kCGWindowAlpha&quot;</span><span class="o">=&gt;</span><span class="mi">1</span><span class="o">.</span><span class="mi">0</span><span class="p">},</span> <span class="p">{</span><span class="s2">&quot;kCGWindowLayer&quot;</span><span class="o">=&gt;</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;kCGWindowName&quot;</span><span class="o">=&gt;</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="s2">&quot;kCGWindowMemoryUsage&quot;</span><span class="o">=&gt;</span><span class="mi">3933468</span><span class="p">,</span> <span class="s2">&quot;kCGWindowIsOnscreen&quot;</span><span class="o">=&gt;</span><span class="kp">true</span><span class="p">,</span> <span class="s2">&quot;kCGWindowSharingState&quot;</span><span class="o">=&gt;</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;kCGWindowOwnerPID&quot;</span><span class="o">=&gt;</span><span class="mi">90225</span><span class="p">,</span> <span class="s2">&quot;kCGWindowNumber&quot;</span><span class="o">=&gt;</span><span class="mi">7682</span><span class="p">,</span> <span class="s2">&quot;kCGWindowOwnerName&quot;</span><span class="o">=&gt;</span><span class="s2">&quot;Emacs&quot;</span><span class="p">,</span> <span class="s2">&quot;kCGWindowStoreType&quot;</span><span class="o">=&gt;</span><span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;kCGWindowBounds&quot;</span><span class="o">=&gt;</span><span class="p">{</span><span class="s2">&quot;Height&quot;</span><span class="o">=&gt;</span><span class="mi">764</span><span class="o">.</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;X&quot;</span><span class="o">=&gt;</span><span class="mi">0</span><span class="o">.</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;Width&quot;</span><span class="o">=&gt;</span><span class="mi">1274</span><span class="o">.</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;Y&quot;</span><span class="o">=&gt;</span><span class="mi">26</span><span class="o">.</span><span class="mi">0</span><span class="p">},</span> <span class="s2">&quot;kCGWindowAlpha&quot;</span><span class="o">=&gt;</span><span class="mi">1</span><span class="o">.</span><span class="mi">0</span><span class="p">},</span> <span class="p">{</span><span class="s2">&quot;kCGWindowLayer&quot;</span><span class="o">=&gt;</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;kCGWindowName&quot;</span><span class="o">=&gt;</span><span class="s2">&quot;Emacs@shane-macbook.local&quot;</span><span class="p">,</span> <span class="s2">&quot;kCGWindowMemoryUsage&quot;</span><span class="o">=&gt;</span><span class="mi">4018228</span><span class="p">,</span> <span class="s2">&quot;kCGWindowIsOnscreen&quot;</span><span class="o">=&gt;</span><span class="kp">true</span><span class="p">,</span> <span class="s2">&quot;kCGWindowSharingState&quot;</span><span class="o">=&gt;</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;kCGWindowOwnerPID&quot;</span><span class="o">=&gt;</span><span class="mi">90225</span><span class="p">,</span> <span class="s2">&quot;kCGWindowNumber&quot;</span><span class="o">=&gt;</span><span class="mi">7683</span><span class="p">,</span> <span class="s2">&quot;kCGWindowOwnerName&quot;</span><span class="o">=&gt;</span><span class="s2">&quot;Emacs&quot;</span><span class="p">,</span> <span class="s2">&quot;kCGWindowStoreType&quot;</span><span class="o">=&gt;</span><span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;kCGWindowBounds&quot;</span><span class="o">=&gt;</span><span class="p">{</span><span class="s2">&quot;Height&quot;</span><span class="o">=&gt;</span><span class="mi">764</span><span class="o">.</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;X&quot;</span><span class="o">=&gt;</span><span class="mi">0</span><span class="o">.</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;Width&quot;</span><span class="o">=&gt;</span><span class="mi">1274</span><span class="o">.</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;Y&quot;</span><span class="o">=&gt;</span><span class="mi">26</span><span class="o">.</span><span class="mi">0</span><span class="p">},</span> <span class="s2">&quot;kCGWindowAlpha&quot;</span><span class="o">=&gt;</span><span class="mi">1</span><span class="o">.</span><span class="mi">0</span><span class="p">},</span> <span class="p">{</span><span class="s2">&quot;kCGWindowLayer&quot;</span><span class="o">=&gt;</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;kCGWindowName&quot;</span><span class="o">=&gt;</span><span class="s2">&quot;Shane&#39;s Home - Vimperator&quot;</span><span class="p">,</span> <span class="s2">&quot;kCGWindowMemoryUsage&quot;</span><span class="o">=&gt;</span><span class="mi">5328948</span><span class="p">,</span> <span class="s2">&quot;kCGWindowIsOnscreen&quot;</span><span class="o">=&gt;</span><span class="kp">true</span><span class="p">,</span> <span class="s2">&quot;kCGWindowSharingState&quot;</span><span class="o">=&gt;</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;kCGWindowOwnerPID&quot;</span><span class="o">=&gt;</span><span class="mi">52228</span><span class="p">,</span> <span class="s2">&quot;kCGWindowNumber&quot;</span><span class="o">=&gt;</span><span class="mi">112</span><span class="p">,</span> <span class="s2">&quot;kCGWindowOwnerName&quot;</span><span class="o">=&gt;</span><span class="s2">&quot;Firefox&quot;</span><span class="p">,</span> <span class="s2">&quot;kCGWindowStoreType&quot;</span><span class="o">=&gt;</span><span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;kCGWindowBounds&quot;</span><span class="o">=&gt;</span><span class="p">{</span><span class="s2">&quot;Height&quot;</span><span class="o">=&gt;</span><span class="mi">770</span><span class="o">.</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;X&quot;</span><span class="o">=&gt;</span><span class="mi">0</span><span class="o">.</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;Width&quot;</span><span class="o">=&gt;</span><span class="mi">1280</span><span class="o">.</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;Y&quot;</span><span class="o">=&gt;</span><span class="mi">26</span><span class="o">.</span><span class="mi">0</span><span class="p">},</span> <span class="s2">&quot;kCGWindowAlpha&quot;</span><span class="o">=&gt;</span><span class="mi">1</span><span class="o">.</span><span class="mi">0</span><span class="p">}</span><span class="o">]</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>在10.8之前这个hash里会有一个名为“kCGWindowWorkspace”的键，但是现在已经取消了这个值，我想破脑袋google了一圈又一圈，也真没找到什么行之有效的方式获取当前的桌面号。</p>
+
+<p>第二，怎么把window number和ACXUIElementRef关联起来。上面说过的CGWindowListCopyWindowInfo方法能把当前桌面上的窗口全都找出来，同时还能看到其中有个key为“kCGWindowNumber”，这便是窗口的id。然而我们现在需要对window进行move、resize这些操作，我现在知道的方法就是获取窗口AXUIElementRef，然而使用AXUIElementCopyAttributeValue通过application的reference获得窗口列表里却丝毫找不到关于WindowNumber的影子。好吧，难道我要比较两个对象的窗口位置和大小来匹配CGWindowListCopyWindowInfo和AXUIElementCopyAttributeValue产生的两组结果，真的好荒谬啊。</p>
+
+<p>于是我放弃了，留下了前面那个莫名奇妙的例子。如果非要用的话也未尝不可。</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  <div class="pagination">
+    
+      <a class="prev" href="/blog/page/2/">&larr; Older</a>
+    
+    <a href="/blog/archives">Blog Archives</a>
+    
+  </div>
+</div>
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/05/22/java-code-conventions/">Java Code Conventions</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/04/29/macbook-fn-key-and-linux/">Macbook Fn Key and Linux</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/04/24/zuo-yi-tian-de-ni/">做一天的你</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/04/13/ci-yu-wo-wang-guan-%2Cgei-yu-wo-shi-lian/">赐予我王冠，给予我试炼</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/04/12/tranquil-mode/">Tranquil-mode</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating&#8230;</li>
+  </ul>
+  
+  <a href="https://github.com/shanexu">@shanexu</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'shanexu',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+
+
+
+  
+</aside>
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - Shane Xu -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

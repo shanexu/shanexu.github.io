@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: emacs | Shane Xu's Home]]></title>
+  <link href="http://shanexu.org/blog/categories/emacs/atom.xml" rel="self"/>
+  <link href="http://shanexu.org/"/>
+  <updated>2013-12-19T15:25:39+08:00</updated>
+  <id>http://shanexu.org/</id>
+  <author>
+    <name><![CDATA[Shane Xu]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[tranquil-mode]]></title>
+    <link href="http://shanexu.org/blog/2013/04/12/tranquil-mode/"/>
+    <updated>2013-04-12T16:22:00+08:00</updated>
+    <id>http://shanexu.org/blog/2013/04/12/tranquil-mode</id>
+    <content type="html"><![CDATA[<div class='begin-indent2em' filter='p:not(:has(a.fancybox :first-child))'></div>
+
+
+<p>前面几篇写tiling window manager的文章里提到了，xnomad这个在os x下极端好用的窗口管理器，这个窗口管理器是用tranquil这个语言写的。目前<a href="https://github.com/fjolnir/tranquil">tranquil</a>这门语言还只是在github上的一个项目。</p>
+
+<blockquote><p>Tranquil is a programming language built on top of LLVM &amp; the Objective-C Runtime.
+It aims to provide a more expressive &amp; easy to use way to write Mac and iOS Apps.</p></blockquote>
+
+<p>Tranquil是一门基于LLVM和Objective-C runtime的编程语言，其目的在与提供一种更具表现力的和方便的方法来编写Mac应用和IOS Apps。</p>
+
+<p>作者在他的repository里只提供了vim的语法高亮插件，于是只能自己去写一个emacs的mode，于是通过看elisp手册，emacswiki以及阅读js.el和ruby-mode.el，加上不断的google，还有[\C-h f]终于写出了我自己的勉强还能用的<a href="https://github.com/shanexu/tranquil-mode">tranquil-mode</a>。</p>
+
+<p><code>
+(add-to-list 'load-path "~/path/to/tranquil-mode/")
+(require 'tranquil-mode)
+</code></p>
+
+<p><img class="<a" src="href="http://fileserver.cfapps.io/images/tranquil-mode.png">http://fileserver.cfapps.io/images/tranquil-mode.png</a>" title="&lsquo;tranquil-mode&rsquo; &lsquo;tranquil-mode&rsquo;" ></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Emacs 24.3发布]]></title>
+    <link href="http://shanexu.org/blog/2013/03/11/emacs-24-dot-3fa-bu/"/>
+    <updated>2013-03-11T09:27:00+08:00</updated>
+    <id>http://shanexu.org/blog/2013/03/11/emacs-24-dot-3fa-bu</id>
+    <content type="html"><![CDATA[<div class='begin-indent2em' filter='p:not(:has(a.fancybox :first-child))'></div>
+
+
+<p>首先恭喜一下Emacs 24.3发布。于是抽空把自己的emacs更新了下。</p>
+
+<blockquote><p><strong>The current stable release is 24.3</strong>. To obtain it, visit the <a href="http://www.gnu.org/software/emacs/#Obtaining">obtaining</a> section.</p>
+
+<p>Emacs 24 has a wide variety of new features, including:</p>
+
+<ul>
+<li>A packaging system and interface (M-x list-packages) for downloading and installing extensions. A default package archive is hosted by GNU and maintained by the Emacs developers.</li>
+<li>Support for displaying and editing bidirectional text, including right-to-left scripts such as Arabic and Hebrew.</li>
+<li>Support for lexical scoping in Emacs Lisp.</li>
+<li>Improvements to the Custom Themes system (M-x customize-themes).</li>
+<li>Unified and improved completion system in many modes and packages.</li>
+<li>Built-in support for <a href="http://www.gnu.org/software/gnutls/">GnuTLS</a>, <a href="http://www.gtk.org/">GTK+ 3</a>, <a href="http://www.imagemagick.org/script/index.php">ImageMagick</a>, <a href="http://selinuxproject.org/page/Main_Page">SELinux</a>, and <a href="http://www.xmlsoft.org/">Libxml2</a>.</li>
+</ul>
+
+
+<p>For more information, read the <a href="http://www.gnu.org/software/emacs/NEWS.24.3">News</a> file.</p></blockquote>
+
+<!-- more -->
+
+
+<p><img class="<a" src="href="http://fileserver.cfapps.io/images/emacs24.3-1.png">http://fileserver.cfapps.io/images/emacs24.3-1.png</a>" title="&lsquo;Wellcome to Emacs&rsquo; &lsquo;Wellcome to Emacs&rsquo;" >
+<img class="<a" src="href="http://fileserver.cfapps.io/images/emacs24.3-2.png">http://fileserver.cfapps.io/images/emacs24.3-2.png</a>" title="&rsquo;M-x list-packages' &rsquo;M-x list-packages'" >
+<img class="<a" src="href="http://fileserver.cfapps.io/images/emacs24.3-3.png">http://fileserver.cfapps.io/images/emacs24.3-3.png</a>" title="&rsquo;M-x customize-themes' &rsquo;M-x customize-themes'" ></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[emacs-mac-port]]></title>
+    <link href="http://shanexu.org/blog/2013/03/06/emacs-mac-port/"/>
+    <updated>2013-03-06T10:47:00+08:00</updated>
+    <id>http://shanexu.org/blog/2013/03/06/emacs-mac-port</id>
+    <content type="html"><![CDATA[<div class='begin-indent2em'></div>
+
+
+<p>把工作环境迁移到OS X下面已经是几个月前的事情了，说实话一开始真的很难适应奇怪的OS X系统。比如奇怪的窗口管理器行为，没有双击标题栏最大化，即便是点击了窗口的最大化按钮（我现在还是不知道这个按钮的确是叫这个名字的，反正就是那个绿色的按钮）的行为也是非常的暧昧，还有Dock上的图标竟然不具备最小化窗口的功能（Yes, I&rsquo;m a long-term PC user.）。</p>
+
+<p>况且在此之前我一直用着xmonad和shellshape这样的平铺窗口管理器。如今OS X下还要手动调节窗口大小，这诚然是梦魇啊。后来我安装了SizeUp之后我所有的窗口基本上就只有两个模式了——普通大小和最大化。然后用Command-Tab切换窗口。也就将就着用了。其实在我妥协之前我还在我的mac上装了Archlinux但是最后还是放弃了。我发现我已经懒于配置一个系统了。</p>
+
+<p>切入正题吧。工作环境切换到OS X之后还有一些比较不习惯的事情就是emacs，尝试的装了homebrew和macports下的emacs，但是总有一些不太对的地方。最后终于在某一天查看emacs的mailing list的时候发现了<a href="https://github.com/railwaycat/emacs-mac-port">emacs mac port</a> by Yamamoto Mitsuharu。以下是我的安装过程。</p>
+
+<p><code>
+git clone https://github.com/railwaycat/emacs-mac-port.git
+cd emacs-mac-port
+cp mac/Emacs.app/Contents/Resources/Emacs.icns.official mac/Emacs.app/Contents/Resources/Emacs.icns #我比较喜欢原版的图标
+./configure --with-mac --enable-mac-app --prefix=/opt/local
+make
+sudo make install
+</code></p>
+]]></content>
+  </entry>
+  
+</feed>
