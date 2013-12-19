@@ -4,7 +4,7 @@
   <title><![CDATA[Category: emacs | Shane Xu's Home]]></title>
   <link href="http://shanexu.org/blog/categories/emacs/atom.xml" rel="self"/>
   <link href="http://shanexu.org/"/>
-  <updated>2013-05-23T18:06:51+08:00</updated>
+  <updated>2013-12-19T14:56:15+08:00</updated>
   <id>http://shanexu.org/</id>
   <author>
     <name><![CDATA[Shane Xu]]></name>
@@ -35,7 +35,7 @@ It aims to provide a more expressive &amp; easy to use way to write Mac and iOS 
 (require 'tranquil-mode)
 </code></p>
 
-<p><img class="<a" src="href="http://fileserver.cloudfoundry.com/images/tranquil-mode.png">http://fileserver.cloudfoundry.com/images/tranquil-mode.png</a>" title="&lsquo;tranquil-mode&rsquo; &lsquo;tranquil-mode&rsquo;" ></p>
+<p><img class="<a" src="href="http://fileserver.cfapps.io/images/tranquil-mode.png">http://fileserver.cfapps.io/images/tranquil-mode.png</a>" title="&lsquo;tranquil-mode&rsquo; &lsquo;tranquil-mode&rsquo;" ></p>
 ]]></content>
   </entry>
   
@@ -68,9 +68,9 @@ It aims to provide a more expressive &amp; easy to use way to write Mac and iOS 
 <!-- more -->
 
 
-<p><img class="<a" src="href="http://fileserver.cloudfoundry.com/images/emacs24.3-1.png">http://fileserver.cloudfoundry.com/images/emacs24.3-1.png</a>" title="&lsquo;Wellcome to Emacs&rsquo; &lsquo;Wellcome to Emacs&rsquo;" >
-<img class="<a" src="href="http://fileserver.cloudfoundry.com/images/emacs24.3-2.png">http://fileserver.cloudfoundry.com/images/emacs24.3-2.png</a>" title="&rsquo;M-x list-packages' &rsquo;M-x list-packages'" >
-<img class="<a" src="href="http://fileserver.cloudfoundry.com/images/emacs24.3-3.png">http://fileserver.cloudfoundry.com/images/emacs24.3-3.png</a>" title="&rsquo;M-x customize-themes' &rsquo;M-x customize-themes'" ></p>
+<p><img class="<a" src="href="http://fileserver.cfapps.io/images/emacs24.3-1.png">http://fileserver.cfapps.io/images/emacs24.3-1.png</a>" title="&lsquo;Wellcome to Emacs&rsquo; &lsquo;Wellcome to Emacs&rsquo;" >
+<img class="<a" src="href="http://fileserver.cfapps.io/images/emacs24.3-2.png">http://fileserver.cfapps.io/images/emacs24.3-2.png</a>" title="&rsquo;M-x list-packages' &rsquo;M-x list-packages'" >
+<img class="<a" src="href="http://fileserver.cfapps.io/images/emacs24.3-3.png">http://fileserver.cfapps.io/images/emacs24.3-3.png</a>" title="&rsquo;M-x customize-themes' &rsquo;M-x customize-themes'" ></p>
 ]]></content>
   </entry>
   
