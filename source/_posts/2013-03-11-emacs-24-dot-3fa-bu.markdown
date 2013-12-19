@@ -24,7 +24,7 @@ categories: [emacs]
 
 <!-- more -->
 
-{% img http://fileserver.cloudfoundry.com/images/emacs24.3-1.png 'Wellcome to Emacs' 'Wellcome to Emacs' %}
-{% img http://fileserver.cloudfoundry.com/images/emacs24.3-2.png 'M-x list-packages' 'M-x list-packages' %}
-{% img http://fileserver.cloudfoundry.com/images/emacs24.3-3.png 'M-x customize-themes' 'M-x customize-themes' %}
+{% img http://fileserver.cfapps.io/images/emacs24.3-1.png 'Wellcome to Emacs' 'Wellcome to Emacs' %}
+{% img http://fileserver.cfapps.io/images/emacs24.3-2.png 'M-x list-packages' 'M-x list-packages' %}
+{% img http://fileserver.cfapps.io/images/emacs24.3-3.png 'M-x customize-themes' 'M-x customize-themes' %}
 

@@ -11,6 +11,6 @@ chelly的歌声总能让我莫名的感动。
 
 多少个难以成眠的夜里，反复循环的歌曲，departure，惟的离开。
 
-<iframe height=498 width=510 src="http://player.youku.com/embed/XNTE2OTk2Njg0" frameborder=0 allowfullscreen></iframe>
+<iframe height=498 width=510 src="http://player.youku.com/embed/XNTE3MzM5MTUy" frameborder=0 allowfullscreen></iframe>
 
 

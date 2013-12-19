@@ -56,7 +56,7 @@ ED的画面再次出现在我的眼前，祈慢慢地一步一步向前走着，
 
 GC和EVA在某种意义上真的很像。Apocalypse病毒，失落的圣诞节，亚当夏娃，GC里放着那么几个意义清晰的宗教名词，还有人类进化这个大主题。但是GC就是GC，永远无法变成EVA，我并不没有贬低GC的意思，毕竟EVA永远是一座丰碑，是一座难以逾越的山峰。尽管GC有着宗教成分、进化的噱头，然而他们想诠释的主题是不一样。比如主角，樱满集是一个温柔的人，是一个温柔的王，尤其是在后期，完成从一个温柔的男孩到温柔的男人的蜕变，并且在他的温柔中甚至还融入了果敢。然而EVA中的碇真嗣却只能用懦弱来概括。樱满集能够肩负整个世界的命运，而真嗣却只会说“救救我”。
 
-<iframe height=498 width=510 src="http://player.youku.com/embed/XMzgxMDIyNzQw" frameborder=0 allowfullscreen></iframe>
+<iframe height=498 width=510 src="http://player.youku.com/embed/XNTc2ODk5OTI4" frameborder=0 allowfullscreen></iframe>
 
 后面几话的时候*こゑだ*和*chelly*调换了下，总觉得*chelly*的声线不适合唱快歌，然而直到最后一话的时候终于喜欢上了op2。
 

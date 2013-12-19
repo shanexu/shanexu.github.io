@@ -25,6 +25,6 @@ Kylee的《大好きなのに》，同时也是《绝园的暴风雨》的op2。
 明明这样喜欢你
 {% endblockquote %}
 
-<iframe height=498 width=510 src="http://player.youku.com/embed/XNTExMjQ0NDI4" frameborder=0 allowfullscreen></iframe>
+<iframe height=498 width=510 src="http://player.youku.com/embed/XNjM2NzM5MDcy" frameborder=0 allowfullscreen></iframe>
 
 

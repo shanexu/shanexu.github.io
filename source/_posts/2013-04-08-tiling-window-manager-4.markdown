@@ -18,9 +18,9 @@ osxmonad其实已经可以满足日常需要了，但是那个焦点管理的确
 
 于是这就是我要的人生了吗？
 
-{% img http://fileserver.cloudfoundry.com/images/tiling-4-1.png 'Mountain Lion with xnomad, tall layout' 'Mountain Lion with xnomad, tall layout' %}
+{% img http://fileserver.cfapps.io/images/tiling-4-1.png 'Mountain Lion with xnomad, tall layout' 'Mountain Lion with xnomad, tall layout' %}
 
-{% img http://fileserver.cloudfoundry.com/images/tiling-4-2.png 'Mountain Lion with xnomad, tall layout with more windows' 'Mountain Lion with xnomad, tall layout with more windows' %}
+{% img http://fileserver.cfapps.io/images/tiling-4-2.png 'Mountain Lion with xnomad, tall layout with more windows' 'Mountain Lion with xnomad, tall layout with more windows' %}
 
-{% img http://fileserver.cloudfoundry.com/images/tiling-4-3.png 'Mountain Lion with xnomad wide layout' 'Mountain Lion with xnomad wide layout' %}
+{% img http://fileserver.cfapps.io/images/tiling-4-3.png 'Mountain Lion with xnomad wide layout' 'Mountain Lion with xnomad wide layout' %}
 

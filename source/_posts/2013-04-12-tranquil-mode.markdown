@@ -21,4 +21,4 @@ Tranquil是一门基于LLVM和Objective-C runtime的编程语言，其目的在�
 (require 'tranquil-mode)
 ```
 
-{% img http://fileserver.cloudfoundry.com/images/tranquil-mode.png 'tranquil-mode' 'tranquil-mode' %}
+{% img http://fileserver.cfapps.io/images/tranquil-mode.png 'tranquil-mode' 'tranquil-mode' %}

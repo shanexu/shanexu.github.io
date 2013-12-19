@@ -17,7 +17,7 @@ categories: [firefox, vimperator]
 :set toolbars=none
 ```
 
-{% img http://fileserver.cloudfoundry.com/images/vimperator.png 'Firefox with Vimperator' 'Firefox with Vimperator' %}
+{% img http://fileserver.cfapps.io/images/vimperator.png 'Firefox with Vimperator' 'Firefox with Vimperator' %}
 
 于是世界清净了。
 
