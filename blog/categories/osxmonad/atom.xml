@@ -4,7 +4,7 @@
   <title><![CDATA[Category: osxmonad | Shane Xu's Home]]></title>
   <link href="http://shanexu.org/blog/categories/osxmonad/atom.xml" rel="self"/>
   <link href="http://shanexu.org/"/>
-  <updated>2013-12-19T17:19:27+08:00</updated>
+  <updated>2014-04-05T22:39:07+08:00</updated>
   <id>http://shanexu.org/</id>
   <author>
     <name><![CDATA[Shane Xu]]></name>
@@ -65,7 +65,7 @@ import OSXMonad.Core</p>
 
 <p>于是我终于在os x下用上了好久没有（其实我有时候会偷跑到linux下去爽几下）使用的XMonad。当然osxmonad还远远不能说完美，比如反应滞后，窗口焦点只能在自己的机制下维护。但是，够用了。</p>
 
-<p><img class="<a" src="href="http://fileserver.cfapps.io/images/tiling-3.png">http://fileserver.cfapps.io/images/tiling-3.png</a>" title="&lsquo;Mountain Lion with osxmonad&rsquo; &lsquo;Mountain Lion with osxmonad&rsquo;" ></p>
+<p><img class="<a" src="href="http://50.116.59.228/shanexu.org/images/tiling-3.png">http://50.116.59.228/shanexu.org/images/tiling-3.png</a>" title="&lsquo;Mountain Lion with osxmonad&rsquo; &lsquo;Mountain Lion with osxmonad&rsquo;" ></p>
 ]]></content>
   </entry>
   
