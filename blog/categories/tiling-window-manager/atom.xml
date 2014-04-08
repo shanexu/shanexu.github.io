@@ -4,7 +4,7 @@
   <title><![CDATA[Category: tiling window manager | Shane Xu's Home]]></title>
   <link href="http://shanexu.org/blog/categories/tiling-window-manager/atom.xml" rel="self"/>
   <link href="http://shanexu.org/"/>
-  <updated>2014-04-05T22:58:39+08:00</updated>
+  <updated>2014-04-08T14:50:05+08:00</updated>
   <id>http://shanexu.org/</id>
   <author>
     <name><![CDATA[Shane Xu]]></name>
@@ -31,11 +31,11 @@
 
 <p>于是这就是我要的人生了吗？</p>
 
-<p><img class="<a" src="href="http://50.116.59.228/shanexu.org/images/tiling-4-1.png">http://50.116.59.228/shanexu.org/images/tiling-4-1.png</a>" title="&lsquo;Mountain Lion with xnomad, tall layout&rsquo; &lsquo;Mountain Lion with xnomad, tall layout&rsquo;" ></p>
+<p><img class="<a" src="href="http://106.187.36.166/shanexu.org/images/tiling-4-1.png">http://106.187.36.166/shanexu.org/images/tiling-4-1.png</a>" title="&lsquo;Mountain Lion with xnomad, tall layout&rsquo; &lsquo;Mountain Lion with xnomad, tall layout&rsquo;" ></p>
 
-<p><img class="<a" src="href="http://50.116.59.228/shanexu.org/images/tiling-4-2.png">http://50.116.59.228/shanexu.org/images/tiling-4-2.png</a>" title="&lsquo;Mountain Lion with xnomad, tall layout with more windows&rsquo; &lsquo;Mountain Lion with xnomad, tall layout with more windows&rsquo;" ></p>
+<p><img class="<a" src="href="http://106.187.36.166/shanexu.org/images/tiling-4-2.png">http://106.187.36.166/shanexu.org/images/tiling-4-2.png</a>" title="&lsquo;Mountain Lion with xnomad, tall layout with more windows&rsquo; &lsquo;Mountain Lion with xnomad, tall layout with more windows&rsquo;" ></p>
 
-<p><img class="<a" src="href="http://50.116.59.228/shanexu.org/images/tiling-4-3.png">http://50.116.59.228/shanexu.org/images/tiling-4-3.png</a>" title="&lsquo;Mountain Lion with xnomad wide layout&rsquo; &lsquo;Mountain Lion with xnomad wide layout&rsquo;" ></p>
+<p><img class="<a" src="href="http://106.187.36.166/shanexu.org/images/tiling-4-3.png">http://106.187.36.166/shanexu.org/images/tiling-4-3.png</a>" title="&lsquo;Mountain Lion with xnomad wide layout&rsquo; &lsquo;Mountain Lion with xnomad wide layout&rsquo;" ></p>
 ]]></content>
   </entry>
   
@@ -91,7 +91,7 @@ import OSXMonad.Core</p>
 
 <p>于是我终于在os x下用上了好久没有（其实我有时候会偷跑到linux下去爽几下）使用的XMonad。当然osxmonad还远远不能说完美，比如反应滞后，窗口焦点只能在自己的机制下维护。但是，够用了。</p>
 
-<p><img class="<a" src="href="http://50.116.59.228/shanexu.org/images/tiling-3.png">http://50.116.59.228/shanexu.org/images/tiling-3.png</a>" title="&lsquo;Mountain Lion with osxmonad&rsquo; &lsquo;Mountain Lion with osxmonad&rsquo;" ></p>
+<p><img class="<a" src="href="http://106.187.36.166/shanexu.org/images/tiling-3.png">http://106.187.36.166/shanexu.org/images/tiling-3.png</a>" title="&lsquo;Mountain Lion with osxmonad&rsquo; &lsquo;Mountain Lion with osxmonad&rsquo;" ></p>
 ]]></content>
   </entry>
   
@@ -436,7 +436,7 @@ CGWindowListCopyWindowInfo(KCGWindowListOptionOnScreenOnly | KCGWindowListExclud
 <p>好吧，让我回忆一下，最早接触的平铺是窗口管理器是哪一个吧。
 <a href="http://awesome.naquadah.org/">awesome</a>，应该就是他了。其实从名字来看就知道他有多diao了。awesome其实很省心，默认配置自带一个panel，然后还有各种小插件（小插件什么的我几乎一次都没用过），然后官网上还有几个漂亮的主题，让装13的门槛迅速降低数个等级，同时配置文件又是用lua写的，在使用窗口管理器的同时又能学习一门新语言真是双赢啊。</p>
 
-<p><img class="<a" src="href="http://50.116.59.228/shanexu.org/images/tiling-1.png">http://50.116.59.228/shanexu.org/images/tiling-1.png</a>" title="&lsquo;#1&rsquo; &lsquo;ubuntu 13.04 with awesome&rsquo;" ></p>
+<p><img class="<a" src="href="http://106.187.36.166/shanexu.org/images/tiling-1.png">http://106.187.36.166/shanexu.org/images/tiling-1.png</a>" title="&lsquo;#1&rsquo; &lsquo;ubuntu 13.04 with awesome&rsquo;" ></p>
 
 <p>出于某些原因，我没有长期使用下去，可能当时没有习惯auto tiling window manager吧，打开一个窗口，自动平铺到屏幕上，感觉自己没法控制。接着是<a href="http://aerosuidae.net/musca.html">Musca</a>，和awesome不一样Musca是一个手动平铺式窗口管理器。Musca让用户手动将screen切分成不同的frames，然后把应用程序手动放到一个个frame里面。Musca没有提供任何panel、tab之类的控件，如果非要这些东西不可的话，可以拉一个xfce的panel，或者tint2之类的panel。我那时候的配置应该是Archlinux+ xfce4-panel + musca + dmenu，用了好久好久，那时候做操作系统实验的时候也是这个组合吧。</p>
 
