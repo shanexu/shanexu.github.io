@@ -50,5 +50,5 @@ main = osxmonad defaultConfig {
 
 于是我终于在os x下用上了好久没有（其实我有时候会偷跑到linux下去爽几下）使用的XMonad。当然osxmonad还远远不能说完美，比如反应滞后，窗口焦点只能在自己的机制下维护。但是，够用了。
 
-{% img http://50.116.59.228/shanexu.org/images/tiling-3.png 'Mountain Lion with osxmonad' 'Mountain Lion with osxmonad' %}
+{% img http://106.187.36.166/shanexu.org/images/tiling-3.png 'Mountain Lion with osxmonad' 'Mountain Lion with osxmonad' %}
 

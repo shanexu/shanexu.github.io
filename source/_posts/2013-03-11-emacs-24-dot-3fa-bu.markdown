@@ -24,7 +24,7 @@ categories: [emacs]
 
 <!-- more -->
 
-{% img http://50.116.59.228/shanexu.org/images/emacs24.3-1.png 'Wellcome to Emacs' 'Wellcome to Emacs' %}
-{% img http://50.116.59.228/shanexu.org/images/emacs24.3-2.png 'M-x list-packages' 'M-x list-packages' %}
-{% img http://50.116.59.228/shanexu.org/images/emacs24.3-3.png 'M-x customize-themes' 'M-x customize-themes' %}
+{% img http://106.187.36.166/shanexu.org/images/emacs24.3-1.png 'Wellcome to Emacs' 'Wellcome to Emacs' %}
+{% img http://106.187.36.166/shanexu.org/images/emacs24.3-2.png 'M-x list-packages' 'M-x list-packages' %}
+{% img http://106.187.36.166/shanexu.org/images/emacs24.3-3.png 'M-x customize-themes' 'M-x customize-themes' %}
 

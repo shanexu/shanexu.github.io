@@ -17,7 +17,7 @@ categories: [firefox, vimperator]
 :set toolbars=none
 ```
 
-{% img http://50.116.59.228/shanexu.org/images/vimperator.png 'Firefox with Vimperator' 'Firefox with Vimperator' %}
+{% img http://106.187.36.166/shanexu.org/images/vimperator.png 'Firefox with Vimperator' 'Firefox with Vimperator' %}
 
 于是世界清净了。
 
